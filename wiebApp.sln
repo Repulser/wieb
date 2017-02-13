@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wiebApp", "wiebApp\wiebApp.csproj", "{A2ACC6CD-A2E4-4590-97F0-74E5254B8105}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MainApp", "MainApp", "{A16D0F3E-6129-4501-89E5-6B925692104B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiebApp", "wiebApp", "{4ACC97CB-8E78-4795-8291-B364DE38EBB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wiebApp", "MainApp\wiebApp\wiebApp.csproj", "{A2ACC6CD-A2E4-4590-97F0-74E5254B8105}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +22,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4ACC97CB-8E78-4795-8291-B364DE38EBB6} = {A16D0F3E-6129-4501-89E5-6B925692104B}
+		{A2ACC6CD-A2E4-4590-97F0-74E5254B8105} = {4ACC97CB-8E78-4795-8291-B364DE38EBB6}
 	EndGlobalSection
 EndGlobal
