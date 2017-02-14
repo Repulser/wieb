@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:wieb.Views"
         xmlns:sharedResources="clr-namespace:wieb.SharedResources"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:viewmodels="clr-namespace:wieb.ViewModels"
         mc:Ignorable="d"
         Height="300" Width="300"
         WindowStyle="None" AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <sharedResources:AppSettings x:Key="AppSettings" />
+        <viewmodels:ClickAnimationConverter x:Key="ClickAnimationConverter" />
 
         <Style x:Key="HeaderButtons" TargetType="{x:Type Button}">
             <Style.Setters>
@@ -24,20 +26,41 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-                <Setter Property="Tag" Value="" />
+                <Setter Property="Tag">
+                    <Setter.Value>
+                        <system:Double>-1</system:Double>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource ClickAnimationConverter}}" />
             </Style.Setters>
 
             <Style.Resources>
                 <Storyboard x:Key="Click">
-                    <DoubleAnimation Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" 
-                                     To="1" 
-                                     Duration="0:0:0.2" />
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Tag">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1" />
+                    </DoubleAnimationUsingKeyFrames>
                 </Storyboard>
             </Style.Resources>
 
             <Style.Triggers>
-
+                <EventTrigger RoutedEvent="Click">
+                    <BeginStoryboard Storyboard="{StaticResource Click}" />
+                </EventTrigger>
             </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TabHeaderLess" TargetType="{x:Type TabControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <Border>
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="0" />
         </Style>
     </Window.Resources>
 
@@ -48,31 +71,40 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="HeaderMainGrid">
+        <Grid x:Name="HeaderMainGrid" Grid.Row="0">
 
             <Rectangle Fill="{Binding Source={StaticResource AppSettings}, Path=MainColor}" />
 
-            <Canvas Grid.Row="0">
+            <Canvas>
 
                 <Button x:Name="CloseButton" Width="35" Height="35" Canvas.Right="0"
-                        Background="{Binding Source={StaticResource AppSettings}, Path=MainColor}"
                         Style="{StaticResource HeaderButtons}">
                     <Image Width="16" Height="16" />
                 </Button>
 
                 <Button x:Name="MinimizeButton" Width="35" Height="35" Canvas.Right="35"
-                        Background="{Binding Source={StaticResource AppSettings}, Path=MainColor}"
                         Style="{StaticResource HeaderButtons}">
                     <Image Width="16" Height="16" />
                 </Button>
 
                 <Button x:Name="BackButton" Width="35" Height="35" Canvas.Left="0"
-                        Background="{Binding Source={StaticResource AppSettings}, Path=MainColor}"
                         Style="{StaticResource HeaderButtons}">
                     <Image Width="16" Height="16" />
                 </Button>
 
             </Canvas>
+        </Grid>
+
+        <Grid x:Name="BodyMainGrid" Grid.Row="1">
+            <TabControl Style="{StaticResource TabHeaderLess}">
+                <TabItem>
+                    <TextBox>dsa</TextBox>
+                </TabItem>
+                
+                <TabItem x:Name="OptionsTab">
+                    <TextBox>asd</TextBox>
+                </TabItem>
+            </TabControl>
         </Grid>
 
     </Grid>
