@@ -1,0 +1,79 @@
+﻿<Window x:Class="wieb.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wieb.Views"
+        xmlns:sharedResources="clr-namespace:wieb.SharedResources"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Height="300" Width="300"
+        WindowStyle="None" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <sharedResources:AppSettings x:Key="AppSettings" />
+
+        <Style x:Key="HeaderButtons" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="Transparent">
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Tag" Value="" />
+            </Style.Setters>
+
+            <Style.Resources>
+                <Storyboard x:Key="Click">
+                    <DoubleAnimation Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" 
+                                     To="1" 
+                                     Duration="0:0:0.2" />
+                </Storyboard>
+            </Style.Resources>
+
+            <Style.Triggers>
+
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="HeaderMainGrid">
+
+            <Rectangle Fill="{Binding Source={StaticResource AppSettings}, Path=MainColor}" />
+
+            <Canvas Grid.Row="0">
+
+                <Button x:Name="CloseButton" Width="35" Height="35" Canvas.Right="0"
+                        Background="{Binding Source={StaticResource AppSettings}, Path=MainColor}"
+                        Style="{StaticResource HeaderButtons}">
+                    <Image Width="16" Height="16" />
+                </Button>
+
+                <Button x:Name="MinimizeButton" Width="35" Height="35" Canvas.Right="35"
+                        Background="{Binding Source={StaticResource AppSettings}, Path=MainColor}"
+                        Style="{StaticResource HeaderButtons}">
+                    <Image Width="16" Height="16" />
+                </Button>
+
+                <Button x:Name="BackButton" Width="35" Height="35" Canvas.Left="0"
+                        Background="{Binding Source={StaticResource AppSettings}, Path=MainColor}"
+                        Style="{StaticResource HeaderButtons}">
+                    <Image Width="16" Height="16" />
+                </Button>
+
+            </Canvas>
+        </Grid>
+
+    </Grid>
+</Window>

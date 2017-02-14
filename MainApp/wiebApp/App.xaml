@@ -1,8 +1,8 @@
-﻿<Application x:Class="wiebApp.App"
+﻿<Application x:Class="wieb.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:wiebApp"
-             StartupUri="View/MainWindow.xaml">
+             xmlns:local="clr-namespace:wieb"
+             StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>
