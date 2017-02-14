@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <sharedResources:AppSettings x:Key="AppSettings" />
-
+        
         <Style x:Key="HeaderButtons" TargetType="{x:Type Button}">
             <Style.Setters>
                 <Setter Property="Template">
