@@ -14,7 +14,7 @@
     <Window.Resources>
         <sharedResources:AppSettings x:Key="AppSettings" />
         <viewmodels:ClickAnimationConverter x:Key="ClickAnimationConverter" />
-
+        
         <Style x:Key="HeaderButtons" TargetType="{x:Type Button}">
             <Style.Setters>
                 <Setter Property="Template">
@@ -36,7 +36,7 @@
                     RelativeSource={RelativeSource Self},
                     Converter={StaticResource ClickAnimationConverter}}" />
             </Style.Setters>
-
+            
             <Style.Resources>
                 <Storyboard x:Key="Click">
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Tag">
@@ -67,7 +67,7 @@
             <Rectangle Fill="{Binding Source={StaticResource AppSettings}, Path=MainColor}" />
 
             <Canvas>
-
+                
                 <Button x:Name="CloseButton" Width="35" Height="35" Canvas.Right="0"
                         Style="{StaticResource HeaderButtons}">
                     <Image Width="16" Height="16" />
