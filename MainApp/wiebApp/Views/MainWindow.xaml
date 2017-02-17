@@ -31,8 +31,10 @@
                         <system:Double>-1</system:Double>
                     </Setter.Value>
                 </Setter>
-                <Setter Property="SolidColorBrush.Color"
-                        Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource ClickAnimationConverter}}" />
+                <Setter Property="Background"
+                        Value="{Binding Path=Tag,
+                    RelativeSource={RelativeSource Self},
+                    Converter={StaticResource ClickAnimationConverter}}" />
             </Style.Setters>
 
             <Style.Resources>
