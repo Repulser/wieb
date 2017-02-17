@@ -66,7 +66,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="35" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="237*" />
+            <RowDefinition Height="28*"/>
         </Grid.RowDefinitions>
         <!-- H E A D E R   G R I D-->
         <Grid x:Name="HeaderMainGrid" Grid.Row="0">
@@ -93,7 +94,7 @@
             </Canvas>
         </Grid>
         <!-- M A I N   G R I D-->
-        <Grid x:Name="BodyMainGrid" Grid.Row="1">
+        <Grid x:Name="BodyMainGrid" Grid.Row="1" Grid.RowSpan="2">
             <!-- TAB CONTROL -->
             <TabControl x:Name="MainTabControl" BorderThickness="0">
 
@@ -125,7 +126,7 @@
                                 Grid.Column="0"  Grid.Row="0" Click="MainBtn1_OnClick"/>
                         <!--Btn2-->
                         <Button Style="{StaticResource MainMenurBtn}" Name="MainBtn2"
-                                Grid.Column="1"  Grid.Row="0" Click="MainBtn1_OnClick"/>
+                                Grid.Column="1"  Grid.Row="0" Click="MainBtn2_OnClick"/>
                         <!--Btn3-->
                         <Button Style="{StaticResource MainMenurBtn}" Name="MainBtn3"
                                 Grid.Column="2"  Grid.Row="0" Click="MainBtn1_OnClick"/>
@@ -152,6 +153,20 @@
 
                 <TabItem x:Name="OptionsTab">
 
+                </TabItem>
+
+                <TabItem x:Name="ClipBoardtab">
+                    <Grid>
+                        <!--Definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Button Width="50" Name="ClipBtnClear" Click="ClipBtnClear_OnClick">Clear!</Button>
+                            
+                        </StackPanel>
+                    </Grid>
                 </TabItem>
 
 

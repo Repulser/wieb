@@ -26,7 +26,21 @@ namespace wieb.Views
 
         private void MainBtn1_OnClick(object sender, RoutedEventArgs e)
         {
-            MainTabControl.SelectedIndex = 0;
+            MainTabControl.SelectedIndex = 1;
+        }
+
+        private void MainBtn2_OnClick(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 2;
+        }
+        private void ClipBtn1_OnClick(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText("<!-- -->");
+        }
+
+        private void ClipBtnClear_OnClick(object sender, RoutedEventArgs e)
+        {
+            Clipboard.Clear();
         }
     }
 }
