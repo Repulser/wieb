@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using wieb.SharedResources;
+using wieb.Views;
 
 namespace wieb.ViewModels
 {
@@ -23,6 +25,10 @@ namespace wieb.ViewModels
             {
                 value = AppSettings._White;
             }
+
+            var main = App.Current.MainWindow as MainWindow;
+            var style = main.Style.BasedOn;
+            if ()
             return value;
         }
 

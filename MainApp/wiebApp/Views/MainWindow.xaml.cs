@@ -23,6 +23,5 @@ namespace wieb.Views
         {
             InitializeComponent();
         }
-
     }
 }
