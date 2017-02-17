@@ -23,5 +23,10 @@ namespace wieb.Views
         {
             InitializeComponent();
         }
+
+        private void MainBtn1_OnClick(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 0;
+        }
     }
 }

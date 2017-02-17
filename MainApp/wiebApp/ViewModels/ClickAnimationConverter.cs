@@ -28,13 +28,10 @@ namespace wieb.ViewModels
 
             var main = App.Current.MainWindow as MainWindow;
             var style = main.Style.BasedOn;
-            if ()
+            if (true)
             return value;
         }
 
-        public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+ 
     }
 }
