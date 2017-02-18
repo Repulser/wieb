@@ -37,7 +37,7 @@ namespace wiebApp.Views
 
         private void DropGlowLabel_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            _vm.
+            _vm.DropGlowLabel_OnDoubleClick();
         }
     }
 }

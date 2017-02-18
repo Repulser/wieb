@@ -20,6 +20,7 @@
         <viewmodels:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
         <viewmodels:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
         <viewmodels:CheckBoxAndLabelsEvents x:Key="CheckBoxEvents" />
+        <viewmodels:ColorCraze x:Key="ColorCraze" /> 
 
         <!--S T Y L E S-->
         <!--MainMenuButtonStyles-->
@@ -57,36 +58,33 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
+                
                 <!--MAIN TAB-->
                 <TabItem x:Name="MainTab">
                     <Grid>
                         <Button Style="{StaticResource MainBtns}" Click="MainBtn1_Click"/>
                     </Grid>
                 </TabItem>
-                <!--MAIN TAB-->
+
                 <TabItem x:Name="OptionsTab">
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="35*" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-
-                <TabItem x:Name="MainTab">
-                </TabItem>
-
-                <TabItem x:Name="OptionsTab">
-                    <StackPanel Grid.Row="0">
-                        <ComboBox Height="40" SelectedIndex="0"
-                                    ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
-                                    IsSynchronizedWithCurrentItem="True"
-                                    DisplayMemberPath="Name" />
-
-                        <ComboBox Height="40" SelectedIndex="0"
-                                    ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
-                                    IsSynchronizedWithCurrentItem="True"
-                                    DisplayMemberPath="Name" />
-                    </StackPanel>
-                    <StackPanel Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="27*" />
+                                <RowDefinition Height="61*" />
+                            </Grid.RowDefinitions>
+                        
+                            <StackPanel Grid.Row="0">
+                            <ComboBox Height="40" SelectedIndex="{Binding Source={StaticResource ColorCraze}, Path=IndexOfCombo}"
+                                        ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
+                                        IsSynchronizedWithCurrentItem="True"
+                                        DisplayMemberPath="Name" 
+                                        viewmodels:ColorCraze.IsColorCrazing="{Binding ElementName=ColorCrazeCheck, Path=IsChecked}" />
+                            <ComboBox Height="40" SelectedIndex="0"
+                                        ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
+                                        IsSynchronizedWithCurrentItem="True"
+                                        DisplayMemberPath="Name" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1">
                             <StackPanel Orientation="Horizontal">
                                 <CheckBox x:Name="DropShadowCheck" />
                                 <Label x:Name="DropShadowLabel" Content="DropShadow."  />
@@ -94,11 +92,12 @@
                             <StackPanel Orientation="Horizontal">
                                 <CheckBox x:Name="DropGlowCheck" IsChecked="{Binding Source={StaticResource CheckBoxEvents}, Path=DropGlowIsChecked}" />
                                 <Label x:Name="DropGlowLabel" Content="DropGlow while out of focus."
-                                       MouseDoubleClick="DropGlowLabel_OnMouseDoubleClick" />
+                                        MouseDoubleClick="DropGlowLabel_OnMouseDoubleClick" />
                             </StackPanel>
+                            <CheckBox x:Name="ColorCrazeCheck" />
                         </StackPanel>
-                    
-                </TabItem>
+                    </Grid>
+                        </TabItem>
             </TabControl>
         </Grid>
     </Grid>

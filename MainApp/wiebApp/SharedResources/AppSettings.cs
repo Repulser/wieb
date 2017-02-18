@@ -115,16 +115,7 @@ namespace wiebApp.SharedResources
 
         private void ColorCraze()
         {
-            switch (IsColorCrazed)
-            {
-                case true:
-                    IndexOfCombo = 0;
-                    for (int i = 0; i > 20; i++)
-                    {
-                        IndexOfCombo++;
-                    }
-                    break;
-            }
+            
         }
     }
 }

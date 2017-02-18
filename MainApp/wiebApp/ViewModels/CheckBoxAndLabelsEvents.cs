@@ -23,5 +23,21 @@ namespace wiebApp.ViewModels
         {
             _dropGlowIsChecked = true;
         }
+
+        private bool _dropShadowIsChecked;
+        public bool DropShadowIsChecked
+        {
+            get { return _dropShadowIsChecked;}
+            set
+            {
+                _dropShadowIsChecked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public void DropShadowLabel_OnDoubleClick()
+        {
+            _dropShadowIsChecked = true;
+        }
     }
 }

@@ -9,24 +9,58 @@ namespace wiebApp.ViewModels
 {
     class ColorCraze : NotifyPropertyChanged
     {
-        private int _indexOfCombo;
-        private bool _isColorCrazed;
+        private static int _indexOfCombo = 0;
+        public int IndexOfCombo
+        {
+            get { return _indexOfCombo;}
+            set { _indexOfCombo = value; OnPropertyChanged(); }
+        }
+
+        private static bool _isColorCrazed;
+        public bool IsColorCrazed
+        {
+            get
+            {
+                return _isColorCrazed;
+            }
+            set
+            {
+                _isColorCrazed = value;
+                OnPropertyChanged();
+                
+            }
+        }
 
         public static DependencyProperty ColorCrazeProperty;
 
         static ColorCraze()
         {
-            ColorCrazeProperty = DependencyProperty.RegisterAttached("IsColorCrazing", typeof(bool), typeof(ColorCraze));
+            ColorCrazeProperty = DependencyProperty.RegisterAttached("IsColorCrazing", typeof(bool), typeof(ColorCraze));   
         }
 
-        public static int GetIsColorCrazing(System.Windows.UIElement element)
+        public static void DoColorCraze()
+        {
+            switch (_isColorCrazed)
+            {
+                case true:
+                    _indexOfCombo = 0;
+                    for (int i = 0; i > 20; i++)
+                    {
+                        _indexOfCombo ++;
+                    }
+                    break;
+            }
+        }
+
+        public static int GetIsColorCrazing(UIElement element)
         {
             return (int)element.GetValue(ColorCrazeProperty);
         }
 
-        public static void SetIsColorCrazing(System.Windows.UIElement element, int value)
+        public static void SetIsColorCrazing(UIElement element, bool value)
         {
             element.SetValue(ColorCrazeProperty, value);
+            DoColorCraze();
         }
     }
 }
