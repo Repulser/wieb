@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using wieb.Annotations;
+using wiebApp.Annotations;
 
-namespace wieb.ViewModels
+namespace wiebApp.ViewModels
 {
     public class NotifyPropertyChanged : INotifyPropertyChanged
     {

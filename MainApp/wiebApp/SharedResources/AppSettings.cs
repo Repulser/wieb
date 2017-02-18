@@ -1,202 +1,112 @@
 ﻿using System;
-using wieb.ViewModels;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Data;
+using wiebApp.ViewModels;
 
-namespace wieb.SharedResources
+namespace wiebApp.SharedResources
 {
     class AppSettings : NotifyPropertyChanged
     {
+        private static string _accentColor;
+        private static string _themeColor;
+        private ICollectionView _collectionAccentView;
+        private ICollectionView _collectionThemeView;
+        
+        public ObservableCollection<ColorPath> AccentColors { get; set; }
+        public ObservableCollection<ColorPath> ThemeColors { get; set; }
 
         public AppSettings()
         {
-            _MainColor = _Red;
-            _DarkMainColor = _DarkRed;
-            _SecondaryColor = _White;
+            AccentColors = new ObservableCollection<ColorPath>
+            {
+                new ColorPath { Name = "amber", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/amber.xaml"},
+                new ColorPath { Name = "blue", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/blue.xaml"},
+                new ColorPath { Name = "brown", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/brown.xaml"},
+                new ColorPath { Name = "cobalt", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/cobalt.xaml"},
+                new ColorPath { Name = "crimson", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/crimson.xaml"},
+                new ColorPath { Name = "cyan", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/cyan.xaml"},
+                new ColorPath { Name = "emerald", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/cobalt.xaml"},
+                new ColorPath { Name = "green", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/green.xaml"},
+                new ColorPath { Name = "indigo", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/indigo.xaml"},
+                new ColorPath { Name = "lime", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/lime.xaml"},
+                new ColorPath { Name = "magenta", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/magenta.xaml"},
+                new ColorPath { Name = "mauve", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/mauve.xaml"},
+                new ColorPath { Name = "olive", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/olive.xaml"},
+                new ColorPath { Name = "orange", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/orange.xaml"},
+                new ColorPath { Name = "pink", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/pink.xaml"},
+                new ColorPath { Name = "purple", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/purple.xaml"},
+                new ColorPath { Name = "red", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/red.xaml"},
+                new ColorPath { Name = "sienna", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/sienna.xaml"},
+                new ColorPath { Name = "steel", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/steel.xaml"},
+                new ColorPath { Name = "taupe", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/taupe.xaml"},
+                new ColorPath { Name = "violet", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/voilet.xaml"},
+                new ColorPath { Name = "yellow", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/yellow.xaml"}
+            };
+            ThemeColors = new ObservableCollection<ColorPath>
+            {
+                new ColorPath { Name = "basedark", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/basedark.xaml"},
+                new ColorPath { Name = "baselight", Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/baselight.xaml"}
+            };
+
+            _collectionAccentView = CollectionViewSource.GetDefaultView(AccentColors);
+            _collectionAccentView.CurrentChanged += CollectionAccentView;
+
+            _collectionThemeView = CollectionViewSource.GetDefaultView(ThemeColors);
+            _collectionThemeView.CurrentChanged += CollectionThemeView;
         }
 
-        // /// /// /// /// /// ///
-        // M A I N   C O L O RS //
-        // /// /// /// /// /// ///
-        public static string _MainColor;
-        public string MainColor
+        private void CollectionThemeView(object sender, EventArgs eventArgs)
         {
-            get { return _MainColor; }
-            set
+            var item = _collectionThemeView.CurrentItem as ColorPath;
+            if (item != null)
             {
-                _MainColor = value;
-                OnPropertyChanged();
+                _themeColor = item.Path;
+            }
+            if (_themeColor != null)
+            {
+                App.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+                {
+                    Source = new Uri(_themeColor)
+                });
             }
         }
 
-        public static string _DarkMainColor;
-        public string DarkMainColor
+        private void CollectionAccentView(object sender, System.EventArgs e)
         {
-            get { return _DarkMainColor; }
-            set
+            var item = _collectionAccentView.CurrentItem as ColorPath;
+            if (item != null)
             {
-                _DarkMainColor = value;
-                OnPropertyChanged();
+                _accentColor = item.Path;
+            }
+            if (_accentColor != null)
+            {
+                App.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+                {
+                    Source = new Uri(_accentColor)
+                });
             }
         }
 
-        // /// /// /// /// /// ///
-        // 2 N D     C O L O RS //
-        // /// /// /// /// /// ///
-        private string _SecondaryColor;
-        public string SecondaryColor
+        public string AccentColor
         {
-            get { return _SecondaryColor; }
+            get { return _accentColor; }
             set
             {
-                _SecondaryColor = value;
-                OnPropertyChanged();
-            }
-        }
-
-        // /// /// /// /// /// ///
-        // W H I T E C O L O RS //
-        // /// /// /// /// /// ///
-        public static string _White = "#FFFFFF";
-        public string White
-        {
-            get { return _White; }
-            set
-            {
-                _White = value;
-                OnPropertyChanged();
-            }
-        }
-        // /// /// /// /// /// ///
-        // G R E Y   C O L O RS //
-        // /// /// /// /// /// ///
-        private static string _Gray = "#e8e8e8";
-        public string Gray
-        {
-            get { return _Gray; }
-            set
-            {
-                Gray = value;
-                OnPropertyChanged();
-            }
-        }
-        // /// /// /// /// /// ///
-        // B L A C K C O L O RS //
-        // /// /// /// /// /// ///
-        private static string _Black = "#e8e8e8";
-        public string Black
-        {
-            get { return _Black; }
-            set
-            {
-                _Black = value;
-                OnPropertyChanged();
-            }
-        }
-        // /// /// /// /// /// ///
-        // B L U E   C O L O RS //
-        // /// /// /// /// /// ///
-        private static string _Blue = "#2163ce";
-        public string Blue
-        {
-            get { return _Blue; }
-            set
-            {
-                _Blue = value;
+                _accentColor = value;
                 OnPropertyChanged();
             }
         }
 
-        private static string _DarkBlue = "#060647";
-        public string DarkBlue
+        public string ThemeColor
         {
-            get { return _DarkBlue; }
+            get { return _themeColor; }
             set
             {
-                _DarkBlue = value;
-                OnPropertyChanged();
-            }
-        }
-        // /// /// /// /// /// ///
-        // R E D     C O L O RS //
-        // /// /// /// /// /// ///
-        private static string _Red = "#f93636";
-        public string Red
-        {
-            get { return _Red; }
-            set
-            {
-                _Red = value;
-                OnPropertyChanged();
-            }
-        }
-        
-        private static string _DarkRed = "#890f0f";
-        public string DarkRed
-        {
-            get { return _DarkRed; }
-            set
-            {
-                _DarkRed = value;
-                OnPropertyChanged();
-            }
-        }
-
-        // /// /// /// /// /// /////
-        // Y E L L O W C O L O RS //
-        // /// /// /// /// /// /////
-        private static string _Yellow = "#ffdd00";
-        public string Yellow
-        {
-            get { return _Yellow; }
-            set
-            {
-                _Yellow = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private static string _Orange = "#ff9d00";
-        public string Orange
-        {
-            get { return _Orange; }
-            set
-            {
-                _Orange = value;
-                OnPropertyChanged();
-            }
-        }
-
-        // /// /// /// /// /// /////
-        // G R E E N   C O L O RS //
-        // /// /// /// /// /// /////
-        private static string _Green = "#17c617";
-        public string Green
-        {
-            get { return _Green; }
-            set
-            {
-                _Green = value;
-                OnPropertyChanged();
-            }
-        }
-        
-        private static string _DarkGreen = "#007713";
-        public string DarkGreen
-        {
-            get { return _DarkGreen; }
-            set
-            {
-                _DarkGreen = value;
-                OnPropertyChanged();
-            }
-        }
-        
-        private static string _LightGreen = "#1df441";
-        public string LightGreen
-        {
-            get { return _LightGreen; }
-            set
-            {
-                _LightGreen = value;
+                _themeColor = value;
                 OnPropertyChanged();
             }
         }
