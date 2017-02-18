@@ -152,19 +152,25 @@
                 </TabItem>
 
                 <TabItem x:Name="OptionsTab">
-
+                    <Grid>
+                        
+                    </Grid>
                 </TabItem>
 
                 <TabItem x:Name="ClipBoardtab">
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="46*"/>
+                            <ColumnDefinition Width="200*"/>
+                        </Grid.ColumnDefinitions>
                         <!--Definitions-->
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <Button Width="50" Name="ClipBtnClear" Click="ClipBtnClear_OnClick">Clear!</Button>
-                            
+                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <Button Width="50" Name="ClipBtnClear" HorizontalAlignment="Center" Click="ClipBtnClear_OnClick">Clear!</Button>
+
                         </StackPanel>
                     </Grid>
                 </TabItem>

@@ -42,5 +42,18 @@ namespace wieb.Views
         {
             Clipboard.Clear();
         }
+
+        private void CmbColors_OnLoaded(object sender, RoutedEventArgs e)
+        {
+
+            
+        }
+
+        private void CmbColors_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+       
     }
 }
