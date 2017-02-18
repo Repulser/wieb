@@ -26,7 +26,7 @@ namespace Dictionary
         {
             InitializeComponent();
             var client = new UrbanClient();
-            var myDefenition = client.GetWordAsync()
+            var myDefenition = client.GetWordAsync("kek").Result;
         }
     }
 }
