@@ -21,7 +21,7 @@ namespace wiebApp.Views
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public bool IsChecked;
+        public bool IsChecked {get; set;} ;
 
         public MainWindow()
         {
