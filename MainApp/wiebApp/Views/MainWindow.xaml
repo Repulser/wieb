@@ -1,25 +1,25 @@
 ﻿<controls:MetroWindow x:Class="wiebApp.Views.MainWindow"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:sharedresources="clr-namespace:wiebApp.SharedResources"
                       xmlns:viewmodels="clr-namespace:wiebApp.ViewModels"
-                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       mc:Ignorable="d"
                       Height="300" Width="300"
                       WindowStartupLocation="CenterScreen"
                       ResizeMode="CanMinimize"
                       BorderThickness="0"
-                      Opacity="100"
-                      Topmost="False">
+                      Opacity="{Binding ElementName=OpacitySlide, Path=Value, UpdateSourceTrigger=PropertyChanged}"
+                      Topmost="{Binding ElementName=TopMostCheck, Path=IsChecked, UpdateSourceTrigger=PropertyChanged}">
 
     <Window.Resources>
         <sharedresources:AppSettings x:Key="AppSettings" />
         
         <viewmodels:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
         <viewmodels:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
-        <viewmodels:CheckBoxAndLabelsEvents x:Key="CheckBoxEvents" />
+        
         <viewmodels:ColorCraze x:Key="ColorCraze" /> 
 
         <!--S T Y L E S-->
@@ -43,6 +43,7 @@
     <controls:MetroWindow.EnableDWMDropShadow>
         <Binding ElementName="DropShadowCheck" Path="IsChecked" />
     </controls:MetroWindow.EnableDWMDropShadow>
+    
     <!--M A I N   G R I D   O F   D O O M-->
     <Grid>
         <Grid x:Name="BodyMainGrid">
@@ -59,45 +60,51 @@
                     </Style>
                 </TabControl.Resources>
                 
-                <!--MAIN TAB-->
+                <!--MAIN TAB//////////////////////////////////////////////////////////-->
                 <TabItem x:Name="MainTab">
                     <Grid>
                         <Button Style="{StaticResource MainBtns}" Click="MainBtn1_Click"/>
                     </Grid>
                 </TabItem>
-
+                <!--OPTIONS TAB////////////////////////////////////////////////////-->
                 <TabItem x:Name="OptionsTab">
                     <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="27*" />
-                                <RowDefinition Height="61*" />
-                            </Grid.RowDefinitions>
-                        
-                            <StackPanel Grid.Row="0">
-                            <ComboBox Height="40" SelectedIndex="{Binding Source={StaticResource ColorCraze}, Path=IndexOfCombo}"
-                                        ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
-                                        IsSynchronizedWithCurrentItem="True"
-                                        DisplayMemberPath="Name" 
-                                        viewmodels:ColorCraze.IsColorCrazing="{Binding ElementName=ColorCrazeCheck, Path=IsChecked}" />
+                        <!--Definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="27*" />
+                            <RowDefinition Height="61*" />
+                        </Grid.RowDefinitions>
+                        <!--ACTUALL SETTINGS-->
+                        <!--Combo Boxes-->
+                        <StackPanel Grid.Row="0">
+                            <ComboBox Height="40"
+                                      SelectedIndex="{Binding Source={StaticResource ColorCraze}, Path=IndexOfCombo}"
+                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
+                                      IsSynchronizedWithCurrentItem="True"
+                                      DisplayMemberPath="Name"
+                                      viewmodels:ColorCraze.IsColorCrazing="{Binding ElementName=ColorCrazeCheck, Path=IsChecked}" />
                             <ComboBox Height="40" SelectedIndex="0"
-                                        ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
-                                        IsSynchronizedWithCurrentItem="True"
-                                        DisplayMemberPath="Name" />
+                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
+                                      IsSynchronizedWithCurrentItem="True"
+                                      DisplayMemberPath="Name" />
                         </StackPanel>
+                        <!--CHECK BOXES-->
                         <StackPanel Grid.Row="1">
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox x:Name="DropShadowCheck" />
-                                <Label x:Name="DropShadowLabel" Content="DropShadow."  />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox x:Name="DropGlowCheck" IsChecked="{Binding Source={StaticResource CheckBoxEvents}, Path=DropGlowIsChecked}" />
-                                <Label x:Name="DropGlowLabel" Content="DropGlow while out of focus."
-                                        MouseDoubleClick="DropGlowLabel_OnMouseDoubleClick" />
-                            </StackPanel>
-                            <CheckBox x:Name="ColorCrazeCheck" />
+                            <!--DropShadow-->
+                            <CheckBox x:Name="DropShadowCheck" IsChecked="True" 
+                                        Content="DropShadow" />
+                            <!--DropGlow-->
+                            <CheckBox x:Name="DropGlowCheck" IsChecked="True"
+                                        Content="DropGlow while window loses focus." />
+                            <!--Enable ColorCraze-->
+                            <CheckBox x:Name="ColorCrazeCheck" IsChecked="False"
+                                        Content="Enable ColorCraze mode" />
+                            <CheckBox x:Name="TopMostCheck" IsChecked="false"
+                                        Content="Enable TopMost mode." />
+                            <Slider x:Name="OpacitySlide" Maximum="100" Minimum="50" />
                         </StackPanel>
                     </Grid>
-                        </TabItem>
+                </TabItem>
             </TabControl>
         </Grid>
     </Grid>
