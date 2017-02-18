@@ -24,7 +24,7 @@
     <Grid>
 
         <Grid x:Name="BodyMainGrid">
-            <TabControl x:Name="TabControl" BorderThickness="0" IsTabStop="True">
+            <TabControl x:Name="MainTabControl" BorderThickness="0" IsTabStop="True">
 
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
