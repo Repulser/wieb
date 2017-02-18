@@ -11,8 +11,10 @@ namespace wiebApp.SharedResources
 {
     class AppSettings : NotifyPropertyChanged
     {
-        private static string _accentColor;
-        private static string _themeColor;
+        
+
+        private string _accentColor;
+        private string _themeColor;
         private ICollectionView _collectionAccentView;
         private ICollectionView _collectionThemeView;
         
@@ -108,6 +110,20 @@ namespace wiebApp.SharedResources
             {
                 _themeColor = value;
                 OnPropertyChanged();
+            }
+        }
+
+        private void ColorCraze()
+        {
+            switch (IsColorCrazed)
+            {
+                case true:
+                    IndexOfCombo = 0;
+                    for (int i = 0; i > 20; i++)
+                    {
+                        IndexOfCombo++;
+                    }
+                    break;
             }
         }
     }

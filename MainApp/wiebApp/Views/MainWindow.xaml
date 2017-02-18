@@ -52,15 +52,19 @@
                 <TabItem x:Name="MainTab">
                     <StackPanel>
                         <ComboBox Height="40" SelectedIndex="0" 
-                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}" 
-                                      IsSynchronizedWithCurrentItem="True"
-                                      DisplayMemberPath="Name" />
+                                  ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}" 
+                                  IsSynchronizedWithCurrentItem="True"
+                                  DisplayMemberPath="Name" />
                         <ComboBox Height="40" SelectedIndex="0" 
-                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}" 
-                                      IsSynchronizedWithCurrentItem="True"
-                                      DisplayMemberPath="Name" />
+                                  ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}" 
+                                  IsSynchronizedWithCurrentItem="True"
+                                  DisplayMemberPath="Name" 
+                                  viewmodels:ColorCraze.IsColorCrazing="{Binding ElementName=ColorCrazeCheck,
+                                  Path=IsChecked}" />
+
                         <CheckBox x:Name="DropShadowCheck" />
                         <CheckBox x:Name="DropGlowCheck" />
+                        <CheckBox x:Name="ColorCrazeCheck" />
                     </StackPanel>
                 </TabItem>
 
