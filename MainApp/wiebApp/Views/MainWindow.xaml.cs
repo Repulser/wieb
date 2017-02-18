@@ -24,10 +24,5 @@ namespace wiebApp.Views
         {
             InitializeComponent();
         }
-<<<<<<< HEAD
-
-=======
-       
->>>>>>> 79f9eb50ac829bea9683a21629da77e449eee945
     }
 }
