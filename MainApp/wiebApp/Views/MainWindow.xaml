@@ -16,11 +16,20 @@
 
     <Window.Resources>
         <sharedresources:AppSettings x:Key="AppSettings" />
+        
         <viewmodels:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
-        <viewmodels:DropGlowCheckBoxConverter x:Key="DropGlowConverter" /> 
+        <viewmodels:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
+        <viewmodels:CheckBoxAndLabelsEvents x:Key="CheckBoxEvents" />
+
+        <!--S T Y L E S-->
+        <!--MainMenuButtonStyles-->
+        <Style  x:Key="MainBtns" TargetType="Button" >
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="50" />
+        </Style>
     </Window.Resources>
 
-    
+
     <controls:MetroWindow.NonActiveGlowBrush>
         <Binding ElementName="DropGlowCheck" Path="IsChecked" Converter="{StaticResource DropGlowConverter}" />
     </controls:MetroWindow.NonActiveGlowBrush>
@@ -30,15 +39,15 @@
                  Mode="TwoWay" />
     </controls:MetroWindow.GlowBrush>
 
-    <controls:MetroWindow.EnableDWMDropShadow>  
+    <controls:MetroWindow.EnableDWMDropShadow>
         <Binding ElementName="DropShadowCheck" Path="IsChecked" />
     </controls:MetroWindow.EnableDWMDropShadow>
-
+    <!--M A I N   G R I D   O F   D O O M-->
     <Grid>
-
         <Grid x:Name="BodyMainGrid">
+            <!--TabControl-->
             <TabControl x:Name="MainTabControl" BorderThickness="0" IsTabStop="True">
-
+                <!--Tab Resources-->
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
                         <Setter Property="Template">
@@ -48,29 +57,47 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-
+                <!--MAIN TAB-->
                 <TabItem x:Name="MainTab">
-                    <StackPanel>
-                        <ComboBox Height="40" SelectedIndex="0" 
-                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}" 
-                                      IsSynchronizedWithCurrentItem="True"
-                                      DisplayMemberPath="Name" />
-                        <ComboBox Height="40" SelectedIndex="0" 
-                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}" 
-                                      IsSynchronizedWithCurrentItem="True"
-                                      DisplayMemberPath="Name" />
-                        <CheckBox x:Name="DropShadowCheck" />
-                        <CheckBox x:Name="DropGlowCheck" />
-                    </StackPanel>
+                    <Grid>
+                        <Button Style="{StaticResource MainBtns}" Click="MainBtn1_Click"/>
+                    </Grid>
                 </TabItem>
-
+                <!--MAIN TAB-->
                 <TabItem x:Name="OptionsTab">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="27*" />
+                            <RowDefinition Height="61*" />
+                        </Grid.RowDefinitions>
 
+                        <StackPanel Grid.Row="0">
+                            <ComboBox Height="40" SelectedIndex="0"
+                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
+                                      IsSynchronizedWithCurrentItem="True"
+                                      DisplayMemberPath="Name" />
+
+                            <ComboBox Height="40" SelectedIndex="0"
+                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
+                                      IsSynchronizedWithCurrentItem="True"
+                                      DisplayMemberPath="Name" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1">
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox x:Name="DropShadowCheck" />
+                                <Label x:Name="DropShadowLabel" Content="DropShadow."  />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox x:Name="DropGlowCheck" IsChecked="{Binding Source={StaticResource CheckBoxEvents}, Path=DropGlowIsChecked}" />
+                                <Label x:Name="DropGlowLabel" Content="DropGlow while out of focus."
+                                       MouseDoubleClick="DropGlowLabel_OnMouseDoubleClick" />
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Grid>
                 </TabItem>
-
-
             </TabControl>
         </Grid>
-
     </Grid>
 </controls:MetroWindow>

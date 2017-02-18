@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using wiebApp.ViewModels;
 
 namespace wiebApp.Views
 {
@@ -20,9 +21,23 @@ namespace wiebApp.Views
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        public bool IsChecked;
+        private CheckBoxAndLabelsEvents _vm;
+
         public MainWindow()
         {
             InitializeComponent();
+            _vm = FindResource("CheckBoxEvents") as CheckBoxAndLabelsEvents;
+        }
+
+        private void MainBtn1_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedIndex = 1;
+        }
+
+        private void DropGlowLabel_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            _vm.
         }
     }
 }
