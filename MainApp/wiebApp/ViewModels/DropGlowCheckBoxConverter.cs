@@ -12,7 +12,7 @@ namespace wiebApp.ViewModels
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            bool valueAsBool = (bool) value;
+            bool valueAsBool = (bool)value;
             switch (valueAsBool)
             {
                 case true:

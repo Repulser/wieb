@@ -52,15 +52,14 @@ namespace wiebApp.ViewModels
             }
         }
 
-        public static int GetIsColorCrazing(UIElement element)
+        public static bool GetIsColorCrazing(UIElement element)
         {
-            return (int)element.GetValue(ColorCrazeProperty);
+            return (bool)element.GetValue(ColorCrazeProperty);
         }
 
         public static void SetIsColorCrazing(UIElement element, bool value)
         {
             element.SetValue(ColorCrazeProperty, value);
-            DoColorCraze();
         }
     }
 }

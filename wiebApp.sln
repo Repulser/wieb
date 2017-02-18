@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiebApp", "wiebApp", "{4ACC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wiebApp", "MainApp\wiebApp\wiebApp.csproj", "{A2ACC6CD-A2E4-4590-97F0-74E5254B8105}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{908BB5E8-74CA-4C2F-9AD3-004131F65E9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary", "MainApp\Apps\Dictionary\Dictionary.csproj", "{E70FB7A9-8ED0-4595-9AD1-0378C5C9A6AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,10 @@ Global
 		{A2ACC6CD-A2E4-4590-97F0-74E5254B8105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2ACC6CD-A2E4-4590-97F0-74E5254B8105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2ACC6CD-A2E4-4590-97F0-74E5254B8105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E70FB7A9-8ED0-4595-9AD1-0378C5C9A6AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70FB7A9-8ED0-4595-9AD1-0378C5C9A6AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E70FB7A9-8ED0-4595-9AD1-0378C5C9A6AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E70FB7A9-8ED0-4595-9AD1-0378C5C9A6AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,5 +34,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4ACC97CB-8E78-4795-8291-B364DE38EBB6} = {A16D0F3E-6129-4501-89E5-6B925692104B}
 		{A2ACC6CD-A2E4-4590-97F0-74E5254B8105} = {4ACC97CB-8E78-4795-8291-B364DE38EBB6}
+		{908BB5E8-74CA-4C2F-9AD3-004131F65E9B} = {A16D0F3E-6129-4501-89E5-6B925692104B}
+		{E70FB7A9-8ED0-4595-9AD1-0378C5C9A6AF} = {908BB5E8-74CA-4C2F-9AD3-004131F65E9B}
 	EndGlobalSection
 EndGlobal
