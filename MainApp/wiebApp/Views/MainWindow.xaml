@@ -47,7 +47,7 @@
     <Grid>
         <Grid x:Name="BodyMainGrid">
             <!--TabControl-->
-            <TabControl x:Name="MainTabControl" BorderThickness="0" IsTabStop="True">
+            <TabControl x:Name="MainTabControl" BorderThickness="0" IsTabStop="True" TabIndex="0">
                 <!--Tab Resources-->
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
@@ -78,7 +78,7 @@
                                         ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
                                         IsSynchronizedWithCurrentItem="True"
                                         DisplayMemberPath="Name" 
-                                        viewmodels:ColorCraze.IsColorCrazing="{Binding ElementName=ColorCrazeCheck, Path=IsChecked}" />
+                                        viewmodels:ColorCraze.IsColorCrazing="{Binding ElementName=ColorCrazeCheck, Path=Is}" />
                             <ComboBox Height="40" SelectedIndex="0"
                                         ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
                                         IsSynchronizedWithCurrentItem="True"
@@ -95,9 +95,10 @@
                                         MouseDoubleClick="DropGlowLabel_OnMouseDoubleClick" />
                             </StackPanel>
                             <CheckBox x:Name="ColorCrazeCheck" />
+                            <CheckBox Content="CheckBox"/>
                         </StackPanel>
                     </Grid>
-                        </TabItem>
+                </TabItem>
             </TabControl>
         </Grid>
     </Grid>
