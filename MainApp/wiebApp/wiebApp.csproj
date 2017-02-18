@@ -61,7 +61,8 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SharedResources\AppSettings.cs" />
     <Compile Include="SharedResources\ColorPath.cs" />
-    <Compile Include="ViewModels\DoubleToThickness.cs" />
+    <Compile Include="ViewModels\DropGlowCheckBoxConverter.cs" />
+    <Compile Include="ViewModels\DropShadowCheckBoxConverter.cs" />
     <Compile Include="ViewModels\NotifyPropertyChanged.cs" />
     <Compile Include="ViewModels\ValueConverter.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

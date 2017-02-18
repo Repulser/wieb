@@ -10,16 +10,29 @@
                       Height="300" Width="300"
                       WindowStartupLocation="CenterScreen"
                       ResizeMode="CanMinimize"
-                      BorderBrush="Aqua">
+                      BorderThickness="0"
+                      Opacity="100"
+                      Topmost="False">
 
     <Window.Resources>
         <sharedresources:AppSettings x:Key="AppSettings" />
-        <viewmodels:DoubleToThickness x:Key="DoubleToThickness" />
+        <viewmodels:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
+        <viewmodels:DropGlowCheckBoxConverter x:Key="DropGlowConverter" /> 
     </Window.Resources>
 
-    <controls:MetroWindow.BorderThickness>
-        <Binding ElementName="BorderThicknessSlider" Path="Value" Converter="{StaticResource DoubleToThickness}" Mode="TwoWay"/>
-    </controls:MetroWindow.BorderThickness>
+    
+    <controls:MetroWindow.NonActiveGlowBrush>
+        <Binding ElementName="DropGlowCheck" Path="IsChecked" Converter="{StaticResource DropGlowConverter}" />
+    </controls:MetroWindow.NonActiveGlowBrush>
+
+    <controls:MetroWindow.GlowBrush>
+        <Binding ElementName="DropShadowCheck" Path="IsChecked" Converter="{StaticResource DropShadowConverter}" 
+                 Mode="TwoWay" />
+    </controls:MetroWindow.GlowBrush>
+
+    <controls:MetroWindow.EnableDWMDropShadow>  
+        <Binding ElementName="DropShadowCheck" Path="IsChecked" />
+    </controls:MetroWindow.EnableDWMDropShadow>
 
     <Grid>
 
@@ -46,7 +59,8 @@
                                       ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}" 
                                       IsSynchronizedWithCurrentItem="True"
                                       DisplayMemberPath="Name" />
-                        <Slider x:Name="BorderThicknessSlider" />
+                        <CheckBox x:Name="DropShadowCheck" />
+                        <CheckBox x:Name="DropGlowCheck" />
                     </StackPanel>
                 </TabItem>
 
