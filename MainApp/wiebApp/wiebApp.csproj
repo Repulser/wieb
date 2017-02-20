@@ -112,7 +112,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MahApps.Metro">
+    <PackageReference Include="mahapps.metro">
       <Version>1.4.3</Version>
     </PackageReference>
   </ItemGroup>
