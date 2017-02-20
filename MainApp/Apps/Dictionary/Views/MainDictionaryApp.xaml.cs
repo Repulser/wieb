@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UrbanDictionnet;
 
-namespace Dictionary
+namespace Dictionary.Views
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for MainDictionaryApp.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class MainDictionaryApp : UserControl
     {
-        public UserControl1()
+        public MainDictionaryApp()
         {
             InitializeComponent();
-            var client = new UrbanClient();
-            var myDefenition = client.GetWordAsync("kek").Result;
         }
     }
 }
