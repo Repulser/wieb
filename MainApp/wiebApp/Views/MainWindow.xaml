@@ -12,15 +12,15 @@
                       ResizeMode="CanMinimize"
                       BorderThickness="0"
                       Opacity="{Binding ElementName=OpacitySlide, Path=Value, UpdateSourceTrigger=PropertyChanged}"
-                      Topmost="{Binding ElementName=TopMostCheck, Path=IsChecked, UpdateSourceTrigger=PropertyChanged}">
+                      Topmost="True">
 
     <Window.Resources>
         <sharedresources:AppSettings x:Key="AppSettings" />
-        
+
         <viewmodels:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
         <viewmodels:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
-        
-        <viewmodels:ColorCraze x:Key="ColorCraze" /> 
+
+        <viewmodels:ColorCraze x:Key="ColorCraze" />
 
         <!--S T Y L E S-->
         <!--MainMenuButtonStyles-->
@@ -43,7 +43,7 @@
     <controls:MetroWindow.EnableDWMDropShadow>
         <Binding ElementName="DropShadowCheck" Path="IsChecked" />
     </controls:MetroWindow.EnableDWMDropShadow>
-    
+
     <!--M A I N   G R I D   O F   D O O M-->
     <Grid>
         <Grid x:Name="BodyMainGrid">
@@ -59,7 +59,7 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-                
+
                 <!--MAIN TAB//////////////////////////////////////////////////////////-->
                 <TabItem x:Name="MainTab">
                     <Grid>
