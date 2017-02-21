@@ -21,8 +21,6 @@ namespace wiebApp.Views
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public bool IsChecked;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +29,11 @@ namespace wiebApp.Views
         private void MainBtn1_Click(object sender, RoutedEventArgs e)
         {
             MainTabControl.SelectedIndex = 1;
+        }
+
+        private void DropGlowLabel_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
         }
     }
 }
