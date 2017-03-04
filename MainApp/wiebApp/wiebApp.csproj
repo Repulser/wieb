@@ -34,10 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MahApps.Metro, Version=1.4.3.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MahApps.Metro.1.4.3\lib\net45\MahApps.Metro.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -65,7 +61,6 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SharedResources\AppSettings.cs" />
     <Compile Include="SharedResources\ColorPath.cs" />
-    <Compile Include="ViewModels\ColorCraze.cs" />
     <Compile Include="ViewModels\DropGlowCheckBoxConverter.cs" />
     <Compile Include="ViewModels\DropShadowCheckBoxConverter.cs" />
     <Compile Include="ViewModels\NotifyPropertyChanged.cs" />
@@ -108,7 +103,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="mahapps.metro">
+    <ProjectReference Include="..\Apps\Dictionary\Dictionary.csproj">
+      <Project>{e70fb7a9-8ed0-4595-9ad1-0378c5c9a6af}</Project>
+      <Name>Dictionary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro">
       <Version>1.4.3</Version>
     </PackageReference>
   </ItemGroup>

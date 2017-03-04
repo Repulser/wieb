@@ -6,6 +6,7 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:sharedresources="clr-namespace:wiebApp.SharedResources"
                       xmlns:viewmodels="clr-namespace:wiebApp.ViewModels"
+                      xmlns:urbanDictionary="clr-namespace:Dictionary.UrbanDicionaryPanel.Views;assembly=Dictionary"
                       mc:Ignorable="d"
                       Height="300" Width="300"
                       WindowStartupLocation="CenterScreen"
@@ -20,10 +21,6 @@
         <viewmodels:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
         <viewmodels:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
 
-        <viewmodels:ColorCraze x:Key="ColorCraze" />
-
-        <!--S T Y L E S-->
-        <!--MainMenuButtonStyles-->
         <Style  x:Key="MainBtns" TargetType="Button" >
             <Setter Property="Width" Value="50" />
             <Setter Property="Height" Value="50" />
@@ -44,12 +41,9 @@
         <Binding ElementName="DropShadowCheck" Path="IsChecked" />
     </controls:MetroWindow.EnableDWMDropShadow>
 
-    <!--M A I N   G R I D   O F   D O O M-->
     <Grid>
         <Grid x:Name="BodyMainGrid">
-            <!--TabControl-->
             <TabControl x:Name="MainTabControl" BorderThickness="0" IsTabStop="True">
-                <!--Tab Resources-->
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
                         <Setter Property="Template">
@@ -59,46 +53,32 @@
                         </Setter>
                     </Style>
                 </TabControl.Resources>
-
-                <!--MAIN TAB//////////////////////////////////////////////////////////-->
                 <TabItem x:Name="MainTab">
                     <Grid>
                         <Button Style="{StaticResource MainBtns}" Click="MainBtn1_Click"/>
                     </Grid>
                 </TabItem>
-                <!--OPTIONS TAB////////////////////////////////////////////////////-->
                 <TabItem x:Name="OptionsTab">
                     <Grid>
-                        <!--Definitions-->
                         <Grid.RowDefinitions>
                             <RowDefinition Height="27*" />
                             <RowDefinition Height="61*" />
                         </Grid.RowDefinitions>
-                        <!--ACTUALL SETTINGS-->
-                        <!--Combo Boxes-->
                         <StackPanel Grid.Row="0">
                             <ComboBox Height="40"
-                                      SelectedIndex="{Binding Source={StaticResource ColorCraze}, Path=IndexOfCombo}"
                                       ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
                                       IsSynchronizedWithCurrentItem="True"
-                                      DisplayMemberPath="Name"
-                                      viewmodels:ColorCraze.IsColorCrazing="{Binding ElementName=ColorCrazeCheck, Path=IsChecked}" />
+                                      DisplayMemberPath="Name" />
                             <ComboBox Height="40" SelectedIndex="0"
                                       ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
                                       IsSynchronizedWithCurrentItem="True"
                                       DisplayMemberPath="Name" />
                         </StackPanel>
-                        <!--CHECK BOXES-->
                         <StackPanel Grid.Row="1">
-                            <!--DropShadow-->
                             <CheckBox x:Name="DropShadowCheck" IsChecked="True" 
                                         Content="DropShadow" />
-                            <!--DropGlow-->
                             <CheckBox x:Name="DropGlowCheck" IsChecked="True"
                                         Content="DropGlow while window loses focus." />
-                            <!--Enable ColorCraze-->
-                            <CheckBox x:Name="ColorCrazeCheck" IsChecked="False"
-                                        Content="Enable ColorCraze mode" />
                             <CheckBox x:Name="TopMostCheck" IsChecked="false"
                                         Content="Enable TopMost mode." />
                             <Slider x:Name="OpacitySlide" Maximum="100" Minimum="50" />
