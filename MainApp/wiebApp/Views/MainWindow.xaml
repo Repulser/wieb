@@ -13,7 +13,7 @@
                       ResizeMode="CanMinimize"
                       BorderThickness="0"
                       Opacity="{Binding ElementName=OpacitySlide, Path=Value, UpdateSourceTrigger=PropertyChanged}"
-                      Topmost="{Binding ElementName=TopMostCheck, Path=IsChecked, UpdateSourceTrigger=PropertyChanged}">
+                      Topmost="True">
 
     <Window.Resources>
         <sharedresources:AppSettings x:Key="AppSettings" />
