@@ -6,7 +6,7 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:sharedresources="clr-namespace:wiebApp.SharedResources"
                       xmlns:viewmodels="clr-namespace:wiebApp.ViewModels"
-                      xmlns:urbanDictionary="clr-namespace:Dictionary.UrbanDicionaryPanel.Views;assembly=Dictionary"
+                      xmlns:urbanDictionary="clr-namespace:Dictionary.UrbanDictionaryPanel.Views;assembly=Dictionary"
                       mc:Ignorable="d"
                       Height="300" Width="300"
                       WindowStartupLocation="CenterScreen"

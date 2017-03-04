@@ -76,8 +76,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UrbanDicionaryPanel\Models\UrbanSearcher.cs" />
-    <Compile Include="UrbanDicionaryPanel\Views\UrbanDicionaryPanel.xaml.cs">
+    <Compile Include="UrbanDictionaryPanel\UrbanSearcher.cs" />
+    <Compile Include="UrbanDictionaryPanel\UrbanDicionaryPanel.xaml.cs">
       <DependentUpon>UrbanDicionaryPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainDictionaryApp.xaml.cs">
@@ -94,7 +94,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UrbanDicionaryPanel\Views\UrbanDicionaryPanel.xaml">
+    <Page Include="UrbanDictionaryPanel\UrbanDicionaryPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,6 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ReadmePleaseIfPossible.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UrbanDicionaryPanel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
