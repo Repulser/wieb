@@ -6,8 +6,8 @@
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:converters="clr-namespace:wiebApp.Converters"
                       xmlns:sharedresources="clr-namespace:wiebApp.SharedResources"
-                      xmlns:xesign_buttons="clr-namespace:XeZrunner.UI.Controls.Buttons;assembly=XeZrunner.UI"
-                      xmlns:xesign_window="clr-namespace:XeZrunner.UI.Controls.Window_components;assembly=XeZrunner.UI"
+                      xmlns:xesignButtons="clr-namespace:XeZrunner.UI.Controls.Buttons;assembly=XeZrunner.UI"
+                      xmlns:xesignWindow="clr-namespace:XeZrunner.UI.Controls.Window_components;assembly=XeZrunner.UI"
                       xmlns:urban="clr-namespace:Dictionary.UrbanDictionaryPanel;assembly=Dictionary"
                       mc:Ignorable="d"
                       Height="600" Width="800"
@@ -101,7 +101,7 @@
                 </controls:MetroTabItem>
             </controls:MetroTabControl> -->
 
-            <Grid x:Name="MainTab_Grid" Visibility="Visible">
+            <Grid x:Name="MainTabGrid" Visibility="Visible">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" /> <!-- title and search(?) -->
@@ -110,7 +110,7 @@
 
                 <!-- Header -->
                 <Grid Grid.Row="0">
-                    <Label x:Name="MainTab_Header" Foreground="Black"
+                    <Label x:Name="MainTabHeader" Foreground="Black"
                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10"
                            FontSize="18" FontFamily="Segoe UI Semilight"
                            Content="Main tab"/>
@@ -119,17 +119,17 @@
                 <!-- Tiles -->
                 <Grid Grid.Row="1">
 
-                    <WrapPanel x:Name="MainTab_WrapPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <WrapPanel x:Name="MainTabWrapPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <WrapPanel.Resources>
-                            <Style TargetType="xesign_buttons:SettingsItemTile">
+                            <Style TargetType="xesignButtons:SettingsItemTile">
                                 <Setter Property="AccentBrush" Value="{DynamicResource AccentColorBrush}" />
                             </Style>
                         </WrapPanel.Resources>
 
-                        <xesign_buttons:SettingsItemTile Foreground="Black" IconText="&#xe164;"
+                        <xesignButtons:SettingsItemTile Foreground="Black" IconText="&#xe164;"
                                                          Title="Dictionary" Description="A simple app for translating and defining words" Click="SettingsItemTile_Click"/>
 
-                        <xesign_buttons:SettingsItemTile Foreground="Black" IconText="&#xe115;"
+                        <xesignButtons:SettingsItemTile Foreground="Black" IconText="&#xe115;"
                                                          Title="Settings" Description="Configure the app"/>
 
                     </WrapPanel>
@@ -138,7 +138,7 @@
                 
             </Grid>
 
-            <Grid x:Name="DictionaryApp_Grid" Visibility="Collapsed">
+            <Grid x:Name="DictionaryAppGrid" Visibility="Collapsed">
                 <urban:UrbanDictionaryPanel />
             </Grid>
             
@@ -146,7 +146,7 @@
 
         <Rectangle Fill="#0A000000" Grid.Row="0" />
 
-        <xesign_window:TitlebarControl x:Name="titlebarControl" Grid.Row="0" Foreground="Black" MenuButtonVisibility="Collapsed" BackButtonVisibility="Collapsed" BackButton_Click="TitlebarControl_BackButton_Click" AppTitle="wieb" MaximizeButtonVisibility="Collapsed" />
+        <xesignWindow:TitlebarControl x:Name="TitlebarControl" Grid.Row="0" Foreground="Black" MenuButtonVisibility="Collapsed" BackButtonVisibility="Collapsed" BackButton_Click="TitlebarControl_BackButton_Click" AppTitle="wieb" MaximizeButtonVisibility="Collapsed" />
 
     </Grid>
     

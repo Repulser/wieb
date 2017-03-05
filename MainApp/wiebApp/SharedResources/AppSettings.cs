@@ -12,7 +12,6 @@ namespace wiebApp.SharedResources
     class AppSettings : NotifyPropertyChanged
     {
         
-
         private string _accentColor;
         private string _themeColor;
         private ICollectionView _collectionAccentView;

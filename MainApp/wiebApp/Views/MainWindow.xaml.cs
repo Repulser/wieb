@@ -38,17 +38,18 @@ namespace wiebApp
         private void SettingsItemTile_Click(object sender, RoutedEventArgs e)
         {
             // temp code for ui demo
-            MainTab_Grid.Visibility = Visibility.Collapsed;
-            DictionaryApp_Grid.Visibility = Visibility.Visible;
-            titlebarControl.BackButtonVisibility = Visibility.Visible;
+            // i hope it is temp
+            MainTabGrid.Visibility = Visibility.Collapsed;
+            DictionaryAppGrid.Visibility = Visibility.Visible;
+            TitlebarControl.BackButtonVisibility = Visibility.Visible;
         }
 
         private void TitlebarControl_BackButton_Click(object sender, RoutedEventArgs e)
         {
             // temp code for ui demo
-            MainTab_Grid.Visibility = Visibility.Visible;
-            DictionaryApp_Grid.Visibility = Visibility.Collapsed;
-            titlebarControl.BackButtonVisibility = Visibility.Collapsed;
+            MainTabGrid.Visibility = Visibility.Visible;
+            DictionaryAppGrid.Visibility = Visibility.Collapsed;
+            TitlebarControl.BackButtonVisibility = Visibility.Collapsed;
         }
     }
 }
