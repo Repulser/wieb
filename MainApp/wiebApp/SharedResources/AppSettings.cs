@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Data;
-using wiebApp.ViewModels;
+using wiebApp.Converters;
 
 namespace wiebApp.SharedResources
 {
@@ -63,8 +63,7 @@ namespace wiebApp.SharedResources
 
         private void CollectionThemeView(object sender, EventArgs eventArgs)
         {
-            var item = _collectionThemeView.CurrentItem as ColorPath;
-            if (item != null)
+            if (_collectionThemeView.CurrentItem is ColorPath item)
             {
                 _themeColor = item.Path;
             }

@@ -12,9 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
-using wiebApp.ViewModels;
 
-namespace wiebApp.Views
+namespace wiebApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Media;
 
-namespace wiebApp.ViewModels
+namespace wiebApp.Converters
 {
-    class DropGlowCheckBoxConverter : ValueConverter
+    class DropGlowCheckBoxConverter : IValueConverter
     {
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             bool valueAsBool = (bool)value;
             switch (valueAsBool)
@@ -26,7 +23,7 @@ namespace wiebApp.ViewModels
             return value;
         }
 
-        public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public  object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

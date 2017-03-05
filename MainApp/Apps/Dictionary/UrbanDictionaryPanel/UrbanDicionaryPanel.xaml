@@ -17,7 +17,9 @@
             <Button x:Name="Button" Grid.Column="1" Content="Search" FontSize="7" Click="OnSearch"/>
         </Grid>
 
-        <TextBlock x:Name="ResultsBlock" />
+        <TextBlock x:Name="ResultsBlock" TextWrapping="Wrap">
+            
+        </TextBlock>
 
     </StackPanel>
 </UserControl>

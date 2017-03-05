@@ -37,11 +37,11 @@ namespace Dictionary.UrbanDictionaryPanel
                 {
                     sr.AppendLine(thing + "\n -");
                 }
-                TextBox.Text = sr.ToString();
+                ResultsBlock.Text = sr.ToString();
             }
             catch (WordNotFoundException)
             {
-                TextBox.Text = "Word not found";
+                ResultsBlock.Text = "Word not found";
             }
         }
     }
