@@ -81,6 +81,9 @@
     <Compile Include="UrbanDictionaryPanel\UrbanDicionaryPanel.xaml.cs">
       <DependentUpon>UrbanDicionaryPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UrbanItem\UrbanItem.xaml.cs">
+      <DependentUpon>UrbanItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainDictionaryApp.xaml.cs">
       <DependentUpon>MainDictionaryApp.xaml</DependentUpon>
     </Compile>
@@ -99,6 +102,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UrbanItem\UrbanItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainDictionaryApp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,8 +114,6 @@
   <ItemGroup>
     <Resource Include="ReadmePleaseIfPossible.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UrbanDicionaryPanel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
