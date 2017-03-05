@@ -20,16 +20,17 @@ namespace Dictionary.UrbanDictionaryPanel
         
         protected async void OnSearch(object sender, RoutedEventArgs e)
         {
-            Tags.Items.Clear();
             if (string.IsNullOrWhiteSpace(TextBox.Text))
             {
                 TextBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 TextBox.BorderThickness = new Thickness(1);
+                return;
             }
             else
             {
                 TextBox.BorderThickness = new Thickness(0);
             }
+            Tags.Items.Clear();
             try
             {
                 var definition = await Client.GetWordAsync(TextBox.Text);
