@@ -16,7 +16,7 @@
             <ColumnDefinition Width="61*"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="TextBox" />
-        <Button x:Name="Button" Grid.Column="1" Content="Search" FontSize="7" Click="OnSearch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" MinHeight="25" />
+        <Button x:Name="Button" Grid.Column="1" Content="Search" FontSize="7" Click="OnSearch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="25" />
 
         <ScrollViewer Grid.Row="1">
             <TextBlock x:Name="ResultsBlock" TextWrapping="Wrap" />
