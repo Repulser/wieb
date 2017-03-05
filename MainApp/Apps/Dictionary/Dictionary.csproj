@@ -44,6 +44,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\MahApps.Metro.1.4.3\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,6 +81,9 @@
     <Compile Include="UrbanDictionaryPanel\UrbanDicionaryPanel.xaml.cs">
       <DependentUpon>UrbanDicionaryPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UrbanItem\UrbanItem.xaml.cs">
+      <DependentUpon>UrbanItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainDictionaryApp.xaml.cs">
       <DependentUpon>MainDictionaryApp.xaml</DependentUpon>
     </Compile>
@@ -98,16 +102,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UrbanItem\UrbanItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainDictionaryApp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UrbanDicionaryPanel\" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="ReadmePleaseIfPossible.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
