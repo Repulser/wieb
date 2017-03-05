@@ -17,9 +17,10 @@ namespace Dictionary.UrbanDictionaryPanel
         }
 
         private UrbanClient Client { get; } = new UrbanClient();
-
+        
         protected async void OnSearch(object sender, RoutedEventArgs e)
         {
+            Tags.Items.Clear();
             if (string.IsNullOrWhiteSpace(TextBox.Text))
             {
                 TextBox.BorderBrush = new SolidColorBrush(Colors.Red);
@@ -38,6 +39,7 @@ namespace Dictionary.UrbanDictionaryPanel
                     sr.AppendLine(thing + "\n -");
                 }
                 ResultsBlock.Text = sr.ToString();
+                definition.Tags.ForEach(thing => Tags.Items.Add(thing));
             }
             catch (WordNotFoundException)
             {

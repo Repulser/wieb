@@ -5,21 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             Background="AliceBlue">
+             Background="Transparent">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="91*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="239*"/>
+            <ColumnDefinition Width="61*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="TextBox" />
+        <Button x:Name="Button" Grid.Column="1" Content="Search" FontSize="7" Click="OnSearch" />
 
-    <StackPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="127*"/>
-                <ColumnDefinition Width="23*"/>
-            </Grid.ColumnDefinitions>
-            <TextBox x:Name="TextBox" />
-            <Button x:Name="Button" Grid.Column="1" Content="Search" FontSize="7" Click="OnSearch"/>
+        <ScrollViewer Grid.Row="1" Margin="0,5,0,0">
+            <TextBlock x:Name="ResultsBlock" TextWrapping="Wrap" />
+        </ScrollViewer>
+
+        <Grid Grid.Column="1" Grid.Row="1" Margin="0,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="60*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Tags" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <ItemsControl Background="Transparent" BorderThickness="1,0,0,0" Name="Tags"/>
+            </ScrollViewer>
+
         </Grid>
+    </Grid>
 
-        <TextBlock x:Name="ResultsBlock" TextWrapping="Wrap">
-            
-        </TextBlock>
-
-    </StackPanel>
 </UserControl>
+
