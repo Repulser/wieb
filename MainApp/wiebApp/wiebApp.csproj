@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MahApps.Metro, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MahApps.Metro.1.5.0-alpha006\lib\net45\MahApps.Metro.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
     </Reference>
@@ -99,7 +96,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <Resource Include="Fonts\segmdl2.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -115,13 +112,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\XeZrunner.UI\XeZrunner.UI\XeZrunner.UI.csproj">
+      <Project>{d04773cb-bfb2-4dc9-ae70-da99c2b38da5}</Project>
+      <Name>XeZrunner.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Apps\Dictionary\Dictionary.csproj">
       <Project>{e70fb7a9-8ed0-4595-9ad1-0378c5c9a6af}</Project>
       <Name>Dictionary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ReadmePleaseIfPossible.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />

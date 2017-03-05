@@ -27,12 +27,28 @@ namespace wiebApp
 
         private void MainBtn1_Click(object sender, RoutedEventArgs e)
         {
-            MainTabControl.SelectedIndex = 1;
+            //MainTabControl.SelectedIndex = 1;
         }
 
         private void DropGlowLabel_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             
+        }
+
+        private void SettingsItemTile_Click(object sender, RoutedEventArgs e)
+        {
+            // temp code for ui demo
+            MainTab_Grid.Visibility = Visibility.Collapsed;
+            DictionaryApp_Grid.Visibility = Visibility.Visible;
+            titlebarControl.BackButtonVisibility = Visibility.Visible;
+        }
+
+        private void TitlebarControl_BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            // temp code for ui demo
+            MainTab_Grid.Visibility = Visibility.Visible;
+            DictionaryApp_Grid.Visibility = Visibility.Collapsed;
+            titlebarControl.BackButtonVisibility = Visibility.Collapsed;
         }
     }
 }
