@@ -113,5 +113,11 @@
       <Version>1.4.3</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="wieb 64x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SharedResources\wieb 64x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

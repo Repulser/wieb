@@ -8,6 +8,7 @@ namespace Dictionary.UrbanDicionaryPanel.Views
     /// </summary>
     public partial class UrbanDicionaryPanel : UserControl
     {
+        public string TextboxText = null;
         public UrbanDicionaryPanel()
         {
             InitializeComponent();

@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using UrbanDictionnet;
-using UrbanDictionnet.Entities;
 
 namespace Dictionary.UrbanDicionaryPanel.Models
 {

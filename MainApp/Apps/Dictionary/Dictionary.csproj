@@ -77,6 +77,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="UrbanDicionaryPanel\Models\UrbanSearcher.cs" />
+    <Compile Include="UrbanDicionaryPanel\ViewModels\NotifyPropertyChanged.cs" />
+    <Compile Include="UrbanDicionaryPanel\ViewModels\TextBoxGetter.cs" />
     <Compile Include="UrbanDicionaryPanel\Views\UrbanDicionaryPanel.xaml.cs">
       <DependentUpon>UrbanDicionaryPanel.xaml</DependentUpon>
     </Compile>

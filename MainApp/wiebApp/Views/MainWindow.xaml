@@ -6,14 +6,14 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:sharedresources="clr-namespace:wiebApp.SharedResources"
                       xmlns:viewmodels="clr-namespace:wiebApp.ViewModels"
-                      xmlns:urbanDictionary="clr-namespace:Dictionary.UrbanDicionaryPanel.Views;assembly=Dictionary"
                       mc:Ignorable="d"
                       Height="300" Width="300"
                       WindowStartupLocation="CenterScreen"
                       ResizeMode="CanMinimize"
                       BorderThickness="0"
                       Opacity="{Binding ElementName=OpacitySlide, Path=Value, UpdateSourceTrigger=PropertyChanged}"
-                      Topmost="True">
+                      Topmost="True"
+                      Icon="../SharedResources/wieb 64x.png">
 
     <Window.Resources>
         <sharedresources:AppSettings x:Key="AppSettings" />
