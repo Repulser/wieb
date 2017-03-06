@@ -16,8 +16,13 @@ namespace Dictionary.UrbanDictionaryPanel
             this.InitializeComponent();
         }
 
-        private UrbanClient Client { get; } = new UrbanClient();
-        
+        private readonly UrbanClient client = new UrbanClient();
+
+        private UrbanClient GetClient()
+        {
+            return client;
+        }
+
         protected async void OnSearch(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(TextBox.Text))
@@ -30,10 +35,11 @@ namespace Dictionary.UrbanDictionaryPanel
             {
                 TextBox.BorderThickness = new Thickness(0);
             }
+
             Tags.Items.Clear();
             try
             {
-                var definition = await Client.GetWordAsync(TextBox.Text);
+                var definition = await GetClient().GetWordAsync(TextBox.Text);
                 var sr = new StringBuilder();
                 foreach (var thing in definition)
                 {

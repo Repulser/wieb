@@ -107,8 +107,6 @@
   <ItemGroup>
     <Resource Include="ReadmePleaseIfPossible.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UrbanDicionaryPanel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

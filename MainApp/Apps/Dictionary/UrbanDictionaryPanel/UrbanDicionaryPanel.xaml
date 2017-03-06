@@ -31,7 +31,7 @@
                 <Label Content="Tags"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Viewbox>
             <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <ItemsControl Background="Transparent" BorderThickness="1,0,0,0" Name="Tags"/>
+                <ItemsControl Name="Tags" Background="Transparent" BorderThickness="1,0,0,0"/>
             </ScrollViewer>
 
         </Grid>

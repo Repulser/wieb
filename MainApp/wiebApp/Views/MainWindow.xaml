@@ -20,7 +20,7 @@
 
         <converters:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
         <converters:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
-
+ 
         <Style  x:Key="MainBtns" TargetType="Button" >
             <Setter Property="Width" Value="50" />
             <Setter Property="Height" Value="50" />

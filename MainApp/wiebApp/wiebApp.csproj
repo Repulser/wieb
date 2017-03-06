@@ -126,5 +126,11 @@
   <ItemGroup>
     <Folder Include="ViewModels\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="wieb 64x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SharedResources\wieb 64x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
