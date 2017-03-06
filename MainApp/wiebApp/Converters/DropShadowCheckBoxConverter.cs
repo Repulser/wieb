@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Media;
-using wiebApp.Views;
 
-
-namespace wiebApp.ViewModels
+namespace wiebApp.Converters
 {
-    class DropShadowCheckBoxConverter : ValueConverter
+    class DropShadowCheckBoxConverter : IValueConverter
     {
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public  object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             bool valueAsBool = (bool) value;
             switch (valueAsBool)
@@ -28,7 +23,7 @@ namespace wiebApp.ViewModels
             return value;
         }
 
-        public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             SolidColorBrush valueAsBrush = (SolidColorBrush) value;
             if (Equals(valueAsBrush, Brushes.Black))

@@ -10,29 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MahApps.Metro.Controls;
 
-namespace wiebApp
+namespace Dictionary.UrbanItem
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour UrbanItem.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class UrbanItem : UserControl
     {
-        public MainWindow()
+        public UrbanItem()
         {
             InitializeComponent();
-        }
-
-        private void MainBtn1_Click(object sender, RoutedEventArgs e)
-        {
-            MainTabControl.SelectedIndex = 1;
-        }
-
-        private void DropGlowLabel_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
         }
     }
 }
