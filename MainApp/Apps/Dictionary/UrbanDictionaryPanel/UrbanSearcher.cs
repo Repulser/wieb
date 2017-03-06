@@ -6,14 +6,20 @@ namespace Dictionary.UrbanDictionaryPanel
 {
     internal class UrbanSearcher
     {
-        private UrbanClient Client { get; } = new UrbanClient();
+        private readonly UrbanClient client = new UrbanClient();
+
+        private UrbanClient GetClient()
+        {
+            return client;
+        }
+
         public async Task<WordDefine> Find(string word)
         {
-            return await Client.GetWordAsync(word);
+            return await GetClient().GetWordAsync(word);
         }
         public async Task<DefinitonData> FindFirst(string word)
         {
-            return (await Client.GetWordAsync(word))[0];
+            return (await GetClient().GetWordAsync(word))[0];
         }
     }
 }
