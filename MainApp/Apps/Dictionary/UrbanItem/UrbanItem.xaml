@@ -5,8 +5,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Dictionary.UrbanItem"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             MinWidth="200"
+             d:DataContext="{d:DesignInstance local:UrbanItemViewModel}">
     <Grid>
-        <GroupBox Header="Hi"></GroupBox>
+        <GroupBox Header="{Binding Title}">
+            <Grid Margin="-5" Background="#DA119EDA">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="225*"/>
+                    <RowDefinition Height="26*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding DefinitionString}" TextWrapping="Wrap"/>
+                    <TextBlock Text="{Binding Example}" FontStyle="Italic" Foreground="#FF3C3C3C"/>
+                </StackPanel>
+                <Grid x:Name="Grid" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="69*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/Upvote.png" HorizontalAlignment="Left" MaxWidth="32" MaxHeight="32"/>
+                        <Label Content="{Binding Upvotes}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Image Source="Resources/Upvote.png" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" MaxWidth="32" MaxHeight="32">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Label Content="{Binding Downvotes}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

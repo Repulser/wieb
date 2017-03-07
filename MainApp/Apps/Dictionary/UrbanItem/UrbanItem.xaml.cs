@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UrbanDictionnet;
 
 namespace Dictionary.UrbanItem
 {
@@ -20,9 +21,10 @@ namespace Dictionary.UrbanItem
     /// </summary>
     public partial class UrbanItem : UserControl
     {
-        public UrbanItem()
+        public UrbanItem(DefinitionData data)
         {
             InitializeComponent();
+            DataContext = new UrbanItemViewModel(data);
         }
     }
 }

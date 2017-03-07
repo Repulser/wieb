@@ -55,8 +55,8 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UrbanDictionnet, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Urbandictionary.1.4.2\lib\net452\UrbanDictionnet.dll</HintPath>
+    <Reference Include="UrbanDictionnet, Version=1.4.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Urbandictionary.1.4.2.1\lib\net452\UrbanDictionnet.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -84,6 +84,7 @@
     <Compile Include="UrbanItem\UrbanItem.xaml.cs">
       <DependentUpon>UrbanItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UrbanItem\UrbanItemViewModel.cs" />
     <Compile Include="Views\MainDictionaryApp.xaml.cs">
       <DependentUpon>MainDictionaryApp.xaml</DependentUpon>
     </Compile>
@@ -114,6 +115,8 @@
   <ItemGroup>
     <Resource Include="ReadmePleaseIfPossible.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="UrbanItem\Resources\Upvote.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

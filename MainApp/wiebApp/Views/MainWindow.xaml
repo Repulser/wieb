@@ -15,7 +15,7 @@
                       ResizeMode="CanMinimize"
                       BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
                       Opacity="{Binding ElementName=OpacitySlide, Path=Value, UpdateSourceTrigger=PropertyChanged}"
-                      Topmost="True"
+                      Topmost="False"
                       ShowTitleBar="False" ShowCloseButton="False" ShowMaxRestoreButton="False" ShowMinButton="False">
 
     <Window.Resources>

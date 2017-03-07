@@ -31,20 +31,25 @@ namespace Dictionary.UrbanDictionaryPanel
                 TextBox.BorderThickness = new Thickness(0);
             }
             Tags.Items.Clear();
+            ResultsBlock.Items.Clear();
             try
             {
                 var definition = await Client.GetWordAsync(TextBox.Text);
-                var sr = new StringBuilder();
-                foreach (var thing in definition)
+                foreach (var definitionData in definition.List)
                 {
-                    sr.AppendLine(thing + "\n -");
+                    ResultsBlock.Items.Add(new UrbanItem.UrbanItem(definitionData));
                 }
-                ResultsBlock.Text = sr.ToString();
                 definition.Tags.ForEach(thing => Tags.Items.Add(thing));
             }
             catch (WordNotFoundException)
             {
-                ResultsBlock.Text = "Word not found";
+                ResultsBlock.Items.Add(new UrbanItem.UrbanItem(new DefinitionData
+                                                               {
+                                                                   Author = "You",
+                                                                   Definition = "Word not found",
+                                                                   Example = "wut ?",
+                                                                   Word = "Oops"
+                                                               }));
             }
         }
     }

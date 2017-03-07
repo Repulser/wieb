@@ -55,8 +55,8 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UrbanDictionnet, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Urbandictionary.1.4.2\lib\net452\UrbanDictionnet.dll</HintPath>
+    <Reference Include="UrbanDictionnet, Version=1.4.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Urbandictionary.1.4.2.1\lib\net452\UrbanDictionnet.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -127,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ReadmePleaseIfPossible.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
