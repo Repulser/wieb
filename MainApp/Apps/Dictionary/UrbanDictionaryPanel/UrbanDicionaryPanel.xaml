@@ -6,6 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="225.636" d:DesignWidth="339.407"
              Background="Transparent">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="9*" MinHeight="25"/>
@@ -31,7 +32,7 @@
                 <Label Content="Tags"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Viewbox>
             <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <ItemsControl Name="Tags" Background="Transparent" BorderThickness="1,0,0,0"/>
+                <ItemsControl Name="Tags" Background="Transparent" BorderThickness="1,0,0,0" />
             </ScrollViewer>
 
         </Grid>

@@ -11,9 +11,10 @@ namespace Dictionary.UrbanDictionaryPanel
     /// </summary>
     public partial class UrbanDictionaryPanel : UserControl
     {
+
         public UrbanDictionaryPanel()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private readonly UrbanClient client = new UrbanClient();
@@ -37,6 +38,7 @@ namespace Dictionary.UrbanDictionaryPanel
             }
 
             Tags.Items.Clear();
+
             try
             {
                 var definition = await GetClient().GetWordAsync(TextBox.Text);
@@ -48,6 +50,7 @@ namespace Dictionary.UrbanDictionaryPanel
                 ResultsBlock.Text = sr.ToString();
                 definition.Tags.ForEach(thing => Tags.Items.Add(thing));
             }
+
             catch (WordNotFoundException)
             {
                 ResultsBlock.Text = "Word not found";
