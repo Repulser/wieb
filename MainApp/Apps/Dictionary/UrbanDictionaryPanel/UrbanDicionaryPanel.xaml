@@ -1,12 +1,14 @@
-﻿<UserControl x:Class="Dictionary.UrbanDictionaryPanel.UrbanDictionaryPanel"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Dictionary.UrbanDictionaryPanel.UrbanDictionaryPanel"
              mc:Ignorable="d" 
              d:DesignHeight="225.636" d:DesignWidth="339.407"
              Background="Transparent">
-    <Grid>
+    <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="9*" MinHeight="25"/>
             <RowDefinition Height="91*"/>
@@ -21,20 +23,26 @@
         <ScrollViewer Grid.Row="1" Grid.Column="0">
             <ItemsControl x:Name="ResultsBlock"/>
         </ScrollViewer>
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="Tags" Custom:ControlsHelper.HeaderFontWeight="Bold">
+            <Grid Name="Hello">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl Background="Transparent" x:Name="Tags">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="sys:String">
+                                <Grid Background="#CC4EB9E6" MaxWidth="45" Margin="0,0,0,5" >
+                                    <TextBlock Text="{Binding}" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Typography.Capitals="AllSmallCaps"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.Items >
+                            <sys:String>hiaaaaaaaaaaaaaaaaa</sys:String>
+                            <sys:String>a</sys:String>
+                        </ItemsControl.Items>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </GroupBox>
 
-        <Grid Grid.Column="1" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="7*" MinHeight="20"/>
-                <RowDefinition Height="60*"/>
-            </Grid.RowDefinitions>
-            <Viewbox Grid.Row="0">
-                <Label Content="Tags"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Viewbox>
-            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <ItemsControl Background="Transparent" BorderThickness="1,0,0,0" Name="Tags"/>
-            </ScrollViewer>
-
-        </Grid>
     </Grid>
 
 </UserControl>
