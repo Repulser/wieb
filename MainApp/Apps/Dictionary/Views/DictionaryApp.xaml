@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Dictionary.Views.DictionaryApp"
+             xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:Dictionary.ViewModels"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:item="clr-namespace:Dictionary.UrbanItem.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="225.636" d:DesignWidth="339.407"
+             Background="Transparent">
+    
+    <UserControl.Resources>
+        
+        <DataTemplate x:Key="ResultsTemplate" DataType="{x:Type ItemsControl}">
+            <item:UrbanItemPanel />
+        </DataTemplate>
+
+        <DataTemplate x:Key="TagsTemplate" DataType="sys:String">
+            <Grid Background="#CC4EB9E6" MaxWidth="45" Margin="0,0,0,5">
+                <TextBlock Text="{Binding}" FontSize="8" HorizontalAlignment="Center"
+                                               VerticalAlignment="Center" TextTrimming="CharacterEllipsis"
+                                               Typography.Capitals="AllSmallCaps" />
+            </Grid>
+        </DataTemplate>
+        
+    </UserControl.Resources>
+    
+    <UserControl.DataContext>
+        <local:DictionaryAppViewModel />
+    </UserControl.DataContext>
+    
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding Search}" Key="Enter" />
+    </UserControl.InputBindings>
+    
+    <Grid x:Name="Grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*" MinHeight="25" />
+            <RowDefinition Height="91*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="239*" />
+            <ColumnDefinition Width="61*" />
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="TextBox" Text="{Binding SearchBoxText}" BorderThickness="{Binding TextBoxThickness}"
+                 BorderBrush="{Binding}" />
+        <Button x:Name="Button" Grid.Column="1" Content="Search" FontSize="7" Command="{Binding Search}"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="25" />
+        <ScrollViewer Grid.Row="1" Grid.Column="0">
+            <ItemsControl x:Name="ResultsBlock" ItemsSource="{Binding Results}" ItemTemplate="{StaticResource ResultsTemplate}" />
+        </ScrollViewer>
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="Tags" Custom:ControlsHelper.HeaderFontWeight="Bold">
+            <Grid Name="Hello">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl Background="Transparent" x:Name="Tags" ItemsSource="{Binding Tags}"
+                                  ItemTemplate="{StaticResource TagsTemplate}">
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+
+</UserControl>

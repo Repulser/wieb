@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UrbanDictionnet;
-namespace Dictionary.UrbanItem
-{
-    class UrbanItemViewModel
-    {
-        private DefinitionData Definition { get; set; }
+﻿using UrbanDictionnet;
 
+namespace Dictionary.UrbanItem.ViewModels
+{
+    public class UrbanItemViewModel
+    {
         public UrbanItemViewModel(DefinitionData definitionData)
         {
-            Definition = definitionData;         
+            Definition = definitionData;
         }
+
+        private DefinitionData Definition { get; }
 
         public string Title => $"{Definition.Author}'s definition for {Definition.Word}";
 

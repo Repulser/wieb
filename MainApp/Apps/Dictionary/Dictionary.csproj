@@ -77,18 +77,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UrbanDictionaryPanel\UrbanDictionaryPanelViewModel.cs" />
-    <Compile Include="UrbanDictionaryPanel\UrbanSearcher.cs" />
-    <Compile Include="UrbanDictionaryPanel\UrbanDicionaryPanel.xaml.cs">
-      <DependentUpon>UrbanDicionaryPanel.xaml</DependentUpon>
+    <Compile Include="ViewModels\DictionaryAppViewModel.cs" />
+    <Compile Include="Services\UrbanSearcher.cs" />
+    <Compile Include="ViewModels\SearchCommand.cs" />
+    <Compile Include="Views\DictionaryApp.xaml.cs">
+      <DependentUpon>DictionaryApp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UrbanItem\UrbanItem.xaml.cs">
-      <DependentUpon>UrbanItem.xaml</DependentUpon>
+    <Compile Include="UrbanItem\Views\UrbanItemPanel.xaml.cs">
+      <DependentUpon>UrbanItemPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UrbanItem\UrbanItemViewModel.cs" />
-    <Compile Include="Views\MainDictionaryApp.xaml.cs">
-      <DependentUpon>MainDictionaryApp.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="UrbanItem\ViewModels\UrbanItemViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -100,21 +98,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UrbanDictionaryPanel\UrbanDicionaryPanel.xaml">
+    <Page Include="Views\DictionaryApp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UrbanItem\UrbanItem.xaml">
+    <Page Include="UrbanItem\Views\UrbanItemPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainDictionaryApp.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ReadmePleaseIfPossible.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="UrbanItem\Resources\Upvote.png" />

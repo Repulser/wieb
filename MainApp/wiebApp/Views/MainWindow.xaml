@@ -8,7 +8,7 @@
                       xmlns:sharedresources="clr-namespace:wiebApp.SharedResources"
                       xmlns:xesignButtons="clr-namespace:XeZrunner.UI.Controls.Buttons;assembly=XeZrunner.UI"
                       xmlns:xesignWindow="clr-namespace:XeZrunner.UI.Controls.Window_components;assembly=XeZrunner.UI"
-                      xmlns:urban="clr-namespace:Dictionary.UrbanDictionaryPanel;assembly=Dictionary"
+                      xmlns:dictionary="clr-namespace:Dictionary.Views;assembly=Dictionary"
                       mc:Ignorable="d"
                       Height="600" Width="800"
                       WindowStartupLocation="CenterScreen"
@@ -139,7 +139,7 @@
             </Grid>
 
             <Grid x:Name="DictionaryAppGrid" Visibility="Collapsed">
-                <urban:UrbanDictionaryPanel />
+                <dictionary:DictionaryApp />
             </Grid>
             
         </Grid>

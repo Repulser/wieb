@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UrbanDictionnet;
 
-namespace Dictionary.UrbanDictionaryPanel
+namespace Dictionary.Services
 {
     internal class UrbanSearcher
     {
