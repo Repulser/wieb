@@ -16,7 +16,7 @@ namespace Dictionary.UrbanDictionaryPanel
             this.InitializeComponent();
         }
 
-        private UrbanClient Client { get; } = new UrbanClient();
+        /*private UrbanClient Client { get; } = new UrbanClient();
         
         protected async void OnSearch(object sender, RoutedEventArgs e)
         {
@@ -51,6 +51,6 @@ namespace Dictionary.UrbanDictionaryPanel
                                                                    Word = "Oops"
                                                                }));
             }
-        }
+        }*/
     }
 }
