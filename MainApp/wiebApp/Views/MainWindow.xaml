@@ -1,11 +1,16 @@
-﻿<controls:MetroWindow x:Class="wiebApp.Views.MainWindow"
+﻿<controls:MetroWindow x:Class="wiebApp.MainWindow"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<<<<<<< HEAD
                       xmlns:controls="clr-namespace:MahApps.Metro.controls;assembly=MahApps.Metro"
+=======
+>>>>>>> 7875137ec48df5638119a6824f80c0baae5d8ad1
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:converters="clr-namespace:wiebApp.Converters"
                       xmlns:sharedresources="clr-namespace:wiebApp.SharedResources"
-                      xmlns:viewmodels="clr-namespace:wiebApp.ViewModels"
+                      xmlns:urban="clr-namespace:Dictionary.UrbanDictionaryPanel;assembly=Dictionary"
                       mc:Ignorable="d"
                       Height="300" Width="300"
                       WindowStartupLocation="CenterScreen"
@@ -17,13 +22,9 @@
     <Window.Resources>
         <sharedresources:AppSettings x:Key="AppSettings" />
 
-        <viewmodels:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
-        <viewmodels:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
-
-        <viewmodels:ColorCraze x:Key="ColorCraze" />
-
-        <!--S T Y L E S-->
-        <!--MainMenuButtonStyles-->
+        <converters:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
+        <converters:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
+ 
         <Style  x:Key="MainBtns" TargetType="Button" >
             <Setter Property="Width" Value="50" />
             <Setter Property="Height" Value="50" />
@@ -45,15 +46,17 @@
         <Binding ElementName="DropShadowCheck" Path="IsChecked" />
     </controls:MetroWindow.EnableDWMDropShadow>
 
+<<<<<<< HEAD
 
 
     <!--M A I N   G R I D   O F   D O O M-->
+=======
+>>>>>>> 7875137ec48df5638119a6824f80c0baae5d8ad1
     <Grid>
         <Grid x:Name="BodyMainGrid">
-            <!--TabControl-->
-            <TabControl x:Name="MainTabControl" BorderThickness="0" IsTabStop="True">
-                <!--Tab Resources-->
-                <TabControl.Resources>
+            
+            <controls:MetroTabControl x:Name="MainTabControl" BorderThickness="0" IsTabStop="True">
+                <controls:MetroTabControl.Resources>
                     <Style TargetType="TabItem">
                         <Setter Property="Template">
                             <Setter.Value>
@@ -61,54 +64,43 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                </TabControl.Resources>
-
-                <!--MAIN TAB//////////////////////////////////////////////////////////-->
-                <TabItem x:Name="MainTab">
+                </controls:MetroTabControl.Resources>
+                <controls:MetroTabItem x:Name="MainTab" Header="Home">
                     <Grid>
-                        <Button Style="{StaticResource MainBtns}" Click="MainBtn1_Click"/>
+                        <Button Style="{StaticResource MainBtns}" Click="MainBtn1_Click" Content="Theme"/>
                     </Grid>
-                </TabItem>
-                <!--OPTIONS TAB////////////////////////////////////////////////////-->
-                <TabItem x:Name="OptionsTab">
+                </controls:MetroTabItem>
+                <controls:MetroTabItem x:Name="OptionsTab" Header="Settings">
                     <Grid>
-                        <!--Definitions-->
                         <Grid.RowDefinitions>
                             <RowDefinition Height="27*" />
                             <RowDefinition Height="61*" />
                         </Grid.RowDefinitions>
-                        <!--ACTUALL SETTINGS-->
-                        <!--Combo Boxes-->
                         <StackPanel Grid.Row="0">
                             <ComboBox Height="40"
-                                      SelectedIndex="{Binding Source={StaticResource ColorCraze}, Path=IndexOfCombo}"
                                       ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
                                       IsSynchronizedWithCurrentItem="True"
-                                      DisplayMemberPath="Name"
-                                      viewmodels:ColorCraze.IsColorCrazing="{Binding ElementName=ColorCrazeCheck, Path=IsChecked}" />
+                                      DisplayMemberPath="Name" />
                             <ComboBox Height="40" SelectedIndex="0"
                                       ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
                                       IsSynchronizedWithCurrentItem="True"
                                       DisplayMemberPath="Name" />
                         </StackPanel>
-                        <!--CHECK BOXES-->
                         <StackPanel Grid.Row="1">
-                            <!--DropShadow-->
                             <CheckBox x:Name="DropShadowCheck" IsChecked="True" 
                                         Content="DropShadow" />
-                            <!--DropGlow-->
                             <CheckBox x:Name="DropGlowCheck" IsChecked="True"
                                         Content="DropGlow while window loses focus." />
-                            <!--Enable ColorCraze-->
-                            <CheckBox x:Name="ColorCrazeCheck" IsChecked="False"
-                                        Content="Enable ColorCraze mode" />
                             <CheckBox x:Name="TopMostCheck" IsChecked="false"
                                         Content="Enable TopMost mode." />
                             <Slider x:Name="OpacitySlide" Maximum="100" Minimum="50" />
                         </StackPanel>
                     </Grid>
-                </TabItem>
-            </TabControl>
+                </controls:MetroTabItem>
+                <controls:MetroTabItem Header="Urban">
+                    <urban:UrbanDictionaryPanel/>
+                </controls:MetroTabItem>
+            </controls:MetroTabControl>
         </Grid>
     </Grid>
 </controls:MetroWindow>
