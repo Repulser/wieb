@@ -3,20 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Dictionary.UrbanItem"
-             mc:Ignorable="d" 
+             xmlns:viewmodels="clr-namespace:Dictionary.UrbanItem.ViewModels"
+             xmlns:xesignWindow="clr-namespace:XeZrunner.UI.Controls.Window_components;assembly=XeZrunner.UI"
+             xmlns:xesignButtons="clr-namespace:XeZrunner.UI.Controls.Buttons;assembly=XeZrunner.UI"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewmodels:UrbanItemViewModel}"
              MinWidth="200"
-             d:DataContext="{d:DesignInstance local:UrbanItemViewModel}">
+             MaxHeight="300">
+
+    <UserControl.Resources>
+    </UserControl.Resources>
+
     <Grid>
-        <GroupBox Header="{Binding Title}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="37" />
+        </Grid.RowDefinitions>
+        <GroupBox Grid.RowSpan="2">
+            <GroupBox.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75*" />
+                        <ColumnDefinition Width="14*" />
+                        <ColumnDefinition Width="14*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Title}" Foreground="White" Grid.ColumnSpan="2" />
+                    <xesignButtons:Button x:Name="NextButton" 
+                                          Text="&#xE0AB;" Grid.Column="2"
+                                          FontFamily="XeZrunner.UI\XeZrunner.UI\Fonts\segmdl2.ttf"
+                                          Click="NextButton_OnClick" />
+                    <!--<xesignButtons:ToggleButton x:Name="VoiceButton" 
+                                                Text="&#xE720;" Grid.Column="1"
+                                                FontFamily="XeZrunner.UI\XeZrunner.UI\Fonts\segmdl2.ttf"
+                                                Click="VoiceButton_OnClick" />-->
+                </Grid>
+            </GroupBox.Header>
             <Grid Margin="-5" Background="#DA119EDA">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="225*"/>
                     <RowDefinition Height="26*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding DefinitionString}" TextWrapping="Wrap"/>
-                    <TextBlock Text="{Binding Example}" FontStyle="Italic" Foreground="#FF3C3C3C"/>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding DefinitionString}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Example}" FontStyle="Italic" Foreground="#FF3C3C3C"/>
+                        </StackPanel>
+                    </ScrollViewer>
                 </StackPanel>
                 <Grid x:Name="Grid" Grid.Row="1">
                     <Grid.ColumnDefinitions>

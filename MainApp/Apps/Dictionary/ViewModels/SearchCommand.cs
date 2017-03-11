@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using Dictionary.UrbanItem.ViewModels;
-using Dictionary.UrbanItem.Views;
 using UrbanDictionnet;
 
 namespace Dictionary.ViewModels
@@ -12,7 +11,7 @@ namespace Dictionary.ViewModels
     {
         public SearchCommand(DictionaryAppViewModel vm)
         {
-            Vm = vm;
+            Vm = vm;         
         }
 
         private DictionaryAppViewModel Vm { get; }

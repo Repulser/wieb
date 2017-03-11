@@ -77,6 +77,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\NotifyPropertyChanged.cs" />
     <Compile Include="ViewModels\DictionaryAppViewModel.cs" />
     <Compile Include="Services\UrbanSearcher.cs" />
     <Compile Include="ViewModels\SearchCommand.cs" />
@@ -109,6 +110,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="UrbanItem\Resources\Upvote.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\XeZrunner.UI\XeZrunner.UI\XeZrunner.UI.csproj">
+      <Project>{d04773cb-bfb2-4dc9-ae70-da99c2b38da5}</Project>
+      <Name>XeZrunner.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

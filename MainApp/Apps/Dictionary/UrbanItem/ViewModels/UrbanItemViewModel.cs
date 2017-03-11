@@ -4,6 +4,7 @@ namespace Dictionary.UrbanItem.ViewModels
 {
     public class UrbanItemViewModel
     {
+
         public UrbanItemViewModel(DefinitionData definitionData)
         {
             Definition = definitionData;

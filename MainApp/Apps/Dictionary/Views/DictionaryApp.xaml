@@ -7,13 +7,14 @@
              xmlns:local="clr-namespace:Dictionary.ViewModels"
              xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:item="clr-namespace:Dictionary.UrbanItem.Views"
+             xmlns:viewModels="clr-namespace:Dictionary.UrbanItem.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="225.636" d:DesignWidth="339.407"
+             d:DesignHeight="300" d:DesignWidth="300"
              Background="Transparent">
-    
+
     <UserControl.Resources>
-        
-        <DataTemplate x:Key="ResultsTemplate" DataType="{x:Type ItemsControl}">
+
+        <DataTemplate DataType="{x:Type viewModels:UrbanItemViewModel}">
             <item:UrbanItemPanel />
         </DataTemplate>
 
@@ -24,17 +25,13 @@
                                                Typography.Capitals="AllSmallCaps" />
             </Grid>
         </DataTemplate>
-        
+
     </UserControl.Resources>
-    
+
     <UserControl.DataContext>
         <local:DictionaryAppViewModel />
     </UserControl.DataContext>
-    
-    <UserControl.InputBindings>
-        <KeyBinding Command="{Binding Search}" Key="Enter" />
-    </UserControl.InputBindings>
-    
+
     <Grid x:Name="Grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="9*" MinHeight="25" />
@@ -46,12 +43,16 @@
         </Grid.ColumnDefinitions>
         <TextBox x:Name="TextBox" Text="{Binding SearchBoxText}" BorderThickness="{Binding TextBoxThickness}"
                  BorderBrush="{Binding}" />
-        <Button x:Name="Button" Grid.Column="1" Content="Search" FontSize="7" Command="{Binding Search}"
+        <Button x:Name="Button" Grid.Row="0" Grid.Column="1" Content="Search" FontSize="7" Command="{Binding Search}"
                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="25" />
-        <ScrollViewer Grid.Row="1" Grid.Column="0">
-            <ItemsControl x:Name="ResultsBlock" ItemsSource="{Binding Results}" ItemTemplate="{StaticResource ResultsTemplate}" />
-        </ScrollViewer>
-        <GroupBox Grid.Column="1" Grid.Row="1" Header="Tags" Custom:ControlsHelper.HeaderFontWeight="Bold">
+        <!--<ItemsControl x:Name="ResultsBlock" ItemsSource="{Binding ResultsView, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource ResultsTemplate}" Grid.Row="1"
+                      Grid.Column="0" />-->
+        <ContentControl x:Name="ResultsBlock" 
+                      Content="{Binding CurrentItem}" 
+                      Grid.Row="1"
+                      Grid.Column="0" />
+        
+            <GroupBox Grid.Column="1" Grid.Row="1" Header="Tags" Custom:ControlsHelper.HeaderFontWeight="Bold">
             <Grid Name="Hello">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <ItemsControl Background="Transparent" x:Name="Tags" ItemsSource="{Binding Tags}"
