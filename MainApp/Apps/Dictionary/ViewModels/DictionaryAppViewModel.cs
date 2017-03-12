@@ -16,16 +16,12 @@ namespace Dictionary.ViewModels
         public DictionaryAppViewModel()
         {
             Search = new SearchCommand(this);
+            Voice = new RecognizeVoiceCommand();
 
             ResultsView = CollectionViewSource.GetDefaultView(Results);
-            ResultsView.CurrentChanged += ResultsView_CurrentChanged;
             ResultsView.MoveCurrentToFirst();
-            Instance = this;
-        }
-
-        private void ResultsView_CurrentChanged(object sender, System.EventArgs e)
-        {
             CurrentItem = ResultsView.CurrentItem as UrbanItemViewModel;
+            Instance = this;
         }
 
         public ObservableCollection<string> Tags { get; private set; }
@@ -39,7 +35,6 @@ namespace Dictionary.ViewModels
             get { return _currentItem; }
             set
             {
-                if (Equals(value, _currentItem)) return;
                 _currentItem = value;
                 OnPropertyChanged();
             }
@@ -55,12 +50,14 @@ namespace Dictionary.ViewModels
             }
         }
 
-        public string SearchBoxText { get; set; }
+        public static string SearchBoxText { get; set; }
 
         public Brush SearchBoxBrush { get; set; }
 
         public Thickness TextBoxThickness { get; set; }
 
         public SearchCommand Search { get; }
+
+        public RecognizeVoiceCommand Voice { get; }
     }
 }

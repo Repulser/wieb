@@ -4,14 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewmodels="clr-namespace:Dictionary.UrbanItem.ViewModels"
-             xmlns:xesignWindow="clr-namespace:XeZrunner.UI.Controls.Window_components;assembly=XeZrunner.UI"
+             xmlns:metroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:xesignButtons="clr-namespace:XeZrunner.UI.Controls.Buttons;assembly=XeZrunner.UI"
+             xmlns:views="clr-namespace:Dictionary.UrbanItem.Views"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewmodels:UrbanItemViewModel}"
              MinWidth="200"
              MaxHeight="300">
 
     <UserControl.Resources>
+        <views:UrbanItemPanel x:Key="Self" />
     </UserControl.Resources>
 
     <Grid>
@@ -32,10 +34,11 @@
                                           Text="&#xE0AB;" Grid.Column="2"
                                           FontFamily="XeZrunner.UI\XeZrunner.UI\Fonts\segmdl2.ttf"
                                           Click="NextButton_OnClick" />
-                    <!--<xesignButtons:ToggleButton x:Name="VoiceButton" 
-                                                Text="&#xE720;" Grid.Column="1"
+                    <metroControls:ToggleSwitchButton x:Name="VoiceButton" 
+                                                Content="&#xE720;" Grid.Column="1"
                                                 FontFamily="XeZrunner.UI\XeZrunner.UI\Fonts\segmdl2.ttf"
-                                                Click="VoiceButton_OnClick" />-->
+                                                Checked="VoiceButton_Checked"
+                                                Unchecked="VoiceButton_UnChecked" />
                 </Grid>
             </GroupBox.Header>
             <Grid Margin="-5" Background="#DA119EDA">
@@ -46,8 +49,21 @@
                 <StackPanel Orientation="Vertical">
                     <ScrollViewer>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{Binding DefinitionString}" TextWrapping="Wrap"/>
-                            <TextBlock Text="{Binding Example}" FontStyle="Italic" Foreground="#FF3C3C3C"/>
+                            <TextBlock TextWrapping="Wrap">
+                                <TextBlock.Text>
+                                    <MultiBinding>
+                                        <Binding Path="DefinitionString" />
+                                        <Binding Source="{StaticResource Self}" Path="Title" Mode="OneWayToSource" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock FontStyle="Italic" Foreground="#FF3C3C3C">
+                                <TextBlock.Text>
+                                    <MultiBinding>
+                                        <Binding Path="DefinitionString" />
+                                        <Binding Source="{StaticResource Self}" Path="Definition" Mode="OneWayToSource" />
+                                    </MultiBinding>
+                                </TextBlock.Text></TextBlock>
                         </StackPanel>
                     </ScrollViewer>
                 </StackPanel>

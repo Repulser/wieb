@@ -5,32 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:Dictionary.ViewModels"
-             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:custom="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:item="clr-namespace:Dictionary.UrbanItem.Views"
-             xmlns:viewModels="clr-namespace:Dictionary.UrbanItem.ViewModels"
+             xmlns:viewmodels="clr-namespace:Dictionary.UrbanItem.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              Background="Transparent">
 
+    <UserControl.DataContext>
+        <local:DictionaryAppViewModel />
+    </UserControl.DataContext>
+
     <UserControl.Resources>
 
-        <DataTemplate DataType="{x:Type viewModels:UrbanItemViewModel}">
+        <DataTemplate x:Key="ResultsTemplate" DataType="{x:Type viewmodels:UrbanItemViewModel}">
             <item:UrbanItemPanel />
         </DataTemplate>
 
         <DataTemplate x:Key="TagsTemplate" DataType="sys:String">
             <Grid Background="#CC4EB9E6" MaxWidth="45" Margin="0,0,0,5">
-                <TextBlock Text="{Binding}" FontSize="8" HorizontalAlignment="Center"
+                <TextBlock Text="{Binding Source={x:Static local:DictionaryAppViewModel.SearchBoxText}}" FontSize="8" HorizontalAlignment="Center"
                                                VerticalAlignment="Center" TextTrimming="CharacterEllipsis"
                                                Typography.Capitals="AllSmallCaps" />
             </Grid>
         </DataTemplate>
 
     </UserControl.Resources>
-
-    <UserControl.DataContext>
-        <local:DictionaryAppViewModel />
-    </UserControl.DataContext>
 
     <Grid x:Name="Grid">
         <Grid.RowDefinitions>
@@ -42,17 +42,19 @@
             <ColumnDefinition Width="61*" />
         </Grid.ColumnDefinitions>
         <TextBox x:Name="TextBox" Text="{Binding SearchBoxText}" BorderThickness="{Binding TextBoxThickness}"
-                 BorderBrush="{Binding}" />
+                 BorderBrush="{Binding SearchBoxBrush}" />
         <Button x:Name="Button" Grid.Row="0" Grid.Column="1" Content="Search" FontSize="7" Command="{Binding Search}"
                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="25" />
+<!--        <Button x:Name="VoiceButton" Grid.Row="0" Grid.Column="1" Content="Speak" Command="{Binding Voice}" />-->
         <!--<ItemsControl x:Name="ResultsBlock" ItemsSource="{Binding ResultsView, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource ResultsTemplate}" Grid.Row="1"
                       Grid.Column="0" />-->
-        <ContentControl x:Name="ResultsBlock" 
-                      Content="{Binding CurrentItem}" 
+        <ContentPresenter x:Name="ResultsBlock"
+                      ContentSource="{Binding ResultsView.CurrentItem}"
+                      ContentTemplate="{StaticResource ResultsTemplate}"
                       Grid.Row="1"
                       Grid.Column="0" />
         
-            <GroupBox Grid.Column="1" Grid.Row="1" Header="Tags" Custom:ControlsHelper.HeaderFontWeight="Bold">
+            <GroupBox Grid.Column="1" Grid.Row="1" Header="Tags" custom:ControlsHelper.HeaderFontWeight="Bold">
             <Grid Name="Hello">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <ItemsControl Background="Transparent" x:Name="Tags" ItemsSource="{Binding Tags}"
