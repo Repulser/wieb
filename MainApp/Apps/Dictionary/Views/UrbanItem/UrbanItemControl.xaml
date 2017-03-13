@@ -1,0 +1,43 @@
+﻿﻿<UserControl x:Class="Dictionary.Views.UrbanItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             MinWidth="200">
+    <Grid>
+        <GroupBox Header="{Binding UrbanItemVm.UrbanTitle}">
+            <Grid Margin="-5" Background="#DA119EDA">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="225*"/>
+                    <RowDefinition Height="26*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding UrbanItemVm.DefinitionString}" TextWrapping="Wrap"/>
+                    <TextBlock Text="{Binding UrbanItemVm.Example}" FontStyle="Italic" Foreground="#FF3C3C3C"/>
+                </StackPanel>
+                <Grid x:Name="Grid" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="69*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../../Resources/Upvote.png" HorizontalAlignment="Left" MaxWidth="32" MaxHeight="32"/>
+                        <Label Content="{Binding UrbanItemVm.Upvotes}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                               FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Image Source="../../Resources/Upvote.png" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" MaxWidth="32" MaxHeight="32">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Label Content="{Binding UrbanItemVm.Downvotes}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

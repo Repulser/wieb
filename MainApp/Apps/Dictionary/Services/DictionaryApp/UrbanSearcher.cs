@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UrbanDictionnet;
 
-namespace Dictionary.UrbanDictionaryPanel
+namespace Dictionary.Services
 {
     internal class UrbanSearcher
     {
@@ -17,7 +16,7 @@ namespace Dictionary.UrbanDictionaryPanel
         {
             return await GetClient().GetWordAsync(word);
         }
-        public async Task<DefinitonData> FindFirst(string word)
+        public async Task<DefinitionData> FindFirst(string word)
         {
             return (await GetClient().GetWordAsync(word))[0];
         }

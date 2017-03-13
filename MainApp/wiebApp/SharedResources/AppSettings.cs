@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using wiebApp.Converters;
@@ -12,7 +11,6 @@ namespace wiebApp.SharedResources
     class AppSettings : NotifyPropertyChanged
     {
         
-
         private string _accentColor;
         private string _themeColor;
         private ICollectionView _collectionAccentView;
@@ -20,6 +18,7 @@ namespace wiebApp.SharedResources
         
         public ObservableCollection<ColorPath> AccentColors { get; set; }
         public ObservableCollection<ColorPath> ThemeColors { get; set; }
+        public ResourceDictionary lastResourceDictionary { get; set; }
 
         public AppSettings()
         {
@@ -85,7 +84,7 @@ namespace wiebApp.SharedResources
             }
             if (_accentColor != null)
             {
-                App.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+                App.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
                 {
                     Source = new Uri(_accentColor)
                 });

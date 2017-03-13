@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace wiebApp.Views.Views.Properties
+namespace wiebApp.Views.Properties
 {
 
 
