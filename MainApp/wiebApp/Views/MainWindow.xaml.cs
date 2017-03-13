@@ -30,11 +30,6 @@ namespace wiebApp
             //MainTabControl.SelectedIndex = 1;
         }
 
-        private void DropGlowLabel_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
         private void SettingsItemTile_Click(object sender, RoutedEventArgs e)
         {
             // temp code for ui demo

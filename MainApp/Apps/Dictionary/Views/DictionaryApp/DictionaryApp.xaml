@@ -4,22 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:local="clr-namespace:Dictionary.ViewModels"
-             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:item="clr-namespace:Dictionary.UrbanItem.Views"
+             xmlns:views="clr-namespace:Dictionary.Views"
+             xmlns:viewModels="clr-namespace:Dictionary.ViewModels"
+             xmlns:custom="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d"
-             d:DesignHeight="225.636" d:DesignWidth="339.407"
+             d:DesignHeight="300" d:DesignWidth="300"
              Background="Transparent">
+
+    <UserControl.DataContext>
+        <viewModels:DataContextMixer />
+    </UserControl.DataContext>
     
     <UserControl.Resources>
         
         <DataTemplate x:Key="ResultsTemplate" DataType="{x:Type ItemsControl}">
-            <item:UrbanItemPanel />
+            <views:UrbanItemControl />
         </DataTemplate>
 
         <DataTemplate x:Key="TagsTemplate" DataType="sys:String">
-            <Grid Background="#CC4EB9E6" MaxWidth="45" Margin="0,0,0,5">
-                <TextBlock Text="{Binding}" FontSize="8" HorizontalAlignment="Center"
+            <Grid Background="#CC4EB9E6" MaxWidth="45">
+
+                <TextBlock Text="{Binding DictionaryVm.SearchBoxText, Mode=OneWayToSource}" FontSize="8" HorizontalAlignment="Center"
                                                VerticalAlignment="Center" TextTrimming="CharacterEllipsis"
                                                Typography.Capitals="AllSmallCaps" />
             </Grid>
@@ -27,12 +32,8 @@
         
     </UserControl.Resources>
     
-    <UserControl.DataContext>
-        <local:DictionaryAppViewModel />
-    </UserControl.DataContext>
-    
     <UserControl.InputBindings>
-        <KeyBinding Command="{Binding Search}" Key="Enter" />
+        <KeyBinding Command="{Binding DictionaryVm.Search}" Key="Enter" />
     </UserControl.InputBindings>
     
     <Grid x:Name="Grid">
@@ -44,17 +45,19 @@
             <ColumnDefinition Width="239*" />
             <ColumnDefinition Width="61*" />
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="TextBox" Text="{Binding SearchBoxText}" BorderThickness="{Binding TextBoxThickness}"
-                 BorderBrush="{Binding}" />
-        <Button x:Name="Button" Grid.Column="1" Content="Search" FontSize="7" Command="{Binding Search}"
-                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinHeight="25" />
-        <ScrollViewer Grid.Row="1" Grid.Column="0">
-            <ItemsControl x:Name="ResultsBlock" ItemsSource="{Binding Results}" ItemTemplate="{StaticResource ResultsTemplate}" />
-        </ScrollViewer>
-        <GroupBox Grid.Column="1" Grid.Row="1" Header="Tags" Custom:ControlsHelper.HeaderFontWeight="Bold">
+        <TextBox x:Name="TextBox" Text="{Binding DictionaryVm.SearchBoxText}"
+                 BorderThickness="{Binding DictionaryVm.TextBoxThickness}"
+                 BorderBrush="{Binding DictionaryVm.SearchBoxBrush}" />
+        <Button x:Name="Button" Grid.Row="0" Grid.Column="1" Content="Search" FontSize="7"
+                Command="{Binding DictionaryVm.Search}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                MinHeight="25" />
+        <ContentControl x:Name="ResultsBlock" Grid.Row="1" Grid.Column="0"
+                  Content="{Binding DictionaryVm.ResultsView, UpdateSourceTrigger=PropertyChanged}"
+                  ContentTemplate="{StaticResource ResultsTemplate}" />
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="Tags" custom:ControlsHelper.HeaderFontWeight="Bold">
             <Grid Name="Hello">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                    <ItemsControl Background="Transparent" x:Name="Tags" ItemsSource="{Binding Tags}"
+                    <ItemsControl Background="Transparent" x:Name="Tags" ItemsSource="{Binding DictionaryVm.Tags}"
                                   ItemTemplate="{StaticResource TagsTemplate}">
                     </ItemsControl>
                 </ScrollViewer>

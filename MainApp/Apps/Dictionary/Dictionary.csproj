@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\MahApps.Metro.1.5.0-alpha008\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -77,16 +78,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\DictionaryAppViewModel.cs" />
-    <Compile Include="Services\UrbanSearcher.cs" />
-    <Compile Include="ViewModels\SearchCommand.cs" />
-    <Compile Include="Views\DictionaryApp.xaml.cs">
+    <Compile Include="Services\DictionaryApp\CompatibilityChecker.cs" />
+    <Compile Include="Services\DictionaryApp\TextPronouncer.cs" />
+    <Compile Include="Services\DictionaryApp\UrbanSearcher.cs" />
+    <Compile Include="Services\UrbanItem\VoiceWritter.cs" />
+    <Compile Include="ViewModels\DictionaryApp\DictionaryAppViewModel.cs" />
+    <Compile Include="ViewModels\DictionaryApp\RecognizeVoiceCommand.cs" />
+    <Compile Include="ViewModels\Shared\DataContextMixer.cs" />
+    <Compile Include="ViewModels\UrbanItem\SearchCommand.cs" />
+    <Compile Include="ViewModels\UrbanItem\UrbanItemViewModel.cs" />
+    <Compile Include="Views\DictionaryApp\DictionaryApp.xaml.cs">
       <DependentUpon>DictionaryApp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UrbanItem\Views\UrbanItemPanel.xaml.cs">
-      <DependentUpon>UrbanItemPanel.xaml</DependentUpon>
+    <Compile Include="Views\UrbanItem\UrbanItemControl.xaml.cs">
+      <DependentUpon>UrbanItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UrbanItem\ViewModels\UrbanItemViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -98,17 +104,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\DictionaryApp.xaml">
+    <Page Include="Views\DictionaryApp\DictionaryApp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UrbanItem\Views\UrbanItemPanel.xaml">
+    <Page Include="Views\UrbanItem\UrbanItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UrbanItem\Resources\Upvote.png" />
+    <Resource Include="Resources\Upvote.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

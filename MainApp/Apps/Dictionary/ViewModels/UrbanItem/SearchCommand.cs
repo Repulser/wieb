@@ -2,8 +2,8 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using Dictionary.UrbanItem.ViewModels;
-using Dictionary.UrbanItem.Views;
+using Dictionary.Views;
+using Dictionary.ViewModels;
 using UrbanDictionnet;
 
 namespace Dictionary.ViewModels
@@ -22,7 +22,7 @@ namespace Dictionary.ViewModels
 
         public async void Execute(object parameter)
         {
-            if (string.IsNullOrWhiteSpace(Vm.SearchBoxText))
+            if (string.IsNullOrWhiteSpace(DictionaryAppViewModel.SearchBoxText))
             {
                 Vm.SearchBoxBrush = new SolidColorBrush(Colors.Red);
                 Vm.TextBoxThickness = new Thickness(1);
@@ -35,7 +35,7 @@ namespace Dictionary.ViewModels
 
             try
             {
-                WordDefine definition = await Client.GetWordAsync(Vm.SearchBoxText);
+                WordDefine definition = await Client.GetWordAsync(DictionaryAppViewModel.SearchBoxText);
                 foreach (DefinitionData definitionData in definition.List)
                 {
                     Vm.Results.Add(new UrbanItemViewModel(definitionData));

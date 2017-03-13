@@ -9,6 +9,7 @@
                       xmlns:xesignButtons="clr-namespace:XeZrunner.UI.Controls.Buttons;assembly=XeZrunner.UI"
                       xmlns:xesignWindow="clr-namespace:XeZrunner.UI.Controls.Window_components;assembly=XeZrunner.UI"
                       xmlns:dictionary="clr-namespace:Dictionary.Views;assembly=Dictionary"
+                      xmlns:properties="clr-namespace:wiebApp.Properties"
                       mc:Ignorable="d"
                       Height="600" Width="800"
                       WindowStartupLocation="CenterScreen"
@@ -52,7 +53,6 @@
         <Grid x:Name="BodyMainGrid" Grid.Row="1">
             
             <!-- old stuff -->
-            <!-- 
             <controls:MetroTabControl x:Name="MainTabControl" BorderThickness="0" IsTabStop="True">
                 <controls:MetroTabControl.Resources>
                     <Style TargetType="TabItem">
@@ -64,7 +64,7 @@
                     </Style>
                 </controls:MetroTabControl.Resources>
                 <controls:MetroTabItem x:Name="MainTab" Header="Home">
-                    <Grid>
+                    <Grid> 
                         <Button Style="{StaticResource MainBtns}" Click="MainBtn1_Click" Content="Theme"/>
                         <Label>hi</Label>
                     </Grid>
@@ -79,14 +79,15 @@
                             <ComboBox Height="40"
                                       ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
                                       IsSynchronizedWithCurrentItem="True"
-                                      DisplayMemberPath="Name" />
+                                      DisplayMemberPath="Name"
+                                      SelectedItem="{Binding Source={x:Static properties:PropertyHolder.Settings}, Path=AccentColor}" />
                             <ComboBox Height="40" SelectedIndex="0"
                                       ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
                                       IsSynchronizedWithCurrentItem="True"
                                       DisplayMemberPath="Name" />
                         </StackPanel>
                         <StackPanel Grid.Row="1">
-                            <CheckBox x:Name="DropShadowCheck" IsChecked="True" 
+                            <CheckBox x:Name="DropShadowCheck" IsChecked="True"
                                         Content="DropShadow" />
                             <CheckBox x:Name="DropGlowCheck" IsChecked="True"
                                         Content="DropGlow while window loses focus." />
@@ -97,10 +98,9 @@
                     </Grid>
                 </controls:MetroTabItem>
                 <controls:MetroTabItem Header="Urban">
-                    <urban:UrbanDictionaryPanel/>
+                    <dictionary:DictionaryApp />
                 </controls:MetroTabItem>
-            </controls:MetroTabControl> -->
-
+            </controls:MetroTabControl>
             <Grid x:Name="MainTabGrid" Visibility="Visible">
 
                 <Grid.RowDefinitions>

@@ -72,6 +72,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\PropertyHolder.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="SharedResources\AppSettings.cs" />
     <Compile Include="SharedResources\ColorPath.cs" />
     <Compile Include="Converters\DropGlowCheckBoxConverter.cs" />
@@ -116,17 +118,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\XeZrunner.UI\XeZrunner.UI\XeZrunner.UI.csproj">
-      <Project>{d04773cb-bfb2-4dc9-ae70-da99c2b38da5}</Project>
+    <ProjectReference Include="..\..\XeZrunner.UI\XeZrunner.UI.csproj">
+      <Project>{D04773CB-BFB2-4DC9-AE70-DA99C2B38DA5}</Project>
       <Name>XeZrunner.UI</Name>
     </ProjectReference>
     <ProjectReference Include="..\Apps\Dictionary\Dictionary.csproj">
       <Project>{e70fb7a9-8ed0-4595-9ad1-0378c5c9a6af}</Project>
       <Name>Dictionary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ReadmePleaseIfPossible.txt" />

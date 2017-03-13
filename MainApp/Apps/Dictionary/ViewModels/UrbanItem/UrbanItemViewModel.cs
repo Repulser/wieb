@@ -1,6 +1,6 @@
 ﻿using UrbanDictionnet;
 
-namespace Dictionary.UrbanItem.ViewModels
+namespace Dictionary.ViewModels
 {
     public class UrbanItemViewModel
     {
