@@ -1,19 +1,16 @@
-﻿<controls:MetroWindow x:Class="wiebApp.MainWindow"
+﻿<controls:MetroWindow x:Class="wiebApp.Views.MainWindow"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-<<<<<<< HEAD
-                      xmlns:controls="clr-namespace:MahApps.Metro.controls;assembly=MahApps.Metro"
-=======
->>>>>>> 7875137ec48df5638119a6824f80c0baae5d8ad1
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:converters="clr-namespace:wiebApp.Converters"
-                      xmlns:sharedresources="clr-namespace:wiebApp.SharedResources"
+                      xmlns:sharedResources="clr-namespace:wiebApp.SharedResources"
                       xmlns:xesignButtons="clr-namespace:XeZrunner.UI.Controls.Buttons;assembly=XeZrunner.UI"
                       xmlns:xesignWindow="clr-namespace:XeZrunner.UI.Controls.Window_components;assembly=XeZrunner.UI"
                       xmlns:dictionary="clr-namespace:Dictionary.Views;assembly=Dictionary"
                       xmlns:properties="clr-namespace:wiebApp.Properties"
+                      xmlns:viewModels="clr-namespace:wiebApp.ViewModels"
                       mc:Ignorable="d"
                       Height="600" Width="800"
                       WindowStartupLocation="CenterScreen"
@@ -24,16 +21,17 @@
                       ShowTitleBar="False" ShowCloseButton="False" ShowMaxRestoreButton="False" ShowMinButton="False">
 
     <Window.Resources>
-        <sharedresources:AppSettings x:Key="AppSettings" />
+        <sharedResources:AppSettings x:Key="AppSettings" />
+
+        <viewModels:TabControlProperties x:Key="TabControlProperties" />
 
         <converters:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
         <converters:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
- 
+
         <Style  x:Key="MainBtns" TargetType="Button" >
             <Setter Property="Width" Value="50" />
             <Setter Property="Height" Value="50" />
         </Style>
-        
     </Window.Resources>
 
 
@@ -50,13 +48,7 @@
         <Binding ElementName="DropShadowCheck" Path="IsChecked" />
     </controls:MetroWindow.EnableDWMDropShadow>
 
-<<<<<<< HEAD
-
-
-    <!--M A I N   G R I D   O F   D O O M-->
-=======
->>>>>>> 7875137ec48df5638119a6824f80c0baae5d8ad1
-    <Grid>
+    <Grid DataContext="{StaticResource TabControlProperties}">
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition />
@@ -64,7 +56,8 @@
         <Grid x:Name="BodyMainGrid" Grid.Row="1">
             
             <!-- old stuff -->
-            <controls:MetroTabControl x:Name="MainTabControl" BorderThickness="0" IsTabStop="True">
+            <controls:MetroTabControl x:Name="MainTabControl" BorderThickness="0"
+                                      SelectedIndex="{Binding TabControlIndex, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
                 <controls:MetroTabControl.Resources>
                     <Style TargetType="TabItem">
                         <Setter Property="Template">
@@ -74,13 +67,27 @@
                         </Setter>
                     </Style>
                 </controls:MetroTabControl.Resources>
-                <controls:MetroTabItem x:Name="MainTab" Header="Home">
-                    <Grid> 
-                        <Button Style="{StaticResource MainBtns}" Click="MainBtn1_Click" Content="Theme"/>
-                        <Label>hi</Label>
+                <controls:MetroTabItem x:Name="MainTab">
+                    <Grid Grid.Row="1">
+                        <WrapPanel x:Name="MainTabWrapPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <WrapPanel.Resources>
+                                <Style TargetType="xesignButtons:SettingsItemTile">
+                                    <Setter Property="AccentBrush" Value="{DynamicResource AccentColorBrush}" />
+                                </Style>
+                            </WrapPanel.Resources>
+
+                            <xesignButtons:SettingsItemTile Foreground="Black" IconText="&#xe164;"
+                                                            Title="Dictionary" Description="A simple app for translating and defining words"
+                                                            Click="DictionaryTile_Click" />
+
+                            <xesignButtons:SettingsItemTile Foreground="Black" IconText="&#xe115;"
+                                                            Title="Settings" Description="Configure the app"/>
+
+                        </WrapPanel>
+
                     </Grid>
                 </controls:MetroTabItem>
-                <controls:MetroTabItem x:Name="OptionsTab" Header="Settings">
+                <controls:MetroTabItem x:Name="OptionsTab">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="27*" />
@@ -108,50 +115,10 @@
                         </StackPanel>
                     </Grid>
                 </controls:MetroTabItem>
-                <controls:MetroTabItem Header="Urban">
+                <controls:MetroTabItem x:Name="DictionaryTab">
                     <dictionary:DictionaryApp />
                 </controls:MetroTabItem>
             </controls:MetroTabControl>
-            <Grid x:Name="MainTabGrid" Visibility="Visible">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" /> <!-- title and search(?) -->
-                    <RowDefinition /> <!-- actual tiles -->
-                </Grid.RowDefinitions>
-
-                <!-- Header -->
-                <Grid Grid.Row="0">
-                    <Label x:Name="MainTabHeader" Foreground="Black"
-                           HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10"
-                           FontSize="18" FontFamily="Segoe UI Semilight"
-                           Content="Main tab"/>
-                </Grid>
-
-                <!-- Tiles -->
-                <Grid Grid.Row="1">
-
-                    <WrapPanel x:Name="MainTabWrapPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <WrapPanel.Resources>
-                            <Style TargetType="xesignButtons:SettingsItemTile">
-                                <Setter Property="AccentBrush" Value="{DynamicResource AccentColorBrush}" />
-                            </Style>
-                        </WrapPanel.Resources>
-
-                        <xesignButtons:SettingsItemTile Foreground="Black" IconText="&#xe164;"
-                                                         Title="Dictionary" Description="A simple app for translating and defining words" Click="SettingsItemTile_Click"/>
-
-                        <xesignButtons:SettingsItemTile Foreground="Black" IconText="&#xe115;"
-                                                         Title="Settings" Description="Configure the app"/>
-
-                    </WrapPanel>
-                    
-                </Grid>
-                
-            </Grid>
-
-            <Grid x:Name="DictionaryAppGrid" Visibility="Collapsed">
-                <dictionary:DictionaryApp />
-            </Grid>
             
         </Grid>
 

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Data;
-using wiebApp.Converters;
+using wiebApp.ViewModels;
 
 namespace wiebApp.SharedResources
 {
@@ -97,7 +96,7 @@ namespace wiebApp.SharedResources
             set
             {
                 _accentColor = value;
-                OnPropertyChanged();
+                NotifyStaticPropertyChanged();
             }
         }
 
@@ -107,7 +106,7 @@ namespace wiebApp.SharedResources
             set
             {
                 _themeColor = value;
-                OnPropertyChanged();
+                NotifyStaticPropertyChanged();
             }
         }
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -90,13 +90,8 @@
     <Compile Include="Views\DictionaryApp\DictionaryApp.xaml.cs">
       <DependentUpon>DictionaryApp.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Views\MainDictionaryApp.xaml.cs">
-      <DependentUpon>MainDictionaryApp.xaml</DependentUpon>
-=======
     <Compile Include="Views\UrbanItem\UrbanItemControl.xaml.cs">
       <DependentUpon>UrbanItemControl.xaml</DependentUpon>
->>>>>>> 2beda284a71daa1b82af8192a10e2c692379fc1c
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,19 +104,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Page Include="UrbanDictionaryPanel\UrbanDicionaryPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainDictionaryApp.xaml">
-=======
     <Page Include="Views\DictionaryApp\DictionaryApp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UrbanItem\UrbanItemControl.xaml">
->>>>>>> 2beda284a71daa1b82af8192a10e2c692379fc1c
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
