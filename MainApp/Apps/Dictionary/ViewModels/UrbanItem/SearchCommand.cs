@@ -2,8 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using Dictionary.Views;
-using Dictionary.ViewModels;
 using UrbanDictionnet;
 
 namespace Dictionary.ViewModels
@@ -18,7 +16,10 @@ namespace Dictionary.ViewModels
         private DictionaryAppViewModel Vm { get; }
         private UrbanClient Client { get; } = new UrbanClient();
 
-        public bool CanExecute(object parameter) => true;
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
 
         public async void Execute(object parameter)
         {

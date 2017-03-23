@@ -67,14 +67,14 @@ namespace wiebApp.SharedResources
             }
             if (_themeColor != null)
             {
-                App.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
                 {
                     Source = new Uri(_themeColor)
                 });
             }
         }
 
-        private void CollectionAccentView(object sender, System.EventArgs e)
+        private void CollectionAccentView(object sender, EventArgs e)
         {
             var item = _collectionAccentView.CurrentItem as ColorPath;
             if (item != null)
@@ -83,7 +83,7 @@ namespace wiebApp.SharedResources
             }
             if (_accentColor != null)
             {
-                App.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
                 {
                     Source = new Uri(_accentColor)
                 });
@@ -96,7 +96,7 @@ namespace wiebApp.SharedResources
             set
             {
                 _accentColor = value;
-                NotifyStaticPropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -106,7 +106,7 @@ namespace wiebApp.SharedResources
             set
             {
                 _themeColor = value;
-                NotifyStaticPropertyChanged();
+                OnPropertyChanged();
             }
         }
 

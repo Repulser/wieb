@@ -4,10 +4,7 @@
     {
         public static Settings Settings
         {
-            get
-            {
-                return Settings.Default;
-            }
+            get { return Settings.Default; }
         }
     }
 }

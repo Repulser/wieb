@@ -9,7 +9,7 @@ namespace wiebApp.ViewModels
         public static event PropertyChangedEventHandler StaticPropertyChanged;
 
         [NotifyPropertyChangedInvocator]
-        protected static void NotifyStaticPropertyChanged([CallerMemberName] string propertyName = null)
+        protected static void OnStaticPropertyChanged([CallerMemberName] string propertyName = null)
         {
             StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
         }

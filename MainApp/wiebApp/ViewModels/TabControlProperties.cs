@@ -2,15 +2,15 @@
 {
     public class TabControlProperties : NotifyPropertyChanged
     {
-        private static int _tabControlIndex;
+        private int _tabControlIndex;
 
-        public static int TabControlIndex
+        public int TabControlIndex
         {
             get { return _tabControlIndex; }
             set
             {
                 _tabControlIndex = value;
-                NotifyStaticPropertyChanged();
+                OnPropertyChanged();
             }
         }
     }

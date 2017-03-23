@@ -11,7 +11,10 @@ namespace Dictionary.ViewModels
 
         private DefinitionData Definition { get; }
 
-        public string Title => $"{Definition.Author}'s definition for {Definition.Word}";
+        public string Title
+        {
+            get { return $"{Definition.Author}'s definition for {Definition.Word}"; }
+        }
 
         public string DefinitionString
         {
@@ -19,9 +22,19 @@ namespace Dictionary.ViewModels
             set { Definition.Definition = value; }
         }
 
-        public int Upvotes => Definition.ThumbsUp;
-        public int Downvotes => Definition.ThumbsDown;
+        public int Upvotes
+        {
+            get { return Definition.ThumbsUp; }
+        }
 
-        public string Example => Definition.Example;
+        public int Downvotes
+        {
+            get { return Definition.ThumbsDown; }
+        }
+
+        public string Example
+        {
+            get { return Definition.Example; }
+        }
     }
 }

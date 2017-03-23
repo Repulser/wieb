@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using wiebApp.SharedResources;
 
 namespace wiebApp
 {

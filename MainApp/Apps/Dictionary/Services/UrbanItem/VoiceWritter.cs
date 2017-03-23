@@ -1,6 +1,5 @@
 ﻿using System.Speech.Recognition;
 using System.Threading.Tasks;
-using Dictionary.ViewModels;
 
 namespace Dictionary.Services
 {
@@ -12,12 +11,7 @@ namespace Dictionary.Services
             string recognizedWord = "";
 
             Choices words = new Choices();
-            words.Add(new string[]
-            {
-                "Title",
-                "Definition",
-                "Word"
-            });
+            words.Add("Title", "Definition", "Word");
 
             GrammarBuilder grammarBuilder = new GrammarBuilder();
             grammarBuilder.Append(words);

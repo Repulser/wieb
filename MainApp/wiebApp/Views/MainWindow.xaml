@@ -11,8 +11,10 @@
                       xmlns:dictionary="clr-namespace:Dictionary.Views;assembly=Dictionary"
                       xmlns:properties="clr-namespace:wiebApp.Properties"
                       xmlns:viewModels="clr-namespace:wiebApp.ViewModels"
+                      xmlns:views="clr-namespace:wiebApp.Views"
                       mc:Ignorable="d"
-                      Height="600" Width="800"
+                      DataContext="{Binding RelativeSource={RelativeSource Self}, Path=_TabControlProperties}"
+                      Height="300" Width="300"
                       WindowStartupLocation="CenterScreen"
                       ResizeMode="CanMinimize"
                       BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
@@ -23,8 +25,6 @@
     <Window.Resources>
         <sharedResources:AppSettings x:Key="AppSettings" />
 
-        <viewModels:TabControlProperties x:Key="TabControlProperties" />
-
         <converters:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
         <converters:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
 
@@ -32,8 +32,8 @@
             <Setter Property="Width" Value="50" />
             <Setter Property="Height" Value="50" />
         </Style>
-    </Window.Resources>
 
+    </Window.Resources>
 
     <controls:MetroWindow.NonActiveGlowBrush>
         <Binding ElementName="DropGlowCheck" Path="IsChecked" Converter="{StaticResource DropGlowConverter}" />
@@ -48,7 +48,7 @@
         <Binding ElementName="DropShadowCheck" Path="IsChecked" />
     </controls:MetroWindow.EnableDWMDropShadow>
 
-    <Grid DataContext="{StaticResource TabControlProperties}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition />
@@ -56,9 +56,9 @@
         <Grid x:Name="BodyMainGrid" Grid.Row="1">
             
             <!-- old stuff -->
-            <controls:MetroTabControl x:Name="MainTabControl" BorderThickness="0"
-                                      SelectedIndex="{Binding TabControlIndex, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
-                <controls:MetroTabControl.Resources>
+            <TabControl x:Name="MainTabControl" BorderThickness="0"
+                                      SelectedIndex="{Binding TabControlIndex, Mode=TwoWay}" >
+                <TabControl.Resources>
                     <Style TargetType="TabItem">
                         <Setter Property="Template">
                             <Setter.Value>
@@ -66,8 +66,8 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                </controls:MetroTabControl.Resources>
-                <controls:MetroTabItem x:Name="MainTab">
+                </TabControl.Resources>
+                <TabItem x:Name="MainTab">
                     <Grid Grid.Row="1">
                         <WrapPanel x:Name="MainTabWrapPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <WrapPanel.Resources>
@@ -78,16 +78,17 @@
 
                             <xesignButtons:SettingsItemTile Foreground="Black" IconText="&#xe164;"
                                                             Title="Dictionary" Description="A simple app for translating and defining words"
-                                                            Click="DictionaryTile_Click" />
+                                                            Click="DictionaryTile_Click" ViewMode="Mobile" />
 
                             <xesignButtons:SettingsItemTile Foreground="Black" IconText="&#xe115;"
-                                                            Title="Settings" Description="Configure the app"/>
+                                                            Title="Settings" Description="Configure the app"
+                                                            Click="SettingsTile_Click" ViewMode="Mobile" />
 
                         </WrapPanel>
 
                     </Grid>
-                </controls:MetroTabItem>
-                <controls:MetroTabItem x:Name="OptionsTab">
+                </TabItem>
+                <TabItem x:Name="OptionsTab">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="27*" />
@@ -102,7 +103,8 @@
                             <ComboBox Height="40" SelectedIndex="0"
                                       ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
                                       IsSynchronizedWithCurrentItem="True"
-                                      DisplayMemberPath="Name" />
+                                      DisplayMemberPath="Name"
+                                      SelectedItem="{Binding Source={x:Static properties:PropertyHolder.Settings}, Path=ThemeColor}" />
                         </StackPanel>
                         <StackPanel Grid.Row="1">
                             <CheckBox x:Name="DropShadowCheck" IsChecked="True"
@@ -114,17 +116,17 @@
                             <Slider x:Name="OpacitySlide" Maximum="100" Minimum="50" />
                         </StackPanel>
                     </Grid>
-                </controls:MetroTabItem>
-                <controls:MetroTabItem x:Name="DictionaryTab">
+                </TabItem>
+                <TabItem x:Name="DictionaryTab">
                     <dictionary:DictionaryApp />
-                </controls:MetroTabItem>
-            </controls:MetroTabControl>
+                </TabItem>
+            </TabControl>
             
         </Grid>
 
         <Rectangle Fill="#0A000000" Grid.Row="0" />
 
-        <xesignWindow:TitlebarControl x:Name="TitlebarControl" Grid.Row="0" Foreground="Black" MenuButtonVisibility="Collapsed" BackButtonVisibility="Collapsed" BackButton_Click="TitlebarControl_BackButton_Click" AppTitle="wieb" MaximizeButtonVisibility="Collapsed" />
+            <xesignWindow:TitlebarControl x:Name="TitlebarControl" Grid.Row="0" Foreground="Black" MenuButtonVisibility="Collapsed" BackButtonVisibility="Collapsed" BackButton_Click="TitlebarControl_BackButton_Click" AppTitle="wieb" MaximizeButtonVisibility="Collapsed" />
 
     </Grid>
     
