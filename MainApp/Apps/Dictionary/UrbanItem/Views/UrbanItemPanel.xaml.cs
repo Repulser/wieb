@@ -25,11 +25,6 @@ namespace Dictionary.UrbanItem.Views
             DataContextChanged += UrbanItemPanel_DataContextChanged;
         }
 
-        public UrbanItemPanel(DefinitionData data)
-        {
-            //DataContext = new UrbanItemViewModel(data);
-        }
-
         private void UrbanItemPanel_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             _urbanItemViewModel = e.NewValue as UrbanItemViewModel;
