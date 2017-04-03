@@ -13,7 +13,7 @@
                       xmlns:viewModels="clr-namespace:wiebApp.ViewModels"
                       xmlns:views="clr-namespace:wiebApp.Views"
                       mc:Ignorable="d"
-                      DataContext="{Binding RelativeSource={RelativeSource Self}, Path=_TabControlProperties}"
+                      DataContext="{Binding RelativeSource={RelativeSource Self}, Path=TabProperties}"
                       Height="300" Width="300"
                       WindowStartupLocation="CenterScreen"
                       ResizeMode="CanMinimize"
@@ -27,6 +27,7 @@
 
         <converters:DropShadowCheckBoxConverter x:Key="DropShadowConverter" />
         <converters:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
+        <converters:DebugConverter x:Key="DebugConverter" />
 
         <Style  x:Key="MainBtns" TargetType="Button" >
             <Setter Property="Width" Value="50" />
@@ -94,17 +95,17 @@
                             <RowDefinition Height="27*" />
                             <RowDefinition Height="61*" />
                         </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="0">
+                        <StackPanel Grid.Row="0" DataContext="{Binding Source={StaticResource AppSettings}}">
                             <ComboBox Height="40"
-                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=AccentColors}"
+                                      ItemsSource="{Binding AccentColors}"
                                       IsSynchronizedWithCurrentItem="True"
                                       DisplayMemberPath="Name"
-                                      SelectedItem="{Binding Source={x:Static properties:PropertyHolder.Settings}, Path=AccentColor}" />
-                            <ComboBox Height="40" SelectedIndex="0"
-                                      ItemsSource="{Binding Source={StaticResource AppSettings}, Path=ThemeColors}"
+                                      SelectedItem="{Binding SelectedAccentColor}" />
+                            <ComboBox Height="40"
+                                      ItemsSource="{Binding ThemeColors}"
                                       IsSynchronizedWithCurrentItem="True"
                                       DisplayMemberPath="Name"
-                                      SelectedItem="{Binding Source={x:Static properties:PropertyHolder.Settings}, Path=ThemeColor}" />
+                                      SelectedItem="{Binding SelectedThemeColor}" />
                         </StackPanel>
                         <StackPanel Grid.Row="1">
                             <CheckBox x:Name="DropShadowCheck" IsChecked="True"
@@ -126,7 +127,11 @@
 
         <Rectangle Fill="#0A000000" Grid.Row="0" />
 
-            <xesignWindow:TitlebarControl x:Name="TitlebarControl" Grid.Row="0" Foreground="Black" MenuButtonVisibility="Collapsed" BackButtonVisibility="Collapsed" BackButton_Click="TitlebarControl_BackButton_Click" AppTitle="wieb" MaximizeButtonVisibility="Collapsed" />
+            <xesignWindow:TitlebarControl x:Name="TitlebarControl" Grid.Row="0" Foreground="Black"
+                                          MenuButtonVisibility="Collapsed"
+                                          BackButtonVisibility="{Binding BackButtonVisibility, Mode=TwoWay}"
+                                          BackButton_Click="TitlebarControl_BackButton_Click"
+                                          AppTitle="wieb" MaximizeButtonVisibility="Collapsed" />
 
     </Grid>
     

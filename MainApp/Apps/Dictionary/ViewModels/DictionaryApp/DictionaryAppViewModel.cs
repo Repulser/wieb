@@ -12,7 +12,8 @@ namespace Dictionary.ViewModels
             Search = new SearchCommand(this);
 
             ResultsView = (ListCollectionView) CollectionViewSource.GetDefaultView(Results);
-            ResultsView.MoveCurrentToFirst();
+            Results.CollectionChanged += (s, a) 
+                => ResultsView.MoveCurrentToFirst();
         }
 
         public ObservableCollection<string> Tags { get; private set; } 

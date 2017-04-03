@@ -72,7 +72,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\DebugConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\CustomSettings.cs" />
     <Compile Include="Properties\PropertyHolder.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SharedResources\AppSettings.cs" />
@@ -80,7 +82,7 @@
     <Compile Include="Converters\DropGlowCheckBoxConverter.cs" />
     <Compile Include="Converters\DropShadowCheckBoxConverter.cs" />
     <Compile Include="ViewModels\NotifyPropertyChanged.cs" />
-    <Compile Include="ViewModels\TabControlProperties.cs" />
+    <Compile Include="ViewModels\TabProperties.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

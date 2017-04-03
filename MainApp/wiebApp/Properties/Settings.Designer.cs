@@ -22,29 +22,5 @@ namespace wiebApp.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string AccentColor {
-            get {
-                return ((string)(this["AccentColor"]));
-            }
-            set {
-                this["AccentColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ThemeColor {
-            get {
-                return ((string)(this["ThemeColor"]));
-            }
-            set {
-                this["ThemeColor"] = value;
-            }
-        }
     }
 }
