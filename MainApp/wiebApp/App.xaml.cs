@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Windows;
-using wiebApp.SharedResources;
 
 namespace wiebApp
 {
@@ -9,16 +8,6 @@ namespace wiebApp
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Current.Resources.MergedDictionaries.Add(new ResourceDictionary
-            {
-                Source = new Uri(AppSettings.Default.SelectedAccentColor.Path)
-            });
-
-            Current.Resources.MergedDictionaries.Add(new ResourceDictionary
-            {
-                Source = new Uri(AppSettings.Default.SelectedThemeColor.Path)
-            });
-
             new Mutex(true, "wieb", out bool aIsNewInstance);
             if (!aIsNewInstance)
             {

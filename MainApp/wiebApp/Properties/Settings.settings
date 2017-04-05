@@ -2,10 +2,10 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="wiebApp.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="AccentColor" Type="System.String" Scope="User">
+    <Setting Name="SelectedAccentColor" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ThemeColor" Type="System.String" Scope="User">
+    <Setting Name="SelectedThemeColor" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

@@ -49,15 +49,16 @@
                  BorderThickness="{Binding DictionaryVm.TextBoxThickness}"
                  BorderBrush="{Binding DictionaryVm.SearchBoxBrush}" />
         <Button x:Name="Button" Grid.Row="0" Grid.Column="1" Content="Search" FontSize="7"
-                Command="{Binding DictionaryVm.Search}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                Command="{Binding DictionaryVm.Search}"
                 MinHeight="25" />
-        <ContentControl x:Name="ResultsBlock" Grid.Row="1" Grid.Column="0"
-                  Content="{Binding DictionaryVm.ResultsView, UpdateSourceTrigger=PropertyChanged}"
-                  ContentTemplate="{StaticResource ResultsTemplate}" />
+        <ItemsControl x:Name="ResultsBlock" Grid.Row="1" Grid.Column="0"
+                  ItemsSource="{Binding DictionaryVm.Results}"
+                  ItemTemplate="{StaticResource ResultsTemplate}" />
         <GroupBox Grid.Column="1" Grid.Row="1" Header="Tags" custom:ControlsHelper.HeaderFontWeight="Bold">
-            <Grid Name="Hello">
+            <Grid>
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                    <ItemsControl Background="Transparent" x:Name="Tags" ItemsSource="{Binding DictionaryVm.Tags}"
+                    <ItemsControl Background="Transparent" x:Name="Tags" 
+                                  ItemsSource="{Binding DictionaryVm.Tags}"
                                   ItemTemplate="{StaticResource TagsTemplate}">
                     </ItemsControl>
                 </ScrollViewer>

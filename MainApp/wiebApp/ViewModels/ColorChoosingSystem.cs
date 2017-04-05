@@ -4,25 +4,21 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using wiebApp.Models;
 using wiebApp.Properties;
-using wiebApp.ViewModels;
 
-namespace wiebApp.SharedResources
+namespace wiebApp.ViewModels
 {
-    internal class AppSettings : NotifyPropertyChanged
+    internal class ColorChoosingSystem : NotifyPropertyChanged
     {
         //Private Fields
-        private static AppSettings _defaultInstance;
-
-        private string _accentColor;
-        private string _themeColor;
 
         private ColorPath _selectedAccentColor;
         private ColorPath _selectedThemeColor;
 
 
         //Public Properties
-        public static AppSettings Default => _defaultInstance;
+        public static ColorChoosingSystem Instance { get; private set; }
 
         public ObservableCollection<ColorPath> AccentColors { get; set; }
         public ObservableCollection<ColorPath> ThemeColors { get; set; }
@@ -36,45 +32,27 @@ namespace wiebApp.SharedResources
             set
             {
                 _selectedAccentColor = value;
-                PropertyHolder.Settings.AccentColor = value;
+                PropertyHolder.Settings.SelectedAccentColor = value;
                 OnPropertyChanged();
             }
         }
+
         public ColorPath SelectedThemeColor
         {
             get { return _selectedThemeColor; }
             set
             {
                 _selectedThemeColor = value;
-                PropertyHolder.Settings.ThemeColor = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string AccentColor
-        {
-            get { return _accentColor; }
-            set
-            {
-                _accentColor = value;
-                OnPropertyChanged();
-            }
-        }
-        public string ThemeColor
-        {
-            get { return _themeColor; }
-            set
-            {
-                _themeColor = value;
+                PropertyHolder.Settings.SelectedThemeColor = value;
                 OnPropertyChanged();
             }
         }
 
 
         //Methods
-        public AppSettings()
+        public ColorChoosingSystem()
         {
-            _defaultInstance = this;
+            Instance = this;
 
             AccentColors = new ObservableCollection<ColorPath>
             {
@@ -193,42 +171,65 @@ namespace wiebApp.SharedResources
             {
                 new ColorPath
                 {
-                    Name = "BaseDark",
+                    Name = "Dark",
                     Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/basedark.xaml"
                 },
                 new ColorPath
                 {
-                    Name = "BaseLight",
+                    Name = "Light",
                     Path = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/baselight.xaml"
                 }
             };
-
-            _selectedAccentColor = PropertyHolder.Settings.AccentColor;
-            _selectedThemeColor = PropertyHolder.Settings.ThemeColor;
 
             CollectionAccentView = CollectionViewSource.GetDefaultView(AccentColors);
             CollectionAccentView.CurrentChanged += CollectionAccentView_Changed;
 
             CollectionThemeView = CollectionViewSource.GetDefaultView(ThemeColors);
             CollectionThemeView.CurrentChanged += CollectionThemeView_Changed;
+            if (PropertyHolder.Settings.SelectedAccentColor != null)
+            {
+                SelectedAccentColor = AccentColors
+                    .SingleOrDefault(color =>
+                        color.Path == PropertyHolder.Settings.SelectedAccentColor.Path &&
+                        color.Name == PropertyHolder.Settings.SelectedAccentColor.Name);
+            }
+            else
+            {
+                SelectedAccentColor = AccentColors.First();
+            }
+
+            if (PropertyHolder.Settings.SelectedThemeColor != null)
+            {
+                SelectedThemeColor = ThemeColors
+                    .SingleOrDefault(
+                        color =>
+                            color.Path == PropertyHolder.Settings.SelectedThemeColor.Path &&
+                            color.Name == PropertyHolder.Settings.SelectedThemeColor.Name);
+            }
+            else
+            {
+                SelectedThemeColor = ThemeColors.First();
+            }
         }
 
         private void CollectionAccentView_Changed(object sender, EventArgs e)
         {
+            string colorPath = SelectedAccentColor.Path;
             CheckIfDeletable(ThemeColors, CollectionAccentView,
-                out ResourceDictionary last, out bool isDeletable, out _accentColor);
+                out ResourceDictionary last, out bool isDeletable, out colorPath);
 
-            CreateResourceDictionary(isDeletable, last, AccentColor,
-                PropertyHolder.Settings.AccentColor.Path, CollectionAccentView);
+            CreateResourceDictionary(isDeletable, last, SelectedAccentColor.Path,
+                PropertyHolder.Settings.SelectedAccentColor.Path, CollectionAccentView);
         }
 
         public void CollectionThemeView_Changed(object sender, EventArgs eventArgs)
         {
+            string colorPath = SelectedThemeColor.Path;
             CheckIfDeletable(AccentColors, CollectionThemeView,
-                out ResourceDictionary last, out bool isDeletable, out _themeColor);
+                out ResourceDictionary last, out bool isDeletable, out colorPath);
 
-            CreateResourceDictionary(isDeletable, last, ThemeColor,
-                PropertyHolder.Settings.ThemeColor.Path, CollectionThemeView);
+            CreateResourceDictionary(isDeletable, last, SelectedThemeColor.Path,
+                PropertyHolder.Settings.SelectedThemeColor.Path, CollectionThemeView);
         }
 
         private void CheckIfDeletable(
@@ -251,7 +252,8 @@ namespace wiebApp.SharedResources
             }
         }
 
-        private void CreateResourceDictionary(bool isDeletable, ResourceDictionary last,
+        private void CreateResourceDictionary(
+            bool isDeletable, ResourceDictionary last,
             string colorPath, string settingsColor, ICollectionView view)
         {
             if (isDeletable)

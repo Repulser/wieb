@@ -6,7 +6,6 @@ using System.Threading;
 using System.Windows;
 using MahApps.Metro.Controls;
 using wiebApp.Properties;
-using wiebApp.SharedResources;
 using wiebApp.ViewModels;
 
 namespace wiebApp.Views

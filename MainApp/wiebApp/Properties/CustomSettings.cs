@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using wiebApp.SharedResources;
+using wiebApp.Models;
 
 namespace wiebApp.Properties
 {
@@ -12,30 +12,30 @@ namespace wiebApp.Properties
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public ColorPath AccentColor
+        public ColorPath SelectedAccentColor
         {
             get
             {
-                return ((ColorPath)(this["AccentColor"]));
+                return ((ColorPath)(this["SelectedAccentColor"]));
             }
             set
             {
-                this["AccentColor"] = value;
+                this["SelectedAccentColor"] = value;
             }
         }
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public ColorPath ThemeColor
+        public ColorPath SelectedThemeColor
         {
             get
             {
-                return ((ColorPath)(this["ThemeColor"]));
+                return ((ColorPath)(this["SelectedThemeColor"]));
             }
             set
             {
-                this["ThemeColor"] = value;
+                this["SelectedThemeColor"] = value;
             }
         }
     }

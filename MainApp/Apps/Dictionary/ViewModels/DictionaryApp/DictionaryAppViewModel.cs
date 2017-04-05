@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -11,9 +12,11 @@ namespace Dictionary.ViewModels
         {
             Search = new SearchCommand(this);
 
-            ResultsView = (ListCollectionView) CollectionViewSource.GetDefaultView(Results);
-            Results.CollectionChanged += (s, a) 
-                => ResultsView.MoveCurrentToFirst();
+            ResultsView = CollectionViewSource.GetDefaultView(Results);
+            Results.CollectionChanged += (sender, args) =>
+            {
+                ResultsView.MoveCurrentToLast();
+            };
         }
 
         public ObservableCollection<string> Tags { get; private set; } 
@@ -22,7 +25,7 @@ namespace Dictionary.ViewModels
         public ObservableCollection<UrbanItemViewModel> Results { get; set; } =
             new ObservableCollection<UrbanItemViewModel>();
 
-        public ListCollectionView ResultsView { get; set; }
+        public ICollectionView ResultsView { get; set; }
 
         public static string SearchBoxText { get; set; }
 
