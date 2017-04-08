@@ -1,19 +1,24 @@
-﻿using UrbanDictionnet;
+﻿using System.Windows;
+using System.Windows.Media;
+using UrbanDictionnet;
 
 namespace Dictionary.ViewModels
 {
-    public class UrbanItemViewModel
+    public class UrbanItemViewModel : NotfiyPropertyChanged
     {
         public UrbanItemViewModel(DefinitionData definitionData)
         {
+            Instance = this;
             Definition = definitionData;
         }
+
+        public static UrbanItemViewModel Instance { get; set; }
 
         private DefinitionData Definition { get; }
 
         public string Title
         {
-            get { return $"{Definition.Author}'s definition for {Definition.Word}"; }
+            get { return Definition.Word; }
         }
 
         public string DefinitionString
@@ -30,6 +35,11 @@ namespace Dictionary.ViewModels
         public int Downvotes
         {
             get { return Definition.ThumbsDown; }
+        }
+
+        public string Author
+        {
+            get { return Definition.Author; }
         }
 
         public string Example

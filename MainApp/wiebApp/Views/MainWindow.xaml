@@ -27,8 +27,13 @@
             <Setter Property="Width" Value="50" />
             <Setter Property="Height" Value="50" />
         </Style>
-
+        
+        <RoutedCommand x:Key="ClearColorCommand" />
     </Window.Resources>
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource ClearColorCommand}" Executed="ClearSavedColor" />
+    </Window.CommandBindings>
 
     <mahapps:MetroWindow.NonActiveGlowBrush>
         <Binding ElementName="DropGlowCheck" Path="IsChecked" Converter="{StaticResource DropGlowConverter}" />
@@ -44,12 +49,8 @@
     </mahapps:MetroWindow.EnableDWMDropShadow>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid x:Name="BodyMainGrid" Grid.Row="1">
-            
+        <Grid x:Name="BodyMainGrid">
+
             <!-- old stuff -->
             <TabControl x:Name="MainTabControl" BorderThickness="0"
                                       SelectedIndex="{Binding TabControlIndex, Mode=TwoWay}" >
@@ -63,12 +64,12 @@
                     </Style>
                 </TabControl.Resources>
                 <TabItem x:Name="MainTab">
-                    <Grid Grid.Row="1">
+                    <Grid>
                         <WrapPanel x:Name="MainTabWrapPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            
+
                             <Button Content="Dictionary" Click="DictionaryTile_Click" />
                             <Button Content="Settings" Click="SettingsTile_Click" />
-                            
+
                             <!--<controls:Tile Foreground="Black" Title="Dictionary" 
                                            Content="A simple app for translating and defining words" 
                                            Click="DictionaryTile_Click" />-->
@@ -98,6 +99,7 @@
                                       IsSynchronizedWithCurrentItem="True"
                                       DisplayMemberPath="Name"
                                       SelectedItem="{Binding SelectedThemeColor, UpdateSourceTrigger=PropertyChanged}" />
+
                         </StackPanel>
                         <StackPanel Grid.Row="1">
                             <CheckBox x:Name="DropShadowCheck" IsChecked="True"
@@ -107,6 +109,7 @@
                             <CheckBox x:Name="TopMostCheck" IsChecked="false"
                                         Content="Enable TopMost mode." />
                             <Slider x:Name="OpacitySlide" Maximum="100" Minimum="50" />
+                            <Button Content="Clear Saved Data" Command="{StaticResource ClearColorCommand}" />
                         </StackPanel>
                     </Grid>
                 </TabItem>
@@ -114,10 +117,8 @@
                     <dictionary:DictionaryApp />
                 </TabItem>
             </TabControl>
-            
-        </Grid>
 
-        <Rectangle Fill="#0A000000" Grid.Row="0" />
+        </Grid>
 
     </Grid>
     

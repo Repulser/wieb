@@ -4,6 +4,7 @@ using System.IO.Pipes;
 using System.Net.Configuration;
 using System.Threading;
 using System.Windows;
+using System.Windows.Input;
 using MahApps.Metro.Controls;
 using wiebApp.Properties;
 using wiebApp.ViewModels;
@@ -51,6 +52,11 @@ namespace wiebApp.Views
         private void SettingsTile_Click(object sender, RoutedEventArgs e)
         {
             TabProperties.TabControlIndex = 1;
+        }
+
+        private void ClearSavedColor(object sender, ExecutedRoutedEventArgs e)
+        {
+            PropertyHolder.Settings.Reset();
         }
     }
 }

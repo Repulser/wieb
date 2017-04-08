@@ -189,13 +189,17 @@ namespace wiebApp.ViewModels
             if (PropertyHolder.Settings.SelectedAccentColor != null)
             {
                 SelectedAccentColor = AccentColors
-                    .SingleOrDefault(color =>
-                        color.Path == PropertyHolder.Settings.SelectedAccentColor.Path &&
-                        color.Name == PropertyHolder.Settings.SelectedAccentColor.Name);
+                    .SingleOrDefault(
+                        color =>
+                            color.Path == PropertyHolder.Settings.SelectedAccentColor.Path &&
+                            color.Name == PropertyHolder.Settings.SelectedAccentColor.Name);
             }
             else
             {
-                SelectedAccentColor = AccentColors.First();
+                SelectedAccentColor = AccentColors
+                    .SingleOrDefault(
+                        color => 
+                            color.Name == "Red");
             }
 
             if (PropertyHolder.Settings.SelectedThemeColor != null)
@@ -208,7 +212,10 @@ namespace wiebApp.ViewModels
             }
             else
             {
-                SelectedThemeColor = ThemeColors.First();
+                SelectedThemeColor = ThemeColors
+                    .SingleOrDefault(
+                        color => 
+                            color.Name == "Light");
             }
         }
 

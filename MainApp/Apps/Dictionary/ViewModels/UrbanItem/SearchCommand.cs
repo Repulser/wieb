@@ -14,7 +14,8 @@ namespace Dictionary.ViewModels
         }
 
         private DictionaryAppViewModel Vm { get; }
-        private UrbanClient Client { get; } = new UrbanClient();
+        private UrbanClient Client { get; } 
+            = new UrbanClient();
 
         public bool CanExecute(object parameter)
         {
@@ -29,7 +30,6 @@ namespace Dictionary.ViewModels
                 Vm.TextBoxThickness = new Thickness(1);
                 return;
             }
-
             Vm.TextBoxThickness = new Thickness(0);
             Vm.Tags.Clear();
             Vm.Results.Clear();
