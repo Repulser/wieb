@@ -13,9 +13,12 @@ namespace Dictionary.ViewModels
 {
     public class DictionaryAppViewModel : NotfiyPropertyChanged
     {
+        //Private members
         private static string _searchBoxText;
         private static ObservableCollection<string> _suggestionsCollection;
         public static DictionaryAppViewModel Instance { get; set; }
+
+        //Methods
         public DictionaryAppViewModel()
         {
             Instance = this;
@@ -31,13 +34,16 @@ namespace Dictionary.ViewModels
             SuggestionsCollection = new ObservableCollection<string>();
         }
 
-        public ObservableCollection<string> Tags { get; private set; } 
-            = new ObservableCollection<string>();
-
-        public ObservableCollection<UrbanItemViewModel> Results { get; set; } 
-            = new ObservableCollection<UrbanItemViewModel>();
-
-        public ICollectionView ResultsView { get; set; }
+        //Public fields
+        public static ObservableCollection<string> SuggestionsCollection
+        {
+            get { return _suggestionsCollection; }
+            set
+            {
+                _suggestionsCollection = value;
+                OnStaticPropertyChanged();
+            }
+        }
 
         public static string SearchBoxText
         {
@@ -66,20 +72,18 @@ namespace Dictionary.ViewModels
             }
         }
 
+        public ObservableCollection<string> Tags { get; private set; } 
+            = new ObservableCollection<string>();
+
+        public ObservableCollection<UrbanItemViewModel> Results { get; set; } 
+            = new ObservableCollection<UrbanItemViewModel>();
+
+        public ICollectionView ResultsView { get; set; }
+
         public Brush SearchBoxBrush { get; set; }
 
         public Thickness TextBoxThickness { get; set; }
 
         public SearchCommand Search { get; }
-
-        public static ObservableCollection<string> SuggestionsCollection
-        {
-            get { return _suggestionsCollection; }
-            set
-            {
-                _suggestionsCollection = value;
-                OnStaticPropertyChanged();
-            }
-        }
     }
 }
