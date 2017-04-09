@@ -13,5 +13,13 @@ namespace Dictionary.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public static event PropertyChangedEventHandler StaticPropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected static void OnStaticPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

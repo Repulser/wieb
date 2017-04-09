@@ -14,8 +14,6 @@ namespace Dictionary.ViewModels
         }
 
         private DictionaryAppViewModel Vm { get; }
-        private UrbanClient Client { get; } 
-            = new UrbanClient();
 
         public bool CanExecute(object parameter)
         {
@@ -36,7 +34,7 @@ namespace Dictionary.ViewModels
 
             try
             {
-                WordDefine definition = await Client.GetWordAsync(DictionaryAppViewModel.SearchBoxText);
+                WordDefine definition = await new UrbanClient().GetWordAsync(DictionaryAppViewModel.SearchBoxText);
                 foreach (DefinitionData definitionData in definition.List)
                 {
                     Vm.Results.Add(new UrbanItemViewModel(definitionData));

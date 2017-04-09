@@ -36,9 +36,17 @@
             <ColumnDefinition Width="239*" />
             <ColumnDefinition Width="61*" />
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="TextBox" Text="{Binding SearchBoxText, Mode=OneWayToSource}"
-                 BorderThickness="{Binding TextBoxThickness}"
-                 BorderBrush="{Binding SearchBoxBrush}" />
+        <StackPanel Orientation="Vertical">
+            <TextBox x:Name="TextBox" Text="{Binding SearchBoxText, UpdateSourceTrigger=PropertyChanged, 
+                                                                    Mode=OneWayToSource}"
+                     BorderThickness="{Binding TextBoxThickness}"
+                     BorderBrush="{Binding SearchBoxBrush}" />
+            <ComboBox ItemsSource="{Binding SuggestionsCollection}"
+                      Text="{Binding SearchBoxText, Mode=TwoWay}"
+                      IsEditable="True"
+                      IsDropDownOpen="True"
+                      StaysOpenOnEdit="True" />
+        </StackPanel>
         <Button x:Name="Button" Grid.Row="0" Grid.Column="1" Content="Search" FontSize="7"
                 Command="{Binding Search}"
                 MinHeight="25" />
