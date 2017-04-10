@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Media;
-using UrbanDictionnet;
+﻿using UrbanDictionnet;
 
 namespace Dictionary.ViewModels
 {
