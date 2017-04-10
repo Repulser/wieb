@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoogleTranslateAPI, Version=0.3.1.107, Culture=neutral, PublicKeyToken=37a8e65b17fcdcbb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Google.Translate.api.0.3.1\lib\net40\GoogleTranslateAPI.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\MahApps.Metro.1.5.0-alpha008\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -99,6 +102,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Resource Include="Fonts\segoe-mdl2-assets.ttf" />
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
