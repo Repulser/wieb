@@ -10,27 +10,22 @@ namespace Dictionary.Services
             SpeechRecognizer recognizer = new SpeechRecognizer();
             string recognizedWord = "";
 
-            Choices words = new Choices();
+            var words = new Choices();
             words.Add("Title", "Definition", "Word");
 
-            GrammarBuilder grammarBuilder = new GrammarBuilder();
+            var grammarBuilder = new GrammarBuilder();
             grammarBuilder.Append(words);
 
-            Grammar grammar = new Grammar(grammarBuilder);
-            Task task = new Task(() =>
-            {
-                recognizer.LoadGrammar(grammar);
-            });
+            var grammar = new Grammar(grammarBuilder);
+            new Task(() => { recognizer.LoadGrammar(grammar); });
 
-            recognizer.SpeechRecognized += (s, a) =>
-            {
-                recognizedWord = a.Result.Text;
-            };
+            recognizer.SpeechRecognized += (s, a) => { recognizedWord = a.Result.Text; };
 
             recognizer.SpeechRecognitionRejected += (sender, args) =>
             {
                 recognizedWord =
-                    "Sorry, we could not detect your word." + " Please try again, or use a different text filling method.";
+                    "Sorry, we could not detect your word." +
+                    " Please try again, or use a different text filling method.";
             };
 
             return recognizedWord;
