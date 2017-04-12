@@ -1,8 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Speech.Synthesis;
 using System.Windows;
 using System.Windows.Controls;
+using Dictionary.Services;
 using Dictionary.ViewModels;
 
 namespace Dictionary.Views
@@ -12,9 +11,28 @@ namespace Dictionary.Views
     /// </summary>
     public partial class UrbanItem : UserControl
     {
+        private int _counter;
+
         public UrbanItem()
         {
             InitializeComponent();
+        }
+
+        private void Listen_OnClick(object sender, RoutedEventArgs e)
+        {
+            var synthesizer = new SpeechSynthesizer();
+
+            if (_counter % 2 == 0)
+            {
+                new TextToSpeech(UrbanItemViewModel.Instance.Definition,
+                    out synthesizer);
+            }
+            else
+            {
+                TextToSpeech.Dispose(synthesizer);
+            }
+
+            _counter ++;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Dictionary.Services
         public static bool CheckForMicrophone()
         {
             bool hasMic = false;
-            var recognizedText = new VoiceWritter().VoiceToString();
+            var recognizedText = new VoiceRecognizer().VoiceToString();
 
             if (recognizedText !=
                 "Sorry, we could not detect your word." + " Please try again, or use a different text filling method.")

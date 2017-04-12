@@ -12,7 +12,7 @@ namespace Dictionary.ViewModels
 
         public static UrbanItemViewModel Instance { get; set; }
 
-        private DefinitionData Definition { get; }
+        public DefinitionData Definition { get; }
 
         public string Title
         {

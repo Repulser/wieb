@@ -4,7 +4,7 @@ using Dictionary.Services;
 
 namespace Dictionary.ViewModels
 {
-    public class RecognizeVoiceCommand : ICommand
+    public class VoiceRecognizeCommand : ICommand
     {
         public bool CanExecute(object parameter)
         {
@@ -13,7 +13,7 @@ namespace Dictionary.ViewModels
 
         public void Execute(object parameter)
         {
-            var recognizedText = new VoiceWritter().VoiceToString();
+            var recognizedText = new VoiceRecognizer().VoiceToString();
             DictionaryAppViewModel.SearchBoxText = recognizedText;
         }
 

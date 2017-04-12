@@ -23,6 +23,7 @@ namespace Dictionary.ViewModels
         {
             Instance = this;
             Search = new SearchCommand(this);
+            Voice = new VoiceRecognizeCommand();
 
             ResultsView = CollectionViewSource.GetDefaultView(Results);
             ResultsView.MoveCurrentToPosition(0);
@@ -85,5 +86,7 @@ namespace Dictionary.ViewModels
         public Thickness TextBoxThickness { get; set; }
 
         public SearchCommand Search { get; }
+        
+        public VoiceRecognizeCommand Voice { get; }
     }
 }

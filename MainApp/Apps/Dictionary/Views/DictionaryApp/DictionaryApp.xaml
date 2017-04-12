@@ -14,7 +14,7 @@
     <UserControl.DataContext>
         <viewModels:DictionaryAppViewModel />
     </UserControl.DataContext>
-    
+
     <UserControl.Resources>
 
         <DataTemplate x:Key="ResultsTemplate" DataType="{x:Type ItemsControl}">
@@ -22,11 +22,7 @@
         </DataTemplate>
 
     </UserControl.Resources>
-    
-    <UserControl.InputBindings>
-        <KeyBinding Command="{Binding Search}" Key="Enter" />
-    </UserControl.InputBindings>
-    
+
     <Grid x:Name="Grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="9*" MinHeight="25" />
@@ -47,9 +43,14 @@
                       IsDropDownOpen="True"
                       StaysOpenOnEdit="True" />
         </StackPanel>
-        <Button x:Name="Button" Grid.Row="0" Grid.Column="1" Content="Search" FontSize="7"
-                Command="{Binding Search}"
-                MinHeight="25" />
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+            <Button Content="Search" FontSize="7"
+                    Command="{Binding Search}"
+                    MinHeight="25" />
+            <Button Content="Speak" FontSize="7"
+                    Command="{Binding Voice}"
+                    MinHeight="25" />
+        </StackPanel>
         <ContentControl x:Name="ResultsBlock" Grid.Row="1" Grid.Column="0"
                   Content="{Binding ResultsView, UpdateSourceTrigger=PropertyChanged}"
                   ContentTemplate="{StaticResource ResultsTemplate}" />

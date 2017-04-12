@@ -85,9 +85,10 @@
     <Compile Include="Services\DictionaryApp\CompatibilityChecker.cs" />
     <Compile Include="Services\DictionaryApp\TextPronouncer.cs" />
     <Compile Include="Services\DictionaryApp\UrbanSearcher.cs" />
-    <Compile Include="Services\UrbanItem\VoiceWritter.cs" />
+    <Compile Include="Services\UrbanItem\TextToSpeech.cs" />
+    <Compile Include="Services\UrbanItem\VoiceRecognizer.cs" />
     <Compile Include="ViewModels\DictionaryApp\DictionaryAppViewModel.cs" />
-    <Compile Include="ViewModels\DictionaryApp\RecognizeVoiceCommand.cs" />
+    <Compile Include="ViewModels\DictionaryApp\VoiceRecognizeCommand.cs" />
     <Compile Include="ViewModels\Shared\NotfiyPropertyChanged.cs" />
     <Compile Include="ViewModels\UrbanItem\SearchCommand.cs" />
     <Compile Include="ViewModels\UrbanItem\UrbanItemViewModel.cs" />
