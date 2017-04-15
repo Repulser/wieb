@@ -12,7 +12,6 @@ namespace wiebApp.ViewModels
     internal class ColorChoosingSystem : NotifyPropertyChanged
     {
         //Private Fields
-
         private ColorPath _selectedAccentColor;
         private ColorPath _selectedThemeColor;
 
@@ -28,7 +27,7 @@ namespace wiebApp.ViewModels
 
         public ColorPath SelectedAccentColor
         {
-            get { return _selectedAccentColor; }
+            get => _selectedAccentColor;
             set
             {
                 _selectedAccentColor = value;
@@ -39,7 +38,7 @@ namespace wiebApp.ViewModels
 
         public ColorPath SelectedThemeColor
         {
-            get { return _selectedThemeColor; }
+            get => _selectedThemeColor;
             set
             {
                 _selectedThemeColor = value;

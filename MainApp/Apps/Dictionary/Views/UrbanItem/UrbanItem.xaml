@@ -4,11 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:Dictionary.ViewModels"
+             xmlns:converters="clr-namespace:Dictionary.Converters"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:UrbanItemViewModel}"
              MinWidth="200"
              MaxWidth="239"
              MaxHeight="273">
+
+    <UserControl.Resources>
+        <converters:ToggleButtonsConverter x:Key="ToggleConverter" />
+    </UserControl.Resources>
 
     <Grid>
         <GroupBox>
@@ -40,7 +45,10 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal">
-                        <ToggleButton x:Name="ThumbsUp">
+                        <ToggleButton x:Name="ThumbsUp" 
+                                      IsChecked="{Binding ThumbsUpIsChecked,
+                                                        Converter={StaticResource ToggleConverter}}"
+                                      Click="Thumbs_OnClick">
                             <ToggleButton.Template>
                                 <ControlTemplate>
                                     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -50,6 +58,7 @@
                                                 <Label Content="{Binding Upvotes}" HorizontalContentAlignment="Center"
                                                        VerticalContentAlignment="Center"
                                                        FontWeight="Bold" Panel.ZIndex="1" />
+                                                <Rectangle Opacity="30" Fill="{Binding ThumbsUpFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                             </StackPanel>
                                         </Grid>
                                     </Border>
@@ -59,7 +68,10 @@
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Column="1">
-                        <ToggleButton x:Name="ThumbsDown">
+                        <ToggleButton x:Name="ThumbsDown" 
+                                      IsChecked="{Binding ThumbsDownIsChecked,
+                                                        Converter={StaticResource ToggleConverter}}"
+                                      Click="Thumbs_OnClick">
                             <ToggleButton.Template>
                                 <ControlTemplate>
                                     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -69,6 +81,7 @@
                                                 <Label Content="{Binding Downvotes}"
                                                        HorizontalContentAlignment="Center"
                                                        VerticalContentAlignment="Center" FontWeight="Bold" />
+                                                <Rectangle Opacity="30" Fill="{Binding ThumbsDownFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                             </StackPanel>
                                         </Grid>
                                     </Border>

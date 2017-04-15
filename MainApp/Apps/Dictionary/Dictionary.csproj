@@ -68,6 +68,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\UrbanItem\ToggleButtonsConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -89,7 +90,7 @@
     <Compile Include="Services\UrbanItem\VoiceRecognizer.cs" />
     <Compile Include="ViewModels\DictionaryApp\DictionaryAppViewModel.cs" />
     <Compile Include="ViewModels\DictionaryApp\VoiceRecognizeCommand.cs" />
-    <Compile Include="ViewModels\Shared\NotfiyPropertyChanged.cs" />
+    <Compile Include="ViewModels\NotifyPropertyChanged.cs" />
     <Compile Include="ViewModels\UrbanItem\SearchCommand.cs" />
     <Compile Include="ViewModels\UrbanItem\UrbanItemViewModel.cs" />
     <Compile Include="Views\DictionaryApp\DictionaryApp.xaml.cs">

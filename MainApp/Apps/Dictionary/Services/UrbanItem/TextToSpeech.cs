@@ -23,10 +23,5 @@ namespace Dictionary.Services
                         $"{definition.ThumbsUp} likes");
                 });
         }
-
-        public static void Dispose(SpeechSynthesizer synthesizer)
-        {
-            synthesizer.Dispose();
-        }
     }
 }

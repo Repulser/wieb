@@ -14,14 +14,8 @@ namespace wiebApp.Properties
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public ColorPath SelectedAccentColor
         {
-            get
-            {
-                return ((ColorPath)(this["SelectedAccentColor"]));
-            }
-            set
-            {
-                this["SelectedAccentColor"] = value;
-            }
+            get => ((ColorPath)(this["SelectedAccentColor"]));
+            set => this["SelectedAccentColor"] = value;
         }
 
         [global::System.Configuration.UserScopedSettingAttribute()]
@@ -29,14 +23,8 @@ namespace wiebApp.Properties
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public ColorPath SelectedThemeColor
         {
-            get
-            {
-                return ((ColorPath)(this["SelectedThemeColor"]));
-            }
-            set
-            {
-                this["SelectedThemeColor"] = value;
-            }
+            get => ((ColorPath)(this["SelectedThemeColor"]));
+            set => this["SelectedThemeColor"] = value;
         }
     }
 }

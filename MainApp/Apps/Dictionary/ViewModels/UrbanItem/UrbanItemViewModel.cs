@@ -1,48 +1,64 @@
-﻿using UrbanDictionnet;
+﻿using System;
+using System.Windows;
+using System.Windows.Media;
+using UrbanDictionnet;
 
 namespace Dictionary.ViewModels
 {
-    public class UrbanItemViewModel : NotfiyPropertyChanged
+    public class UrbanItemViewModel : NotifyPropertyChanged
     {
+        private SolidColorBrush _thumbsUpFill;
+        private SolidColorBrush _thumbsDownFill;
+
         public UrbanItemViewModel(DefinitionData definitionData)
         {
             Instance = this;
             Definition = definitionData;
+            ThumbsUpFill = new SolidColorBrush();
+            ThumbsDownFill = new SolidColorBrush();
+        }
+
+        public bool ThumbsDownIsChecked { get; set; }
+
+        public bool ThumbsUpIsChecked { get; set; }
+
+        public SolidColorBrush ThumbsUpFill
+        {
+            get => _thumbsUpFill;
+            set
+            {
+                _thumbsUpFill = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public SolidColorBrush ThumbsDownFill
+        {
+            get => _thumbsDownFill;
+            set
+            {
+                _thumbsDownFill = value; OnPropertyChanged();
+            }
         }
 
         public static UrbanItemViewModel Instance { get; set; }
 
         public DefinitionData Definition { get; }
 
-        public string Title
-        {
-            get { return Definition.Word; }
-        }
+        public string Title => Definition.Word;
 
         public string DefinitionString
         {
-            get { return Definition.Definition; }
-            set { Definition.Definition = value; }
+            get => Definition.Definition;
+            set => Definition.Definition = value;
         }
 
-        public int Upvotes
-        {
-            get { return Definition.ThumbsUp; }
-        }
+        public int Upvotes => Definition.ThumbsUp;
 
-        public int Downvotes
-        {
-            get { return Definition.ThumbsDown; }
-        }
+        public int Downvotes => Definition.ThumbsDown;
 
-        public string Author
-        {
-            get { return Definition.Author; }
-        }
+        public string Author => Definition.Author;
 
-        public string Example
-        {
-            get { return Definition.Example; }
-        }
+        public string Example => Definition.Example;
     }
 }

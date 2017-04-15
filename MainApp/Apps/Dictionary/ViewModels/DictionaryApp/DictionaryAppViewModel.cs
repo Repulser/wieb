@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -11,12 +10,11 @@ using UrbanDictionnet;
 
 namespace Dictionary.ViewModels
 {
-    public class DictionaryAppViewModel : NotfiyPropertyChanged
+    public class DictionaryAppViewModel : NotifyPropertyChanged
     {
         //Private members
         private static string _searchBoxText;
         private static ObservableCollection<string> _suggestionsCollection;
-        public static DictionaryAppViewModel Instance { get; set; }
 
         //Methods
         public DictionaryAppViewModel()
@@ -36,9 +34,11 @@ namespace Dictionary.ViewModels
         }
 
         //Public fields
+        public static DictionaryAppViewModel Instance { get; set; }
+
         public static ObservableCollection<string> SuggestionsCollection
         {
-            get { return _suggestionsCollection; }
+            get => _suggestionsCollection;
             set
             {
                 _suggestionsCollection = value;
