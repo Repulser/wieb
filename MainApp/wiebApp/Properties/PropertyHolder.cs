@@ -2,6 +2,9 @@
 {
     static class PropertyHolder
     {
-        public static Settings Settings => Settings.Default;
+        public static Settings Settings
+        {
+            get { return Settings.Default; }
+        }
     }
 }

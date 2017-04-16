@@ -27,7 +27,7 @@ namespace wiebApp.ViewModels
 
         public ColorPath SelectedAccentColor
         {
-            get => _selectedAccentColor;
+            get { return _selectedAccentColor; }
             set
             {
                 _selectedAccentColor = value;
@@ -38,7 +38,7 @@ namespace wiebApp.ViewModels
 
         public ColorPath SelectedThemeColor
         {
-            get => _selectedThemeColor;
+            get { return _selectedThemeColor; }
             set
             {
                 _selectedThemeColor = value;
