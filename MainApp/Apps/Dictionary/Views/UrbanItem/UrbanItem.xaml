@@ -45,10 +45,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal">
-                        <ToggleButton x:Name="ThumbsUp" 
-                                      IsChecked="{Binding ThumbsUpIsChecked,
-                                                        Converter={StaticResource ToggleConverter}}"
-                                      Click="Thumbs_OnClick">
+                        <ToggleButton x:Name="ThumbsUp">
                             <ToggleButton.Template>
                                 <ControlTemplate>
                                     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -58,7 +55,6 @@
                                                 <Label Content="{Binding Upvotes}" HorizontalContentAlignment="Center"
                                                        VerticalContentAlignment="Center"
                                                        FontWeight="Bold" Panel.ZIndex="1" />
-                                                <Rectangle Opacity="30" Fill="{Binding ThumbsUpFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                             </StackPanel>
                                         </Grid>
                                     </Border>
@@ -68,10 +64,7 @@
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Column="1">
-                        <ToggleButton x:Name="ThumbsDown" 
-                                      IsChecked="{Binding ThumbsDownIsChecked,
-                                                        Converter={StaticResource ToggleConverter}}"
-                                      Click="Thumbs_OnClick">
+                        <ToggleButton x:Name="ThumbsDown" >
                             <ToggleButton.Template>
                                 <ControlTemplate>
                                     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -81,7 +74,6 @@
                                                 <Label Content="{Binding Downvotes}"
                                                        HorizontalContentAlignment="Center"
                                                        VerticalContentAlignment="Center" FontWeight="Bold" />
-                                                <Rectangle Opacity="30" Fill="{Binding ThumbsDownFill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                             </StackPanel>
                                         </Grid>
                                     </Border>
