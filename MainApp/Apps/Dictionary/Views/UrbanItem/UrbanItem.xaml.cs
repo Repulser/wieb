@@ -11,7 +11,8 @@ namespace Dictionary.Views
     /// </summary>
     public partial class UrbanItem : UserControl
     {
-        private int _counter;
+        private SpeechSynthesizer _synthesizer
+            = new SpeechSynthesizer();
 
         public UrbanItem()
         {
@@ -20,19 +21,55 @@ namespace Dictionary.Views
 
         private void Listen_OnClick(object sender, RoutedEventArgs e)
         {
-            var synthesizer = new SpeechSynthesizer();
+            new TextToSpeech(UrbanItemViewModel.Instance.Definition,
+                out _synthesizer);
+            UrbanItemViewModel.Instance.SelectedTabIndex = 1;
+        }
 
-            if (_counter % 2 == 0)
+        private void PausePlay_OnClick(object sender, RoutedEventArgs e)
+        {
+            switch (_synthesizer.State)
             {
-                new TextToSpeech(UrbanItemViewModel.Instance.Definition,
-                    out synthesizer);
-            }
-            else
-            {
-                synthesizer.SpeakAsyncCancelAll();
-            }
+                case SynthesizerState.Ready:
+                    new TextToSpeech(UrbanItemViewModel.Instance.Definition,
+                        out _synthesizer);
+                    SetPausePlayIcon("Play");
+                    break;
 
-            _counter ++;
+                case SynthesizerState.Speaking:
+                    _synthesizer.Pause();
+                    SetPausePlayIcon("Pause");
+                    break;
+
+                case SynthesizerState.Paused:
+                    _synthesizer.Resume();
+                    SetPausePlayIcon("Play");
+                    break;
+            }
+        }
+
+        private void SetPausePlayIcon(string icon)
+        {
+            switch (icon)
+            {
+                case "Play":
+                    UrbanItemViewModel.Instance.PausePlayText = "\xE768";
+                    break;
+
+                case "Pause":
+                    UrbanItemViewModel.Instance.PausePlayText = "\xE769";
+                    break;
+            }
+        }
+
+        private void Stop_OnClick(object sender, RoutedEventArgs e)
+        {
+            _synthesizer.Dispose();
+        }
+
+        private void ThumbsUp_OnClick(object sender, RoutedEventArgs e)
+        {
+            UrbanItemViewModel.Instance.Upvotes
         }
     }
 }

@@ -86,6 +86,7 @@
     <Compile Include="Services\DictionaryApp\TextPronouncer.cs" />
     <Compile Include="Services\DictionaryApp\UrbanSearcher.cs" />
     <Compile Include="Services\UrbanItem\TextToSpeech.cs" />
+    <Compile Include="Services\UrbanItem\TextTranslator.cs" />
     <Compile Include="Services\UrbanItem\VoiceRecognizer.cs" />
     <Compile Include="ViewModels\DictionaryApp\DictionaryAppViewModel.cs" />
     <Compile Include="ViewModels\DictionaryApp\VoiceRecognizeCommand.cs" />

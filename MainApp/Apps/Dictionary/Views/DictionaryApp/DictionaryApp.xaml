@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:views="clr-namespace:Dictionary.Views"
              xmlns:viewModels="clr-namespace:Dictionary.ViewModels"
              xmlns:custom="http://metro.mahapps.com/winfx/xaml/controls"
@@ -33,15 +32,18 @@
             <ColumnDefinition Width="61*" />
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical">
-            <TextBox x:Name="TextBox" Text="{Binding SearchBoxText, UpdateSourceTrigger=PropertyChanged, 
-                                                                    Mode=OneWayToSource}"
-                     BorderThickness="{Binding TextBoxThickness}"
-                     BorderBrush="{Binding SearchBoxBrush}" />
+
+        <TextBox x:Name="TextBox" Text="{Binding SearchBoxText, UpdateSourceTrigger=PropertyChanged,
+                                                                            Mode=OneWayToSource}"
+                                 BorderThickness="{Binding TextBoxThickness}"
+                                 BorderBrush="{Binding SearchBoxBrush}" />
+
             <ComboBox ItemsSource="{Binding SuggestionsCollection}"
                       Text="{Binding SearchBoxText, Mode=TwoWay}"
                       IsEditable="True"
                       IsDropDownOpen="True"
-                      StaysOpenOnEdit="True" />
+                      StaysOpenOnEdit="True">
+            </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
             <Button Content="Search" FontSize="7"

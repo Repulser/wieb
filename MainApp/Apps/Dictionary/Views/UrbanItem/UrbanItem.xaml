@@ -4,16 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:Dictionary.ViewModels"
-             xmlns:converters="clr-namespace:Dictionary.Converters"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:UrbanItemViewModel}"
              MinWidth="200"
              MaxWidth="239"
              MaxHeight="273">
-
-    <UserControl.Resources>
-        <converters:ToggleButtonsConverter x:Key="ToggleConverter" />
-    </UserControl.Resources>
 
     <Grid>
         <GroupBox>
@@ -21,7 +16,38 @@
                 <Grid>
                     <TextBlock Text="{Binding Title}" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <ToggleButton Click="Listen_OnClick" Content="listen" />
+                        <TabControl SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <TabItem>
+                                <Button Click="Listen_OnClick" Content="listen" />
+                            </TabItem>
+                            
+                            <TabItem>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Click="PausePlay_OnClick" 
+                                            Foreground="DarkSeaGreen">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets"
+                                                               Text="{Binding PausePlayText}" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    
+                                    <Button Click="Stop_OnClick"
+                                            Foreground="LightCoral">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE71A;" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
                     </StackPanel>
                 </Grid>
             </GroupBox.Header>
@@ -45,42 +71,39 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal">
-                        <ToggleButton x:Name="ThumbsUp">
-                            <ToggleButton.Template>
+                        <Button Click="ThumbsUp_OnClick">
+                            <Button.Template>
                                 <ControlTemplate>
                                     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <Grid>
-                                            <StackPanel Orientation="Horizontal" Panel.ZIndex="1">
+                                            <StackPanel Orientation="Horizontal">
                                                 <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E1;" />
-                                                <Label Content="{Binding Upvotes}" HorizontalContentAlignment="Center"
+                                                <Label Content="{Binding Upvotes, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"
                                                        VerticalContentAlignment="Center"
-                                                       FontWeight="Bold" Panel.ZIndex="1" />
+                                                       FontWeight="Bold" />
                                             </StackPanel>
                                         </Grid>
                                     </Border>
                                 </ControlTemplate>
-                            </ToggleButton.Template>
-                        </ToggleButton>
+                            </Button.Template>
+                        </Button>
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Column="1">
-                        <ToggleButton x:Name="ThumbsDown" >
-                            <ToggleButton.Template>
-                                <ControlTemplate>
-                                    <Border HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Grid>
-                                            <StackPanel Orientation="Horizontal" Panel.ZIndex="1">
-                                                <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E0;" />
-                                                <Label Content="{Binding Downvotes}"
+                        <Button x:Name="ThumbsDown">
+                            <Button.Content>
+                                <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E0;" />
+                                            <Label Content="{Binding Downvotes}"
                                                        HorizontalContentAlignment="Center"
                                                        VerticalContentAlignment="Center" FontWeight="Bold" />
-                                            </StackPanel>
-                                        </Grid>
-                                    </Border>
-                                </ControlTemplate>
-                            </ToggleButton.Template>
-                        </ToggleButton>
-
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Button.Content>
+                        </Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Column="2">
                         <TextBlock Text="{Binding Author}" FontStyle="Italic" FontWeight="Bold" />

@@ -1,20 +1,20 @@
 ﻿<mahapps:MetroWindow x:Class="wiebApp.Views.MainWindow"
-                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                      xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                      xmlns:converters="clr-namespace:wiebApp.Converters"
-                      xmlns:dictionary="clr-namespace:Dictionary.Views;assembly=Dictionary"
-                      xmlns:viewModels="clr-namespace:wiebApp.ViewModels"
-                      mc:Ignorable="d"
-                      DataContext="{Binding RelativeSource={RelativeSource Self}, Path=TabProperties}"
-                      Height="300" Width="300"
-                      WindowStartupLocation="CenterScreen"
-                      ResizeMode="CanMinimize"
-                      BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
-                      Opacity="{Binding ElementName=OpacitySlide, Path=Value, UpdateSourceTrigger=PropertyChanged}"
-                      Topmost="False">
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                     xmlns:converters="clr-namespace:wiebApp.Converters"
+                     xmlns:dictionary="clr-namespace:Dictionary.Views;assembly=Dictionary"
+                     xmlns:viewModels="clr-namespace:wiebApp.ViewModels"
+                     mc:Ignorable="d"
+                     DataContext="{Binding RelativeSource={RelativeSource Self}, Path=TabProperties}"
+                     Height="300" Width="300"
+                     WindowStartupLocation="CenterScreen"
+                     ResizeMode="CanMinimize"
+                     BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
+                     Opacity="{Binding ElementName=OpacitySlide, Path=Value, UpdateSourceTrigger=PropertyChanged}"
+                     Topmost="False">
 
     <Window.Resources>
         <viewModels:ColorChoosingSystem x:Key="AppSettings" />
@@ -23,14 +23,9 @@
         <converters:DropGlowCheckBoxConverter x:Key="DropGlowConverter" />
         <converters:DebugConverter x:Key="DebugConverter" />
 
-        <Style  x:Key="MainBtns" TargetType="Button" >
-            <Setter Property="Width" Value="50" />
-            <Setter Property="Height" Value="50" />
-        </Style>
-        
-        <RoutedCommand x:Key="ClearColorCommand" />
+        <RoutedCommand x:Key="ClearColorCommand" /> 
     </Window.Resources>
-    
+
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource ClearColorCommand}" Executed="ClearSavedColor" />
     </Window.CommandBindings>
@@ -40,7 +35,7 @@
     </mahapps:MetroWindow.NonActiveGlowBrush>
 
     <mahapps:MetroWindow.GlowBrush>
-        <Binding ElementName="DropShadowCheck" Path="IsChecked" Converter="{StaticResource DropShadowConverter}" 
+        <Binding ElementName="DropShadowCheck" Path="IsChecked" Converter="{StaticResource DropShadowConverter}"
                  Mode="TwoWay" />
     </mahapps:MetroWindow.GlowBrush>
 
@@ -53,7 +48,7 @@
 
             <!-- old stuff -->
             <TabControl x:Name="MainTabControl" BorderThickness="0"
-                                      SelectedIndex="{Binding TabControlIndex, Mode=TwoWay}" >
+                        SelectedIndex="{Binding TabControlIndex, Mode=TwoWay}">
                 <TabControl.Resources>
                     <Style TargetType="TabItem">
                         <Setter Property="Template">
@@ -65,7 +60,7 @@
                 </TabControl.Resources>
                 <TabItem x:Name="MainTab">
                     <Grid>
-                        <WrapPanel x:Name="MainTabWrapPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <WrapPanel x:Name="MainTabWrapPanel" VerticalAlignment="Center" HorizontalAlignment="Center">
 
                             <Button Content="Dictionary" Click="DictionaryTile_Click" />
                             <Button Content="Settings" Click="SettingsTile_Click" />
@@ -103,11 +98,11 @@
                         </StackPanel>
                         <StackPanel Grid.Row="1">
                             <CheckBox x:Name="DropShadowCheck" IsChecked="True"
-                                        Content="DropShadow" />
+                                      Content="DropShadow" />
                             <CheckBox x:Name="DropGlowCheck" IsChecked="True"
-                                        Content="DropGlow while window loses focus." />
+                                      Content="DropGlow while window loses focus." />
                             <CheckBox x:Name="TopMostCheck" IsChecked="false"
-                                        Content="Enable TopMost mode." />
+                                      Content="Enable TopMost mode." />
                             <Slider x:Name="OpacitySlide" Maximum="100" Minimum="50" />
                             <Button Content="Clear Saved Data" Command="{StaticResource ClearColorCommand}" />
                         </StackPanel>
@@ -121,5 +116,5 @@
         </Grid>
 
     </Grid>
-    
+
 </mahapps:MetroWindow>

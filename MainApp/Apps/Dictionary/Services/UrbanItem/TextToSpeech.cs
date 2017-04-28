@@ -9,7 +9,6 @@ namespace Dictionary.Services
         public TextToSpeech(DefinitionData definition, out SpeechSynthesizer synthesizer)
         {
             synthesizer = new SpeechSynthesizer();
-
             SpeechSynthesizer speechSynthesizer = synthesizer;
             Task.Factory.StartNew(
                 () =>
