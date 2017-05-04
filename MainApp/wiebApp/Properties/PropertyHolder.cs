@@ -2,9 +2,9 @@
 {
     static class PropertyHolder
     {
-        public static Settings Settings
+        public static wiebApp.Settings Settings
         {
-            get { return Settings.Default; }
+            get { return wiebApp.Settings.Default; }
         }
     }
 }

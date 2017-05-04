@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Dictionary.Annotations;
+using Dictionary.Properties;
 
 namespace Dictionary.ViewModels
 {

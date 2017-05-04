@@ -146,9 +146,9 @@ namespace Dictionary.Services
             TypeInTextBox(word);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             string lang = detect.Text?.Replace(" - detected", "");
-            Enum @enum = GetEnum(lang, typeof (Languages));
+            Enum @enum = GetEnum(lang, typeof(Languages));
             _driver.Quit();
-            return (Languages) @enum;
+            return (Languages)@enum;
         }
 
         public static void Factory(string path)
@@ -160,7 +160,7 @@ namespace Dictionary.Services
         {
             DriverService driverService = ServiceFactory(driver, path);
             driverService.HideCommandPromptWindow = true;
-            return new ChromeDriver((ChromeDriverService) driverService, new ChromeOptions())
+            return new ChromeDriver((ChromeDriverService)driverService, new ChromeOptions())
             {
                 Url = "https://translate.google.com/"
             };
@@ -195,7 +195,7 @@ namespace Dictionary.Services
         {
             FieldInfo fi = @enum.GetType().GetField(@enum.ToString());
             DescriptionAttribute[] attributes =
-                (DescriptionAttribute[]) fi.GetCustomAttributes(typeof (DescriptionAttribute), false);
+                (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
             return attributes.Length > 0
                 ? attributes[0].Description
                 : @enum.ToString();
@@ -206,7 +206,7 @@ namespace Dictionary.Services
             string[] names = Enum.GetNames(@enum);
             foreach (string name in names)
             {
-                var enumValue = (Enum) Enum.Parse(@enum, name);
+                var enumValue = (Enum)Enum.Parse(@enum, name);
                 if (GetString(enumValue) == value)
                 {
                     return enumValue;

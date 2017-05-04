@@ -15,9 +15,9 @@ namespace wiebApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.0.1.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        private static wiebApp.Settings defaultInstance = ((wiebApp.Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new wiebApp.Settings())));
         
-        public static Settings Default {
+        public static wiebApp.Settings Default {
             get {
                 return defaultInstance;
             }

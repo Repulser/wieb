@@ -71,7 +71,7 @@ namespace Dictionary.Views
             _synthesizer.Dispose();
         }
 
-        private void ThumbsUp_OnClick(object sender, RoutedEventArgs e)
+        private void Thumbs_OnClick(object sender, RoutedEventArgs e)
         {
             //UrbanItemViewModel.Instance.Upvotes;
         }

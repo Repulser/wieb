@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="Dictionary.Views.UrbanItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:Dictionary.Views"
+             xmlns:viewModels="clr-namespace:Dictionary.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewModels:UrbanItemViewModel}"
+             MinWidth="200"
+             MaxWidth="239"
+             MaxHeight="273">
+
+    <Grid>
+        <GroupBox>
+            <GroupBox.Header>
+                <Grid>
+                    <TextBlock Text="{Binding Title}" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TabControl SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <TabItem>
+                                <views:SpecialButton ButtonClick="Listen_OnClick"
+                                                     ButtonContent="&#xE767;" />
+                            </TabItem>
+                            
+                            <TabItem>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <views:SpecialButton ButtonClick="PausePlay_OnClick"
+                                                         ButtonContent="{Binding PausePlayText}"
+                                                         Foreground="DarkSeaGreen" />
+
+                                    <views:SpecialButton ButtonClick="Stop_OnClick"
+                                                         ButtonContent="&#xE71A;"
+                                                         Foreground="LightCoral" />
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
+                    </StackPanel>
+                </Grid>
+            </GroupBox.Header>
+            <Grid Margin="-5" Background="{DynamicResource ThemeColorBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="207*" />
+                    <RowDefinition Height="32*" />
+                </Grid.RowDefinitions>
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding DefinitionString}" TextWrapping="Wrap" />
+                        <GridSplitter Height="10" />
+                        <TextBlock Text="{Binding Example}" FontStyle="Italic" TextWrapping="Wrap"
+                                   Foreground="#FF3C3C3C" />
+                    </StackPanel>
+                </ScrollViewer>
+                <Grid x:Name="Grid" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <views:SpecialButton x:Name="ThumbsUp"
+                                             ButtonClick="Thumbs_OnClick" 
+                                             ButtonContent="&#xE8E1;" />
+                        <Label Content="{Binding Upvotes, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"
+                               VerticalContentAlignment="Center"
+                               FontWeight="Bold" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <views:SpecialButton x:Name="ThumbsDown"
+                                             ButtonClick="Thumbs_OnClick"
+                                             ButtonContent="&#xE8E0;" />
+                        <Label Content="{Binding Downvotes}"
+                               HorizontalContentAlignment="Center"
+                               VerticalContentAlignment="Center" FontWeight="Bold" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="2">
+                        <TextBlock Text="{Binding Author}" FontStyle="Italic" FontWeight="Bold" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>
