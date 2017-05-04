@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Dictionary.Services;
 using Dictionary.ViewModels;
+using OpenQA.Selenium.Remote;
 
 namespace Dictionary.Views
 {
@@ -17,11 +18,14 @@ namespace Dictionary.Views
         public UrbanItem()
         {
             InitializeComponent();
+            const string path 
+                = @"C:\Users\Raphael\Documents\Programming\C#\Windows Forms\9-Pro\9-Pro-GITHUB\9-Pro\9-Pro\bin";
+            SeleniumTranslate.Factory(path);
         }
 
         private void Listen_OnClick(object sender, RoutedEventArgs e)
         {
-            new TextToSpeech(UrbanItemViewModel.Instance.Definition,
+            var tts = new TextToSpeech(UrbanItemViewModel.Instance.Definition,
                 out _synthesizer);
             UrbanItemViewModel.Instance.SelectedTabIndex = 1;
         }
@@ -69,7 +73,7 @@ namespace Dictionary.Views
 
         private void ThumbsUp_OnClick(object sender, RoutedEventArgs e)
         {
-            UrbanItemViewModel.Instance.Upvotes
+            //UrbanItemViewModel.Instance.Upvotes;
         }
     }
 }
