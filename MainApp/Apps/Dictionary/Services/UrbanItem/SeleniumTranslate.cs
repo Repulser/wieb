@@ -122,45 +122,57 @@ namespace Dictionary.Services
             [Description("Zulu")] Zulu
         }
 
-        private static RemoteWebDriver _driver;
-
-        public string Translate(string word, Languages langs)
+        public string Translate(string word, Languages langs, RemoteWebDriver driver)
         {
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            TypeInTextBox(word);
-            SelectLanguages(langs);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            TypeInTextBox(word, driver);
+            SelectLanguages(langs, driver);
 
-            _driver.FindElementByCssSelector("#gt-submit").Click(); //Click translate button
+            driver.FindElementByCssSelector("#gt-submit").Click(); //Click translate button
 
-            string result = _driver.FindElementByCssSelector("#result_box").Text;
-            _driver.Quit();
+            string result = driver.FindElementByCssSelector("#result_box").Text;
+            driver.Quit();
             return result;
         }
 
-        public Languages Detect(string word)
+        public Languages Detect(string word, RemoteWebDriver driver)
         {
-            IWebElement detect = _driver.FindElementByCssSelector
+            IWebElement detect = driver.FindElementByCssSelector
             (
                 "#gt-sl-sugg > div.goog-inline-block.jfk-button.jfk-button-standard.jfk-button-collapse-left.jfk-button-collapse-right.jfk-button-checked");
             detect.Click(); //Click DetectLanguage
-            TypeInTextBox(word);
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            TypeInTextBox(word, driver);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             string lang = detect.Text?.Replace(" - detected", "");
             Enum @enum = GetEnum(lang, typeof (Languages));
-            _driver.Quit();
+            driver.Quit();
             return (Languages) @enum;
         }
 
-        public static void Factory(string path)
+        public static RemoteWebDriver Factory(RemoteWebDriver driver, string path)
         {
-            Task.Run(() => { _driver = DriverFactory(_driver, path); });
+            Task.Run(() =>
+            {
+                DriverFactory(driver, path);
+            });
+
+            throw new TaskCanceledException();
         }
 
         private static RemoteWebDriver DriverFactory(RemoteWebDriver driver, string path)
         {
             DriverService driverService = ServiceFactory(driver, path);
             driverService.HideCommandPromptWindow = true;
-            return new ChromeDriver((ChromeDriverService) driverService, new ChromeOptions())
+
+            if (driver is ChromeDriver)
+            {
+                return new ChromeDriver((ChromeDriverService) driverService)
+                {
+                    Url = "https://translate.google.com/"
+                };
+            }
+
+            return new PhantomJSDriver((PhantomJSDriverService) driverService)
             {
                 Url = "https://translate.google.com/"
             };
@@ -171,21 +183,6 @@ namespace Dictionary.Services
             if (driver is ChromeDriver)
             {
                 return ChromeDriverService.CreateDefaultService(path);
-            }
-
-            if (driver is FirefoxDriver)
-            {
-                return FirefoxDriverService.CreateDefaultService(path);
-            }
-
-            if (driver is EdgeDriver)
-            {
-                return EdgeDriverService.CreateDefaultService(path);
-            }
-
-            if (driver is InternetExplorerDriver)
-            {
-                return InternetExplorerDriverService.CreateDefaultService(path);
             }
 
             return PhantomJSDriverService.CreateDefaultService(path);
@@ -216,23 +213,23 @@ namespace Dictionary.Services
             throw new ArgumentException("The string does not exist in the enum.");
         }
 
-        private void TypeInTextBox(string word)
+        private void TypeInTextBox(string word, RemoteWebDriver driver)
         {
-            IWebElement textBox = _driver.FindElementByCssSelector("#source");
+            IWebElement textBox = driver.FindElementByCssSelector("#source");
             textBox.SendKeys(word);
         }
 
-        private void SelectLanguages(Languages langs)
+        private void SelectLanguages(Languages langs, RemoteWebDriver driver)
         {
-            _driver.FindElementByCssSelector("#gt-tl-gms").Click(); //Click the moreButton
+            driver.FindElementByCssSelector("#gt-tl-gms").Click(); //Click the moreButton
             try
             {
                 string lang = GetString(langs);
-                _driver.FindElementByXPath($"//*[contains(text(), '{lang}')]").Click(); //Click language
+                driver.FindElementByXPath($"//*[contains(text(), '{lang}')]").Click(); //Click language
             }
             catch (NoSuchElementException)
             {
-                _driver.Quit();
+                driver.Quit();
             }
         }
     }

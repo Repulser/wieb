@@ -3,20 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Dictionary.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Button>
+             xmlns:views="clr-namespace:Dictionary.Views"
+             mc:Ignorable="d">
+
+    <Grid DataContext="{d:DesignInstance views:SpecialButton}">
+        <Button Foreground="{Binding ButtonForeground}"
+                Click="{Binding ButtonClick}">
             <Button.Template>
                 <ControlTemplate>
                     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Grid>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E1;" />
-                                <Label Content="{Binding Upvotes, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"
-                                       VerticalContentAlignment="Center"
-                                       FontWeight="Bold" />
+                                <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" 
+                                           Text="{Binding ButtonContent}" />
                             </StackPanel>
                         </Grid>
                     </Border>

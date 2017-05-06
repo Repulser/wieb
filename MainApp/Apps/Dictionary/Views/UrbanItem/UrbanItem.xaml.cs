@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Dictionary.Services;
 using Dictionary.ViewModels;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 
 namespace Dictionary.Views
@@ -20,7 +21,9 @@ namespace Dictionary.Views
             InitializeComponent();
             const string path 
                 = @"C:\Users\Raphael\Documents\Programming\C#\Windows Forms\9-Pro\9-Pro-GITHUB\9-Pro\9-Pro\bin";
-            SeleniumTranslate.Factory(path);
+            ChromeDriver driver = null;
+            driver = (ChromeDriver) SeleniumTranslate.Factory(driver, path);
+            new SeleniumTranslate().Translate("w", SeleniumTranslate.Languages.Afrikaans, driver);
         }
 
         private void Listen_OnClick(object sender, RoutedEventArgs e)

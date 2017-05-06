@@ -38,6 +38,15 @@ namespace Dictionary.Views
             set => SetValue(ButtonClickProperty, value);
         }
 
+        public static readonly DependencyProperty ButtonForegroundProperty
+            = DependencyProperty.Register("ButtonForeground", typeof(SolidColorBrush), typeof(SpecialButton));
+
+        public SolidColorBrush ButtonForeground
+        {
+            get => GetValue(ButtonForegroundProperty) as SolidColorBrush;
+            set => SetValue(ButtonForegroundProperty, value);
+        }
+
         public SpecialButton()
         {
             InitializeComponent();
