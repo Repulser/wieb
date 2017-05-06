@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="Dictionary.Views.UrbanItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModels="clr-namespace:Dictionary.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewModels:UrbanItemViewModel}"
+             MinWidth="200"
+             MaxWidth="239"
+             MaxHeight="273">
+
+    <Grid>
+        <GroupBox>
+            <GroupBox.Header>
+                <Grid>
+                    <TextBlock Text="{Binding Title}" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TabControl SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <TabItem>
+                                <Button Click="Listen_OnClick" Content="listen" />
+                            </TabItem>
+                            
+                            <TabItem>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Click="PausePlay_OnClick" 
+                                            Foreground="DarkSeaGreen">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets"
+                                                               Text="{Binding PausePlayText}" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    
+                                    <Button Click="Stop_OnClick"
+                                            Foreground="LightCoral">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE71A;" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
+                    </StackPanel>
+                </Grid>
+            </GroupBox.Header>
+            <Grid Margin="-5" Background="{DynamicResource ThemeColorBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="207*" />
+                    <RowDefinition Height="32*" />
+                </Grid.RowDefinitions>
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding DefinitionString}" TextWrapping="Wrap" />
+                        <GridSplitter Height="10" />
+                        <TextBlock Text="{Binding Example}" FontStyle="Italic" TextWrapping="Wrap"
+                                   Foreground="#FF3C3C3C" />
+                    </StackPanel>
+                </ScrollViewer>
+                <Grid x:Name="Grid" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Click="ThumbsUp_OnClick">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Grid>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E1;" />
+                                                <Label Content="{Binding Upvotes, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"
+                                                       VerticalContentAlignment="Center"
+                                                       FontWeight="Bold" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Button x:Name="ThumbsDown">
+                            <Button.Content>
+                                <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E0;" />
+                                            <Label Content="{Binding Downvotes}"
+                                                       HorizontalContentAlignment="Center"
+                                                       VerticalContentAlignment="Center" FontWeight="Bold" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="2">
+                        <TextBlock Text="{Binding Author}" FontStyle="Italic" FontWeight="Bold" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

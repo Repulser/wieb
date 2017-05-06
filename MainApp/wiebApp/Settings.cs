@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Configuration;
 
-namespace wiebApp {
+namespace wiebApp.Properties {
     
     
     // This class allows you to handle specific events on the settings class:
