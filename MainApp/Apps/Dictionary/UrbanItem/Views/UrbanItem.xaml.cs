@@ -4,7 +4,6 @@ using System.Windows.Controls;
 using Dictionary.Services;
 using Dictionary.ViewModels;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 
 namespace Dictionary.Views
 {
@@ -76,7 +75,12 @@ namespace Dictionary.Views
 
         private void ThumbsUp_OnClick(object sender, RoutedEventArgs e)
         {
-            //UrbanItemViewModel.Instance.Upvotes;
+            UrbanItemViewModel.Instance.Like();
+        }
+
+        private void ThumbsDown_OnClick(object sender, RoutedEventArgs e)
+        {
+            UrbanItemViewModel.Instance.Dislike();
         }
     }
 }

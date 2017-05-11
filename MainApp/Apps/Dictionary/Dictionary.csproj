@@ -83,25 +83,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Services\DictionaryApp\CompatibilityChecker.cs" />
-    <Compile Include="Services\DictionaryApp\TextPronouncer.cs" />
-    <Compile Include="Services\DictionaryApp\UrbanSearcher.cs" />
-    <Compile Include="Services\UrbanItem\ITranslate.cs" />
-    <Compile Include="Services\UrbanItem\TextToSpeech.cs" />
-    <Compile Include="Services\UrbanItem\SeleniumTranslate.cs" />
-    <Compile Include="Services\UrbanItem\VoiceRecognizer.cs" />
-    <Compile Include="ViewModels\DictionaryApp\DictionaryAppViewModel.cs" />
-    <Compile Include="ViewModels\DictionaryApp\VoiceRecognizeCommand.cs" />
-    <Compile Include="ViewModels\NotifyPropertyChanged.cs" />
-    <Compile Include="ViewModels\UrbanItem\SearchCommand.cs" />
-    <Compile Include="ViewModels\UrbanItem\UrbanItemViewModel.cs" />
-    <Compile Include="Views\DictionaryApp\DictionaryApp.xaml.cs">
+    <Compile Include="DictionaryApp\Services\CompatibilityChecker.cs" />
+    <Compile Include="DictionaryApp\Services\TextPronouncer.cs" />
+    <Compile Include="DictionaryApp\Services\UrbanSearcher.cs" />
+    <Compile Include="UrbanItem\Services\ITranslate.cs" />
+    <Compile Include="UrbanItem\Services\TextToSpeech.cs" />
+    <Compile Include="UrbanItem\Services\SeleniumTranslate.cs" />
+    <Compile Include="UrbanItem\Services\VoiceRecognizer.cs" />
+    <Compile Include="DictionaryApp\ViewModels\DictionaryAppViewModel.cs" />
+    <Compile Include="DictionaryApp\ViewModels\VoiceRecognizeCommand.cs" />
+    <Compile Include="Shared\ViewModels\NotifyPropertyChanged.cs" />
+    <Compile Include="UrbanItem\ViewModels\SearchCommand.cs" />
+    <Compile Include="UrbanItem\ViewModels\UrbanItemViewModel.cs" />
+    <Compile Include="DictionaryApp\Views\DictionaryApp.xaml.cs">
       <DependentUpon>DictionaryApp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UrbanItem\SpecialButton.xaml.cs">
-      <DependentUpon>SpecialButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UrbanItem\UrbanItem.xaml.cs">
+    <Compile Include="UrbanItem\Views\UrbanItem.xaml.cs">
       <DependentUpon>UrbanItem.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -117,21 +114,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\DictionaryApp\DictionaryApp.xaml">
+    <Page Include="DictionaryApp\Views\DictionaryApp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UrbanItem\SpecialButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UrbanItem\UrbanItem.xaml">
+    <Page Include="UrbanItem\Views\UrbanItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ReadmePleaseIfPossible.txt" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

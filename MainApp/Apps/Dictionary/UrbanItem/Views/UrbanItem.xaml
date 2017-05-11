@@ -18,7 +18,16 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <TabControl SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                             <TabItem>
-                                <Button Click="Listen_OnClick" Content="listen" />
+                                <Button Click="Listen_OnClick">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets"
+                                                           Text="&#xE767;" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
                             </TabItem>
                             
                             <TabItem>
@@ -90,7 +99,7 @@
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Column="1">
-                        <Button x:Name="ThumbsDown">
+                        <Button Click="ThumbsDown_OnClick">
                             <Button.Content>
                                 <Border HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Grid>
