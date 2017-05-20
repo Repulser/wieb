@@ -1,14 +1,17 @@
-﻿using System.Windows.Media.Animation;
+﻿using System.Collections.Generic;
+using System.Windows.Data;
+using Dictionary.Services;
 using UrbanDictionnet;
 
 namespace Dictionary.ViewModels
 {
     public class UrbanItemViewModel : NotifyPropertyChanged
     {
-        private int _selectedTabIndex;
+        private readonly int _downVotes;
+        private readonly int _upVotes;
 
-        private int _upVotes;
-        private int _downVotes;
+        private string _pausePlayText;
+        private int _selectedTabIndex;
 
         public UrbanItemViewModel(DefinitionData definitionData)
         {
@@ -20,15 +23,19 @@ namespace Dictionary.ViewModels
 
             _upVotes = Definition.ThumbsUp;
             _downVotes = Definition.ThumbsDown;
+
+            Languages = (ListCollectionView) CollectionViewSource.GetDefaultView(_languages);
         }
 
         public static UrbanItemViewModel Instance { get; set; }
 
+        private List<SeleniumTranslate.Languages> _languages;
+
+        public ListCollectionView Languages { get; set; }
+
         public DefinitionData Definition { get; }
 
         public string Title => Definition.Word;
-
-        private string _pausePlayText;
 
         public string DefinitionString
         {
@@ -60,6 +67,26 @@ namespace Dictionary.ViewModels
 
         public string Example => Definition.Example;
 
+        public int SelectedTabIndex
+        {
+            get => _selectedTabIndex;
+            set
+            {
+                _selectedTabIndex = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string PausePlayText
+        {
+            get => _pausePlayText;
+            set
+            {
+                _pausePlayText = value;
+                OnPropertyChanged();
+            }
+        }
+
         public void Like()
         {
             if (Upvotes == _upVotes)
@@ -83,26 +110,6 @@ namespace Dictionary.ViewModels
             {
                 Upvotes --;
                 Downvotes ++;
-            }
-        }
-
-        public int SelectedTabIndex
-        {
-            get => _selectedTabIndex;
-            set
-            {
-                _selectedTabIndex = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string PausePlayText
-        {
-            get => _pausePlayText;
-            set
-            {
-                _pausePlayText = value;
-                OnPropertyChanged();
             }
         }
     }

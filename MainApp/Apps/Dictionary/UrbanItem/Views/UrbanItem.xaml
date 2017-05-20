@@ -22,7 +22,7 @@
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets"
+                                                <TextBlock FontFamily="../../../../Resources/Fonts/#Segoe MDL2 Assets../../../../Fonts/#Segoe MDL2 Assets"
                                                            Text="&#xE767;" />
                                             </Border>
                                         </ControlTemplate>
@@ -37,7 +37,7 @@
                                         <Button.Template>
                                             <ControlTemplate>
                                                 <Border HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets"
+                                                    <TextBlock FontFamily="../../../../Resources/Fonts/#Segoe MDL2 Assets../../Fonts/#Segoe MDL2 Assets"
                                                                Text="{Binding PausePlayText}" />
                                                 </Border>
                                             </ControlTemplate>
@@ -49,7 +49,7 @@
                                         <Button.Template>
                                             <ControlTemplate>
                                                 <Border HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE71A;" />
+                                                    <TextBlock FontFamily="../../../../Resources/Fonts/#Segoe MDL2 Assets../../Fonts/#Segoe MDL2 Assets" Text="&#xE71A;" />
                                                 </Border>
                                             </ControlTemplate>
                                         </Button.Template>
@@ -86,7 +86,7 @@
                                     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <Grid>
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E1;" />
+                                                <TextBlock FontFamily="../../../../Resources/Fonts/#Segoe MDL2 Assets../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E1;" />
                                                 <Label Content="{Binding Upvotes, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"
                                                        VerticalContentAlignment="Center"
                                                        FontWeight="Bold" />
@@ -104,7 +104,7 @@
                                 <Border HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Grid>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock FontFamily="../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E0;" />
+                                            <TextBlock FontFamily="../../../../Resources/Fonts/#Segoe MDL2 Assets../../Fonts/#Segoe MDL2 Assets" Text="&#xE8E0;" />
                                             <Label Content="{Binding Downvotes}"
                                                        HorizontalContentAlignment="Center"
                                                        VerticalContentAlignment="Center" FontWeight="Bold" />

@@ -149,7 +149,7 @@ namespace Dictionary.Services
             return (Languages) @enum;
         }
 
-        public static RemoteWebDriver Factory(RemoteWebDriver driver, string path)
+        public static RemoteWebDriver Factory(RemoteWebDriver driver, string path = @"")
         {
             Task.Run(() =>
             {

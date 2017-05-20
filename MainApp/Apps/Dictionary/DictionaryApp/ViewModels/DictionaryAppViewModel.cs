@@ -48,28 +48,22 @@ namespace Dictionary.ViewModels
 
         public static string SearchBoxText
         {
-            get
-            {
-                return _searchBoxText;
-            }
+            get => _searchBoxText;
             set
             {
-                if (_searchBoxText != value)
+                if (_searchBoxText == value) return;
+                _searchBoxText = value;
+                Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
                 {
-                    _searchBoxText = value;
-                    Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
+                    List<string> suggestionsList = await new UrbanClient()
+                        .GetAutocompletionFor(value);
+                    
+                    SuggestionsCollection.Clear();
+                    foreach (var item in suggestionsList)
                     {
-                        List<string> suggestionsList = await new UrbanClient()
-                            .GetAutocompletionFor(value);
-
-                        
-                        SuggestionsCollection.Clear();
-                        foreach (string item in suggestionsList)
-                        {
-                            SuggestionsCollection.Add(item);
-                        }
-                    }));   
-                }
+                        SuggestionsCollection.Add(item);
+                    }
+                }));
             }
         }
 
