@@ -7,3 +7,5 @@ Thanks for viewing!
 Special thanks to Microsoft, MahApps, Xesign and our amazing team for making this possible!
 
 'wieb' team.
+
+wieb is disconntinued. Check out the new wieb - [**Quicky**](https://github.com/TheMulti0/Quicky)
